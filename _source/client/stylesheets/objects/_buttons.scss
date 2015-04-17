@@ -1,0 +1,14 @@
+
+.btn--filled,
+.btn--light {
+  @include radius(3px);
+
+  padding: $base-spacing-unit * .75 $base-spacing-unit;
+
+  font-weight: 700;
+}
+
+.btn--light {
+  color: $base-font-color;
+  background-color: white;
+}

@@ -1,0 +1,30 @@
+
+.icon {
+  font-size: $base-icon-size * .5;
+}
+
+.icon--large {
+  @extend %icon;
+
+  margin: 0 auto;
+
+  font-size: $base-icon-size !important;
+}
+
+.icon--white {
+  margin: 0 auto;
+
+  color: white;
+
+  font-size: 24px;
+  &:before {
+    color: white;
+  }
+
+  &:hover {
+    color: map-get($font-colors, custard);
+    &:before {
+      color: map-get($font-colors, custard);
+    }
+  }
+}

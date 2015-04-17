@@ -1,0 +1,69 @@
+{
+  "name": "dapperink.com",
+  "tasks": {
+    "bower": {
+      "vendor": {
+        "mixins": "NewSpring/junction-mixins",
+        "framework": "NewSpring/junction-framework"
+      }
+    },
+    "sass": {
+      "src": "_source/client/stylesheets/**/*",
+      "dest": "dapperink/client/stylesheets",
+      "lint": true,
+      "comb": true
+    },
+    "javascript": {
+      "src": "_source/**/*",
+      "dest": "dapperink"
+    },
+    "markup": {
+      "src": "_source/client/templates/**/*",
+      "dest": "dapperink/client/templates",
+      "minify": true
+    },
+    "copy": {
+      "src": "_source/public/**/*",
+      "dest": "dapperink/public"
+    },
+    "private": {
+      "@extend": "copy",
+      "src": "_source/private/**/*",
+      "dest": "dapperink/private"
+    },
+    "meteor": {
+      "dev": true,
+      "src": "dapperink",
+      "build": {
+        "dest": "build",
+        "server": "localhost:3000"
+      },
+      "packages": [
+        "meteor-platform",
+        "iron:router",
+        "fastclick",
+        "raix:handlebar-helpers",
+        "meteorhacks:fast-render",
+        "aldeed:collection2",
+        "matb33:collection-hooks",
+        "cfs:standard-packages",
+        "aldeed:autoform",
+        "manuelschoebel:ms-seo",
+        "mizzao:user-status",
+        "meteorhacks:kadira"
+      ],
+      "platforms": [
+        "server",
+        "browser",
+        "ios"
+      ]
+    }
+  },
+  "test": {
+    "before": "meteor run",
+    "mocha-casperjs": {
+      "src": "dapperink/tests/**/*"
+    },
+    "after": "meteor close"
+  }
+}
