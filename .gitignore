@@ -38,6 +38,7 @@ out/*
 
 vendor/*
 vendor
+dapperink
 
 settings.json
 package.json
