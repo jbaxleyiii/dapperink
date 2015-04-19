@@ -52,7 +52,6 @@
         "meteorhacks:fast-render",
         "meteorhacks:subs-manager",
         "manuelschoebel:ms-seo",
-        "fastclick",
         "raix:handlebar-helpers",
         "peerlibrary:base-component",
         "peerlibrary:blaze-components",
