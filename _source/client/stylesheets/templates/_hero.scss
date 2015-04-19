@@ -1,0 +1,7 @@
+
+.background--fill.geo {
+  @include media-query(lap-and-up) {
+    background-position: left;
+    background-size: contain;
+  }
+}

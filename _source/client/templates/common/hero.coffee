@@ -17,6 +17,7 @@ class hero extends BlazeComponent
     self.subscribe "company", (err) ->
       if err
         return
+
       self.vars.company.set Den.company.findOne()
 
 
@@ -28,24 +29,25 @@ class hero extends BlazeComponent
 
 
   company: ->
-    return @.vars.company.get()
+    return Den.company.findOne()
 
   service: ->
     links = []
 
-    company = @.vars.company.get()
+    company = Den.company.findOne()
 
-    console.log company.services
+    console.log company
+    if company
 
-    links = company.services
+      links = company.services
 
-    return links
+      return links
 
 
   backgroundColor: ->
     # service = @.vars.services.get()
-
-    color = @.templateInstance.data?.backgroundColor
+    # console.log @.data(), @.currentData()
+    color = @.data()?.backgroundColor
     return color or "secondary"
 
   isActive: (route) ->
@@ -56,7 +58,3 @@ class hero extends BlazeComponent
       return "active"
 
     return
-
-  # year: ->
-  #   now = new Date()
-  #   return now.getFullYear()

@@ -20,7 +20,7 @@ Meteor.startup ->
   if not services
     return
 
-  setRoute = (url, template, name, register)->
+  setRoute = (url, template, name, register) ->
     if register
       Router.route url, ->
         return @.render(

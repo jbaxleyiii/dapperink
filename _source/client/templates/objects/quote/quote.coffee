@@ -27,28 +27,38 @@ class quote extends BlazeComponent
 
     self.vars.modifiedBase = new ReactiveVar({})
     self.vars.price = new ReactiveVar(0)
+    self.vars.message = new ReactiveVar()
 
-    service = self.templateInstance.data.name
+    service = self.data().name
 
     self.subscribe "products", service, (err) ->
       if err
         return
+
       self.vars.products.set Den.products.find().fetch()
 
 
   onRendered: ->
 
     self = @
-    template = self.templateInstance
-    serviceModifier = template.data.quote.modifier
+    serviceModifier = self.data().quote.modifier
 
     self.autorun ->
 
       totalPrice = 0
       product = self.vars.product.get()
 
+      console.log product
+
       if not product
         self.vars.price.set totalPrice
+        return
+
+
+      # early return because not base price and message
+      if product.message and not product.basePrice
+        self.vars.price.set false
+        self.vars.message.set product.message
         return
 
 
@@ -63,27 +73,40 @@ class quote extends BlazeComponent
 
       if modifiedBase
         for modifier, value of modifiedBase
+
+          # early return for message
+          if value.message
+            self.vars.price.set false
+            self.vars.message.set value.message
+            return
+
+          # modifer number
           if typeof value is "number"
             totalPrice += value
             continue
 
+          # low range
           if value.low?.modifier
             totalPrice = modifyPrice value.low.modifier, totalPrice
             multiplier = value.low.value
 
+          # high range
           if value.high?.modifier and value.low?
             highPrice = modifyPrice value.high.modifier, totalPrice
             highPriceMultiplier = value.high.value
 
 
+      # multiply by modifiers
       if multiplier
+        totalBasePrice = totalPrice
         totalPrice = totalPrice * multiplier
 
-      if highPrice and highPriceMultiplier
-        highPrice = totalPrice * highPriceMultiplier
+      # if top range
+      if highPrice and highPriceMultiplier and totalBasePrice
+        highPrice = totalBasePrice * highPriceMultiplier
         totalPrice = "#{totalPrice} - #{highPrice}"
 
-
+      # render
       self.vars.price.set totalPrice
 
 
@@ -97,7 +120,13 @@ class quote extends BlazeComponent
 
 
   product: ->
+
     return @.vars.product.get()
+
+  message: ->
+    return @.vars.message.get()
+
+
 
   events: ->
 
@@ -106,7 +135,6 @@ class quote extends BlazeComponent
       "click [data-product]": (event) ->
 
         self = @
-        template = self.templateInstance
 
         productName = event.currentTarget.dataset.product
 
@@ -123,9 +151,8 @@ class quote extends BlazeComponent
       "change select": (event) ->
 
         self = @
-        template = self.templateInstance
 
-        serviceModifier = template.data.quote.modifier
+        serviceModifier = self.data().quote.modifier
 
         modifierName = event.currentTarget.dataset.name
         value = event.currentTarget.value

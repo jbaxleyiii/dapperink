@@ -7,4 +7,7 @@ Meteor.publish "services", ->
 
 
 Meteor.publish "products", (service) ->
-  return Den.products.find({service: service})
+
+  products = Den.products.find({service: service})
+
+  return products

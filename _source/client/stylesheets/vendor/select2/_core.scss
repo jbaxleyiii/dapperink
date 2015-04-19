@@ -11,7 +11,7 @@
   vertical-align: middle;
 
   color: $base-font-color;
-  border: $base-border-size * .75 solid $brand-color;
+  border: $base-border-size solid map-get($colors, dark);
   background-color: $brand-color;
 
   font-size: $button-height * .375;

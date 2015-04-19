@@ -9,7 +9,7 @@
       <div class="grid">
       {{#each products}}
 
-        <div class="grid__item text-center one-fifth">
+        <div class="grid__item text-center one-third lap-and-up-one-fifth">
           <a href="#" data-product={{name}}>
             <div class="icon--large fa fa-shirtsinbulk text-brand">
             </div>
@@ -36,9 +36,10 @@
       {{#if modifiers}}
         {{#each modifiers}}
           <div class="grid__item one-whole text-center lap-and-up-one-third">
-            <h6 class="text-center push-bottom">
+
+            {{!-- <h6 class="text-center push-bottom">
               {{#if label}}{{label}}{{else}}{{name}}{{/if}}
-            </h6>
+            </h6>--}}
             {{#if $eq type "select"}}
               {{#with this}}
                 {{> select}}
@@ -83,6 +84,7 @@
 
   </section>
 
+  --}}
   <section class="flush-top push-double-bottom soft-sides text-center constrain-small-copy hard-bottom">
 
     <h5 class="push-double-bottom">
@@ -90,7 +92,7 @@
     </h5>
   </section>
 
-  --}}
+
   <section class="hard">
     <div class="grid flush">
 
@@ -101,6 +103,19 @@
               {{#if price}}
                 <h4 class="text-white"> Price Range:</h4>
                 <h2 class="text-white flush">${{price}}</h2>
+
+              {{else}}
+
+                {{#if message}}
+
+                  <h4 class="flush text-white">
+                    {{message}}
+                  </h4>
+                {{else}}
+                  <h4 class="text-white"> Price Range:</h4>
+                  <h2 class="text-white flush">$0</h2>
+                {{/if}}
+
               {{/if}}
             </div>
           </div>

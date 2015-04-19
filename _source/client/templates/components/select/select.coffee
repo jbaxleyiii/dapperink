@@ -8,7 +8,7 @@ class select extends BlazeComponent
 
 
   onRendered: ->
-    _select = @.templateInstance.$("select")
+    _select = @.$("select")
 
     _select.select2({
       minimumResultsForSearch: Infinity
@@ -26,6 +26,7 @@ class select extends BlazeComponent
 
   onDestroyed: ->
 
-    _select = @.templateInstance.$("select")
+    _select = @.$("select")
 
-    _select.select2("destroy")
+    if _select and _select.select2
+      _select.select2("destroy")

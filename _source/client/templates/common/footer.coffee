@@ -8,7 +8,7 @@ class footer extends BlazeComponent
 
   backgroundColor: ->
 
-    color = @.templateInstance.data?.backgroundColor
+    color = @.data()?.backgroundColor
     return color or "tertiary"
 
 

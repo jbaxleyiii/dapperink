@@ -13,8 +13,8 @@ class services extends BlazeComponent
     @.subscribe "services"
 
   service: ->
-    if @.templateInstance?.data?.name
-      name = @.templateInstance.data.name
+    if @.data()?.name
+      name = @.data().name
       service =  Den.services.findOne({name: name})
       return service
 
