@@ -1,0 +1,17 @@
+.select2-selection--single {
+  display: block;
+
+  cursor: pointer;
+  -webkit-user-select: none;
+          user-select: none;
+}
+
+.select2-selection__rendered {
+  display: block;
+  overflow: hidden;
+
+  padding: $base-spacing-unit;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

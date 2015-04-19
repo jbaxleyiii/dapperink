@@ -1,0 +1,35 @@
+<template name="hero">
+
+  <section class="overlay--brand-{{backgroundColor}} hard background--fill" style="background-image:url(/images/matt-printing.png)">
+    <div class="overlay__item">
+      <div class="ratio--square lap-and-up-ratio--landscape" >
+        <div class="ratio__item floating">
+          <div class="floating__item">
+
+            <h1 class="text-white hard push-half-bottom uppercase">
+              {{company.name}}
+            </h1>
+
+            <div class="grid one-whole">
+
+              {{#each service}}
+                <div class="grid__item one-third text-center active">
+                  <a href="{{pathFor this.name}}" >
+                    <h5 class="uppercase text-center">
+                      <small class="{{#if isActive this.name}}text-brand{{else}}text-white{{/if}}">{{name}}</small>
+                    </h5>
+                  </a>
+                </div>
+              {{/each}}
+
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</template>

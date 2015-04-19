@@ -36,8 +36,8 @@ out/*
 
 .norma
 
-vendor/*
-vendor
+
+/vendor
 dapperink
 
 settings.json

@@ -1,4 +1,7 @@
 
+$is-newspring: false;
+
+
 $colors: (
   "primary": #ea6045,
   "secondary": #2f3440,
@@ -26,16 +29,17 @@ $fonts: extend($fonts, (
   roboto: (
     h1: (
       font-family: "Roboto Condensed",
-      font-size: 2.5em,
+      font-size: 3em,
       line-height: .9,
-      letter-spacing: 2px,
+      letter-spacing: 3px,
       font-weight: 800,
       text-transform: uppercase,
       margin-bottom: $base-spacing-unit
     ),
     h2: (
       font-family: "Roboto Condensed",
-      font-size: 1.5em,
+      font-size: 2.25em,
+      letter-spacing: 3px,
       line-height: .9,
       text-transform: uppercase,
       margin-bottom: $base-spacing-unit
@@ -61,6 +65,9 @@ $fonts: extend($fonts, (
       font-size: 1em,
       line-height: 1,
       margin-bottom: $half-spacing-unit
+    ),
+    h5 small: (
+      color: darken(map-get($colors, base), 10)
     )
   ),
   "serif": (
@@ -90,6 +97,7 @@ $typography: extend($typography, (
   h3: "roboto",
   h4: "roboto",
   h5: "roboto",
+  h5 small: "roboto",
   h6: "serif",
   p: "serif",
   small: "serif"

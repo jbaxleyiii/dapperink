@@ -1,0 +1,13 @@
+<template name="select">
+
+  <div class="input">
+
+    <select style="width: 75%" data-name={{name}}>
+      {{#each options}}
+      <option value="{{name}}">{{#if label}}{{label}}{{else}}{{name}}{{/if}}</option>
+      {{/each}}
+    </select>
+
+  </div>
+
+</template>

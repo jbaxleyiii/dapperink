@@ -3,7 +3,7 @@
 .btn--light {
   @include radius(3px);
 
-  padding: $base-spacing-unit * .75 $base-spacing-unit;
+  padding: $base-spacing-unit;
 
   font-weight: 700;
 }

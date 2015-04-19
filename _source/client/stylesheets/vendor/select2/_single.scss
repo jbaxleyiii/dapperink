@@ -1,0 +1,104 @@
+&.select2-selection--single {
+  // border: 1px solid $border-color;
+  // border-radius: $border-radius;
+  outline: 0;
+
+  // &:focus {
+  //   border: 1px solid $focus-border-color;
+  // }
+
+
+  .select2-selection__clear {
+    float: right;
+
+    margin-right: 10px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+  }
+
+  // .select2-selection__placeholder {
+  //   color: #999;
+  // }
+
+  // .select2-selection__arrow {
+  //   position: absolute;
+  //   top: 1px;
+  //   right: 1px;
+  //
+  //   width: 20px;
+  //   height: 26px;
+  //
+  //   border: none;
+  //   border-left: 1px solid $border-color;
+  //   border-top-right-radius: $border-radius;
+  //   border-bottom-right-radius: $border-radius;
+  //   background-color: #ddd;
+  //
+  //
+  //   b {
+  //     position: absolute;
+  //     top: 50%;
+  //     left: 50%;
+  //
+  //     width: 0;
+  //     height: 0;
+  //     margin-top: -2px;
+  //     margin-left: -4px;
+  //
+  //     border-width: 5px 4px 0 4px;
+  //     border-style: solid;
+  //     border-color: #888 transparent transparent transparent;
+  //   }
+  // }
+}
+
+
+&.select2-container--open {
+  text-align: left;
+
+  border-top-color: map-get($colors, base);
+  border-right: none;
+  border-bottom: none;
+  // margin-top: -62px;
+  border-left: none;
+  background-color: map-get($colors, base);
+  box-shadow: 0 3px 5px 3px darken(map-get($colors, base), 10);
+  // .select2-selection--single {
+  //   // border: 1px solid $focus-border-color;
+  //
+  //   .select2-selection__arrow {
+  //     border: none;
+  //     background: transparent;
+  //
+  //     b {
+  //       border-width: 0 4px 5px 4px;
+  //       border-color: transparent transparent #888 transparent;
+  //     }
+  //   }
+  // }
+  &:hover {
+    background-color: map-get($colors, base);
+  }
+
+  .select2-selection__rendered {
+    color: $brand-color;
+  }
+
+  &.select2-container--above {
+    .select2-selection--single {
+      border-top: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  &.select2-container--below {
+    .select2-selection--single {
+      border-bottom-color: map-get($colors, base);
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}

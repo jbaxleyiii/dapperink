@@ -1,0 +1,68 @@
+.select2-container {
+  @extend %btn;
+  @include radius(3px);
+  @import "single-core";
+
+  overflow: visible;
+
+  margin: 0;
+  padding: 0;
+
+  vertical-align: middle;
+
+  color: $base-font-color;
+  border: $base-border-size * .75 solid $brand-color;
+  background-color: $brand-color;
+
+  font-size: $button-height * .375;
+  font-weight: 700;
+
+  &:hover {
+    color: $base-font-color;
+    // background-color: map-get($colors, base);
+  }
+}
+
+
+
+@import "dropdown-core";
+
+.select2-close-mask {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+
+  display: block;
+
+  width: auto;
+  min-width: 100%;
+  height: auto;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+
+  opacity: 0;
+  border: 0;
+  // styles required for IE to work
+  background-color: #fff;
+
+  filter: alpha(opacity=0);
+}
+
+.select2-hidden-accessible {
+  position: absolute;
+
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  border: 0;
+}
+
+@import "defaults";
+@import "single";

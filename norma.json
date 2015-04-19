@@ -25,6 +25,14 @@
       "src": "_source/public/**/*",
       "dest": "dapperink/public"
     },
+    "settings": {
+      "@extend": "copy",
+      "src": "settings",
+      "dest": "dapperink/",
+      "ext": [
+        "json"
+      ]
+    },
     "private": {
       "@extend": "copy",
       "src": "_source/private/**/*",
@@ -33,27 +41,26 @@
     "meteor": {
       "dev": true,
       "src": "dapperink",
+      "settings": "settings.json",
       "packages": [
         "meteor-platform",
-
+        "reactive-var",
         "iron:router",
+        "accounts-base",
+        "accounts-password",
         "multiply:iron-router-progress",
         "meteorhacks:fast-render",
         "meteorhacks:subs-manager",
         "manuelschoebel:ms-seo",
-
         "fastclick",
-
         "raix:handlebar-helpers",
-
+        "peerlibrary:blaze-components@0.5.0",
         "aldeed:collection2",
-
         "mizzao:user-status",
-        "meteorhacks:kadira"
-
+        "meteorhacks:kadira",
         "cfs:standard-packages",
+        "cfs:gridfs",
         "cfs:s3",
-
         "ccorcos:transitioner"
       ],
       "platforms": [

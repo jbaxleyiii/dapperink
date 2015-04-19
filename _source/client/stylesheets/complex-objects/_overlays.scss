@@ -1,13 +1,14 @@
-// .overlay--brand {
-//   @extend %_overlay;
-//   &:after {
-//     background: rgba(map-get($colors, "primary"), .65);
-//   }
-// }
 
-//
-// @include namespace(ratio--none) {
-//   .ratio__item {
-//     @include relative(top auto left auto right auto bottom auto);
-//   }
-// }
+.overlay--brand-secondary {
+  @extend %_overlay;
+  &:after {
+    background: rgba(map-get($colors, "secondary"), .65);
+  }
+}
+
+.overlay--brand-tertiary {
+  @extend %_overlay;
+  &:after {
+    background: rgba(map-get($colors, "tertiary"), .65);
+  }
+}
