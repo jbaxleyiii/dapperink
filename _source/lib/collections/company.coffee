@@ -1,8 +1,8 @@
 
-Den.company = new Mongo.Collection "company"
+Apollos.company = new Mongo.Collection "company"
 
 # TODO: Make this secure
-Den.company.allow
+Apollos.company.allow
   insert: (userId, doc) ->
     return true
   update: (userId, doc) ->
@@ -10,7 +10,7 @@ Den.company.allow
   remove: (userId, doc) ->
     return true
 
-service = new SimpleSchema
+service = Apollos.generateSchema
   name:
     type: String
     optional: false
@@ -25,7 +25,7 @@ service = new SimpleSchema
     optional: true
 
 
-company = new SimpleSchema
+company = Apollos.generateSchema
   name:
     type: String
     optional: true
@@ -36,10 +36,10 @@ company = new SimpleSchema
     type: String
     optional: true
   social:
-    type: [Den.schemas.social]
+    type: [Apollos.schemas.social]
     optional: true
   location:
-    type: Den.schemas.location
+    type: Apollos.schemas.location
     optional: true
   hours:
     type: String
@@ -47,15 +47,15 @@ company = new SimpleSchema
   contactEmail:
     type: String
     optional: true
-    regEx: Den.regex.email
+    regEx: Apollos.regex.email
   adminEmail:
     type: String
     optional: true
-    regEx: Den.regex.email
+    regEx: Apollos.regex.email
   services:
     type: [service]
     optional: true
 
 
 
-Den.company.attachSchema company
+Apollos.company.attachSchema company

@@ -1,21 +1,16 @@
-class services extends BlazeComponent
 
-  @register "services"
 
-  template: ->
-    return Template.services
+class service extends Apollos.Component
+  @register "service"
+
+
 
   onCreated: ->
 
     console.log "creating services"
-    self = @
 
-    @.subscribe "services"
+
 
   service: ->
-    if @.data()?.name
-      name = @.data().name
-      service =  Den.services.findOne({name: name})
-      return service
-
-    return
+    active = @.data().serviceName
+    return Apollos.services.findOne({name: active})

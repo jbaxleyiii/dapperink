@@ -1,5 +1,5 @@
 
-if Den.products.find().count() is 0
+if Apollos.products.find().count() is 0
 
   apparelOptions = [
     {
@@ -114,10 +114,10 @@ if Den.products.find().count() is 0
     }
   ]
 
-  Den.products.insert
+  Apollos.products.insert
     name: "ss tee"
     label: "Short Sleeve Tee"
-    service: "screen printing"
+    service: "screen-printing"
     basePrice: 3
     modifiers: [
       {
@@ -159,10 +159,10 @@ if Den.products.find().count() is 0
     ]
 
 
-  Den.products.insert
+  Apollos.products.insert
     name: "ls tee"
     label: "Long Sleeve Tee"
-    service: "screen printing"
+    service: "screen-printing"
     basePrice: 5
     modifiers: [
       {
@@ -203,10 +203,10 @@ if Den.products.find().count() is 0
       }
     ]
 
-  Den.products.insert
+  Apollos.products.insert
     name: "pullover"
     label: "Pullover Hood"
-    service: "screen printing"
+    service: "screen-printing"
     basePrice: 12
     modifiers: [
       {
@@ -242,10 +242,10 @@ if Den.products.find().count() is 0
       }
     ]
 
-  Den.products.insert
+  Apollos.products.insert
     name: "headwear"
     label: "Headwear"
-    service: "screen printing"
+    service: "screen-printing"
     basePrice: 6
     modifiers: [
       {
@@ -281,8 +281,8 @@ if Den.products.find().count() is 0
       }
     ]
 
-  Den.products.insert
+  Apollos.products.insert
     name: "headwear"
     label: "Headwear"
-    service: "screen printing"
+    service: "screen-printing"
     message: "Please call for options"

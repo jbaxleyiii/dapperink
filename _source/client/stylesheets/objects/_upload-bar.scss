@@ -1,0 +1,19 @@
+
+.upload-bar {
+  position: relative;
+
+  background-color: rgba(255, 255, 255, .65);
+}
+
+
+.upload-bar__item-overlay {
+  position: relative;
+  z-index: 2;
+}
+
+
+.upload-bar__item {
+  @include absolute(top 0 bottom 0 left 0);
+
+  background-color: $brand-color;
+}

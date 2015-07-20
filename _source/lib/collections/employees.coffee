@@ -1,7 +1,7 @@
-Den.employees = new Mongo.Collection "employees"
+Apollos.employees = new Mongo.Collection "employees"
 
 # TODO: Make this secure
-Den.employees.allow
+Apollos.employees.allow
   insert: (userId, doc) ->
     return true
   update: (userId, doc) ->
@@ -10,16 +10,16 @@ Den.employees.allow
     return true
 
 
-endeavors = new SimpleSchema
+endeavors = Apollos.generateSchema
   name:
     type: String
     optional: true
   link:
     type: String
     optional: true
-    regEx: Den.regex.url
+    regEx: Apollos.regex.url
 
-employees = new SimpleSchema
+employees = Apollos.generateSchema
   firstName:
     type: String
     optional: false
@@ -33,22 +33,22 @@ employees = new SimpleSchema
     type: String
     optional: true
   social:
-    type: [Den.schemas.social]
+    type: [Apollos.schemas.social]
     optional: true
   photo:
     type: String
     optional: true
-    regEx: Den.regex.url
+    regEx: Apollos.regex.url
   profile:
     type: String
     optional: true
-    regEx: Den.regex.url
+    regEx: Apollos.regex.url
   email:
     type: String
     optional: true
-    regEx: Den.regex.email
+    regEx: Apollos.regex.email
   endeavors:
     type: [endeavors]
     optional: true
 
-Den.employees.attachSchema employees
+Apollos.employees.attachSchema employees

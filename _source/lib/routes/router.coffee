@@ -1,60 +1,18 @@
 
-Router.configure
-  progressSpinner: false
-  layoutTemplate: "layout"
+Apollos.Router.route("/", {
+  action: (params, queryParams) ->
 
-  waitOn: ->
-    Meteor.subscribe "company"
-    Meteor.subscribe "services"
-
-
-Meteor.startup ->
-
-  services = Den.company.findOne({}, {
-    fields:
-      services: 1
-  })
-
-  services = services.services
-
-  if not services
-    return
-
-  setRoute = (url, template, name, register) ->
-    if register
-      Router.route url, ->
-        return @.render(
-          template
-          data:
-            serviceName: name
-        )
-      , name: name
-
-      return
-
-    Router.route url, ->
-      return @.render(
-        template
-        data:
-          serviceName: name
-      )
+    Apollos.router.go("/screen-printing")
+})
 
 
 
-  for service in services when service.template
-    nameSet = false
-    for url in service.url
-      if not nameSet
-        setRoute(url, service.template, service.name, true)
-        nameSet = true
-        continue
+Apollos.Router.route("/:service", {
+  action: (params, queryParams) ->
 
-      setRoute(url, service.template, service.name, false)
+    Apollos.Layout.render("page-layout", {
+      template: params.service
+    })
 
-      continue
-
-
-if Meteor.isClient
-  Transitioner.default
-    in: "transition.fadeIn"
-    out: "transition.fadeOut"
+  name: "service"
+})

@@ -1,2 +1,0 @@
-
-Den.Component = BlazeComponent

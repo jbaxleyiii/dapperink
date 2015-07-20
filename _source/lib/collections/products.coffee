@@ -1,7 +1,7 @@
-Den.products = new Mongo.Collection "products"
+Apollos.products = new Mongo.Collection "products"
 
 # TODO: Make this secure
-Den.products.allow
+Apollos.products.allow
   insert: (userId, doc) ->
     return true
   update: (userId, doc) ->
@@ -10,28 +10,28 @@ Den.products.allow
     return true
 
 
-modifier = new SimpleSchema
+modifier = Apollos.generateSchema
   action:
     type: String
     optional: false
   value:
     type: Number
-    optional: false
+    optional: true
     decimal: true
 
 
-range = new SimpleSchema
+range = Apollos.generateSchema
 
   value:
     type: Number
-    optional: false
+    optional: true
     decimal: true
   modifier:
     type: [modifier]
     optional: true
 
 
-options = new SimpleSchema
+options = Apollos.generateSchema
 
   name:
     type: String
@@ -61,7 +61,7 @@ options = new SimpleSchema
     optional: true
 
 
-modifiers = new SimpleSchema
+modifiers = Apollos.generateSchema
   name:
     type: String
     optional: false
@@ -89,7 +89,7 @@ modifiers = new SimpleSchema
 
 
 
-products = new SimpleSchema
+products = Apollos.generateSchema
   name:
     type: String
     optional: false
@@ -122,4 +122,4 @@ products = new SimpleSchema
 
 
 
-Den.products.attachSchema products
+Apollos.products.attachSchema products

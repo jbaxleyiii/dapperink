@@ -58,8 +58,8 @@
   border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  background-color: map-get($colors, base);
-  box-shadow: 0 4px 5px 3px darken(map-get($colors, base), 10);
+  background-color: map-get($colors, light-tertiary);
+  box-shadow: 0 4px 5px 3px darken(map-get($colors, light-tertiary), 10);
 }
 
 .select2-search--dropdown {

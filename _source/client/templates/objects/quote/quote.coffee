@@ -9,56 +9,50 @@ modifyPrice = (modifier, price) ->
 
 
 
-class quote extends BlazeComponent
-  # Register a component so that it can be included in templates. It also
-  # gives the component the name. This must be the name of the corresponding template
+class quote extends Apollos.Component
   @register "quote"
 
-  template: ->
-    return "quote"
+  vars: -> [
+    product: ""
 
-  onCreated: ->
-    self = @
+    modifiedBase: ""
+    price: 0
+    message: ""
+  ]
 
-    self.vars or= {}
+  subscriptions: -> [
+    "products":
+      args: [
+        @.data().name
+      ]
 
-    self.vars.products = new ReactiveVar()
-    self.vars.product = new ReactiveVar()
+  ]
 
-    self.vars.modifiedBase = new ReactiveVar({})
-    self.vars.price = new ReactiveVar(0)
-    self.vars.message = new ReactiveVar()
-
-    service = self.data().name
-
-    self.subscribe "products", service, (err) ->
-      if err
-        return
-
-      self.vars.products.set Den.products.find().fetch()
-
+  products: ->
+    products = Apollos.products.find().fetch()
+    if products.length
+      return products
+    return
 
   onRendered: ->
-
     self = @
     serviceModifier = self.data().quote.modifier
 
     self.autorun ->
 
-      totalPrice = 0
-      product = self.vars.product.get()
 
-      console.log product
+      totalPrice = 0
+      product = self.product.get()
 
       if not product
-        self.vars.price.set totalPrice
+        self.price.set totalPrice
         return
 
 
       # early return because not base price and message
       if product.message and not product.basePrice
-        self.vars.price.set false
-        self.vars.message.set product.message
+        self.price.set false
+        self.message.set product.message
         return
 
 
@@ -69,15 +63,15 @@ class quote extends BlazeComponent
       highPriceMultiplier = false
 
       multiplier = false
-      modifiedBase = self.vars.modifiedBase.get()
+      modifiedBase = self.modifiedBase.get()
 
       if modifiedBase
         for modifier, value of modifiedBase
 
           # early return for message
           if value.message
-            self.vars.price.set false
-            self.vars.message.set value.message
+            self.price.set false
+            self.message.set value.message
             return
 
           # modifer number
@@ -107,24 +101,8 @@ class quote extends BlazeComponent
         totalPrice = "#{totalPrice} - #{highPrice}"
 
       # render
-      self.vars.price.set totalPrice
+      self.price.set totalPrice
 
-
-
-  price: ->
-    return @.vars.price.get()
-
-
-  products: ->
-    return @.vars.products.get()
-
-
-  product: ->
-
-    return @.vars.product.get()
-
-  message: ->
-    return @.vars.message.get()
 
 
 
@@ -138,12 +116,12 @@ class quote extends BlazeComponent
 
         productName = event.currentTarget.dataset.product
 
-        allProducts = @.vars.products.get()
+        allProducts = @.products()
 
         if allProducts
           for _product in allProducts
             if _product.name is productName
-              @.vars.product.set _product
+              @.product.set _product
               break
 
 
@@ -156,7 +134,7 @@ class quote extends BlazeComponent
 
         modifierName = event.currentTarget.dataset.name
         value = event.currentTarget.value
-        product = self.vars.product.get()
+        product = self.product.get()
 
         if not value or not product or not modifierName
           return
@@ -187,9 +165,9 @@ class quote extends BlazeComponent
                 continue
 
               if option.range
-                self.vars.hasRange.set true
+                self.hasRange.set true
 
-              modifiedPrice = self.vars.modifiedBase.get()
+              modifiedPrice = self.modifiedBase.get()
 
               if option.basePrice
                 modifiedPrice[modifierName] = option.basePrice
@@ -197,7 +175,7 @@ class quote extends BlazeComponent
               else
                 modifiedPrice[modifierName] = option
 
-              self.vars.modifiedBase.set(modifiedPrice)
+              self.modifiedBase.set(modifiedPrice)
 
             break
 
@@ -214,12 +192,12 @@ class quote extends BlazeComponent
             if option.name isnt value
               continue
 
-            modifiedPrice = self.vars.modifiedBase.get()
+            modifiedPrice = self.modifiedBase.get()
 
             if option.basePrice
               modifiedPrice[modifierName] = option.basePrice
 
-            self.vars.modifiedBase.set(modifiedPrice)
+            self.modifiedBase.set(modifiedPrice)
             break
 
     ]
@@ -241,7 +219,7 @@ class quote extends BlazeComponent
   #     "change #upload": (event, template) ->
   #       FS.Utility.eachFile(event, (file) ->
   #
-  #         Den.Images.insert(file, (err, fileObj) ->
+  #         Apollos.Images.insert(file, (err, fileObj) ->
   #
   #           if err
   #             debug err

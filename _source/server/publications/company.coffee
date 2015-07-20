@@ -1,13 +1,13 @@
 Meteor.publish "company", ->
-  return Den.company.find()
+  return Apollos.company.find()
 
 
 Meteor.publish "services", ->
-  return Den.services.find()
+  return Apollos.services.find()
 
 
 Meteor.publish "products", (service) ->
 
-  products = Den.products.find({service: service})
+  products = Apollos.products.find({service: service})
 
   return products

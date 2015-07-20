@@ -57,13 +57,13 @@
 &.select2-container--open {
   text-align: left;
 
-  border-top-color: map-get($colors, base);
+  border-top-color: map-get($colors, light-tertiary);
   border-right: none;
   border-bottom: none;
   // margin-top: -62px;
   border-left: none;
-  background-color: map-get($colors, base);
-  box-shadow: 0 3px 5px 3px darken(map-get($colors, base), 10);
+  background-color: map-get($colors, light-tertiary);
+  box-shadow: 0 3px 5px 3px darken(map-get($colors, light-tertiary), 10);
   // .select2-selection--single {
   //   // border: 1px solid $focus-border-color;
   //
@@ -78,7 +78,7 @@
   //   }
   // }
   &:hover {
-    background-color: map-get($colors, base);
+    background-color: map-get($colors, light-tertiary);
   }
 
   .select2-selection__rendered {
@@ -95,7 +95,7 @@
 
   &.select2-container--below {
     .select2-selection--single {
-      border-bottom-color: map-get($colors, base);
+      border-bottom-color: map-get($colors, light-tertiary);
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
     }

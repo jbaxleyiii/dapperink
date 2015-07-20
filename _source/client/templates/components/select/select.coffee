@@ -1,10 +1,10 @@
 
-class select extends BlazeComponent
+class select extends Apollos.Forms.Select
 
   @register "select"
 
   template: ->
-    return "select"
+    return "Apollos.Forms.Select"
 
 
   onRendered: ->
@@ -14,15 +14,8 @@ class select extends BlazeComponent
       minimumResultsForSearch: Infinity
     })
 
+    super
 
-  events: ->
-    return [
-
-      "change select": (event) ->
-
-        # console.log event.currentTarget.value
-
-    ]
 
   onDestroyed: ->
 
@@ -30,3 +23,5 @@ class select extends BlazeComponent
 
     if _select and _select.select2
       _select.select2("destroy")
+
+    super

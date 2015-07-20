@@ -21,15 +21,14 @@
     color: white;
   }
 
-  &:hover {
-    color: map-get($font-colors, custard);
-    &:before {
-      color: map-get($font-colors, custard);
-    }
-  }
+  //&:hover {
+  //  color: map-get($font-colors, custard);
+  //  &:before {
+  //    color: map-get($font-colors, custard);
+  //  }
+  //}
 }
 
-#iron-router-progress {
-  background-color : map-get($colors, primary);
-  box-shadow       : 0 0 5px map-get($colors, primary);
+.fa-map-marker:before {
+  font-size: 28px!important;
 }

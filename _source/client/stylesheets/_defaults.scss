@@ -1,30 +1,20 @@
 
 $is-newspring: false;
-
-
 $colors: (
-  "primary": #ea6045,
+  "primary": #e27242,
   "secondary": #2f3440,
   "tertiary": #3f5666,
 
-  "dark": #303030,
-  "medium": #858585,
-  "light": #fff,
+  "dark-primary": #303030,
+  "dark-secondary": #505050,
+  "dark-tertiary": #858585,
 
-  "base": #ddd,
+  "light-primary": #fff,
+  "light-secondary": #f7f7f7,
+  "light-tertiary": #ddd,
+
   "alert": #c64f55
 );
-//
-$font-colors: (
-  "base": $base-font-color,
-  "light": #f5e5c0,
-  "medium": #858585,
-  "dark": #303030,
-  "custard": #f5f5f5,  // evaluate name of variable
-  "white": #fff
-);
-
-
 $fonts: extend($fonts, (
   roboto: (
     h1: (
@@ -67,7 +57,13 @@ $fonts: extend($fonts, (
       margin-bottom: $half-spacing-unit
     ),
     h5 small: (
-      color: darken(map-get($colors, base), 10)
+      color: darken(map-get($colors, light-tertiary), 10)
+    ),
+    h6: (
+      font-family: "Roboto Condensed",
+      font-size: 1em,
+      line-height: 1,
+      margin-bottom: $half-spacing-unit
     )
   ),
   "serif": (
@@ -98,12 +94,10 @@ $typography: extend($typography, (
   h4: "roboto",
   h5: "roboto",
   h5 small: "roboto",
-  h6: "serif",
+  h6: "roboto",
   p: "serif",
   small: "serif"
 ));
-
-
 $ratios: extend($ratios, (
   ratio--picture: (
     width: 1,
@@ -114,10 +108,7 @@ $ratios: extend($ratios, (
     height: 1
   )
 ));
-
 $brands: "facebook", "twitter", "instagram";
-
-
 $constraints: (
   "copy": (
     min-width: 280px,

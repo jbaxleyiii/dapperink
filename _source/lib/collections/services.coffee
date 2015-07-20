@@ -1,7 +1,7 @@
-Den.services = new Mongo.Collection "services"
+Apollos.services = new Mongo.Collection "services"
 
 # TODO: Make this secure
-Den.services.allow
+Apollos.services.allow
   insert: (userId, doc) ->
     return true
   update: (userId, doc) ->
@@ -9,7 +9,7 @@ Den.services.allow
   remove: (userId, doc) ->
     return true
 
-quote = new SimpleSchema
+quote = Apollos.generateSchema
   name:
     type: String
     optional: true
@@ -24,7 +24,7 @@ quote = new SimpleSchema
     optional: true
 
 
-services = new SimpleSchema
+services = Apollos.generateSchema
   name:
     type: String
     optional: true
@@ -53,4 +53,4 @@ services = new SimpleSchema
     optional: true
     blackbox: true
 
-Den.services.attachSchema services
+Apollos.services.attachSchema services

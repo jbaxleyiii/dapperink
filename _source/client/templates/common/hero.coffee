@@ -1,60 +1,43 @@
-class hero extends BlazeComponent
-  # Register a component so that it can be included in templates. It also
-  # gives the component the name. This must be the name of the corresponding template
-  @register "hero"
+class Hero extends Apollos.Component
+  @register "Hero"
 
-  template: ->
-    return "hero"
+
+  subscriptions: -> [
+    "company"
+    "services"
+  ]
+
+  vars: -> [
+    img: "screen2.b&w.jpg"
+  ]
+
 
   onCreated: ->
 
     self = @
+    active = self.data()?.active
 
-    self.vars or= {}
-    self.vars.company = new ReactiveVar()
-    self.vars.services = new ReactiveVar()
-
-    self.subscribe "company", (err) ->
-      if err
-        return
-
-      self.vars.company.set Den.company.findOne()
-
-
-    self.subscribe "services", (err) ->
-      if err
-        return
-      self.vars.services.set Den.services.findOne()
+    switch active
+      when "screen-printing"
+        self.img.set("screen2.b&w.jpg")
+      when "letterpress"
+        self.img.set("letterpress.b&w.jpg")
+      when "custom-printing"
+        self.img.set("storefront.b&w.jpg")
 
 
 
   company: ->
-    return Den.company.findOne()
+    if @.subscriptionsReady()
+      return Apollos.company.findOne()
 
-  service: ->
-    links = []
-
-    company = Den.company.findOne()
-
-    console.log company
-    if company
-
-      links = company.services
-
-      return links
-
-
-  backgroundColor: ->
-    # service = @.vars.services.get()
-    # console.log @.data(), @.currentData()
-    color = @.data()?.backgroundColor
-    return color or "secondary"
 
   isActive: (route) ->
 
-    lastSegment = Router.current().route.getName()
+    active = @.data()?.active
 
-    if lastSegment is route
+    active = encodeURI(active)
+    if route is "/#{active}"
       return "active"
 
     return

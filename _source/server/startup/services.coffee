@@ -1,10 +1,8 @@
 
-if Den.services.find().count() is 0
+if Apollos.services.find().count() is 0
 
-
-  Den.services.insert
-
-    name: "screen printing"
+  Apollos.services.insert
+    name: "screen-printing"
     label: "Screen printing"
     description: "Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla."
     colors:
@@ -18,9 +16,8 @@ if Den.services.find().count() is 0
       modifier: "volume"
 
 
-  Den.services.insert
-
-    name: "letter press"
+  Apollos.services.insert
+    name: "letter-press"
     label: "Letter press"
     description: "Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla."
     colors:
@@ -34,10 +31,9 @@ if Den.services.find().count() is 0
       modifier: "volume"
 
 
-  Den.services.insert
-
-    name: "letter press"
-    label: "Letter press"
+  Apollos.services.insert
+    name: "custom-printing"
+    label: "Custom Printing"
     description: "Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla."
     colors:
       primary: "#4b3b4b"

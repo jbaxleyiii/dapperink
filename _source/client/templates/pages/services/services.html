@@ -1,45 +1,47 @@
-<template name="service">
 
-  {{!--
-
-    This seems hacky but might be a limitation with the new Iron Router
-    since it looks like it requires setting a render method
-
-  --}}
-  {{> services name=serviceName}}
-
-
+<template name="screen-printing">
+  {{> service serviceName='screen-printing'}}
 </template>
 
+<template name="custom-printing">
+  {{> service serviceName='custom-printing'}}
+</template>
+
+<template name="letterpress">
+  {{> service serviceName='letterpress'}}
+</template>
+
+<template name="service">
 
 
-<template name="services">
+    {{> Hero active=serviceName}}
 
-  {{#with service}}
 
-    {{> hero}}
 
-    {{#if service.quote}}
+    <section class="soft-double-top soft-sides text-center constrain-small-copy hard-bottom">
+      <h4 class="push-double-top">
+        Quick Estimate
+      </h4>
+      <p>
+        A simple and easy way to get a quick estimate of you next project.
+      </p>
+    </section>
 
-      <section class="soft-double-top soft-sides text-center constrain-small-copy hard-bottom">
-        <h4 class="push-double-top">
-          Quick Estimate
-        </h4>
-        <p>
-          A simple and easy way to get a quick estimate of you next project.
-        </p>
-      </section>
 
+    {{#with service}}
       {{> quote}}
+    {{/with}}
 
-    {{/if}}
 
-    {{> ad}}
 
-    {{> staff}}
+    {{> ad active=serviceName}}
 
-    {{> footer}}
+    {{> staff active=serviceName}}
 
-  {{/with}}
+    {{> Footer active=serviceName}}
+
+
+
+
 
 </template>

@@ -1,0 +1,67 @@
+
+name: "dapperink.com"
+tasks:
+
+  link:
+    "dapperink/":
+      build: true
+      watch: true
+      root: "../../Products/apollos/packages/"
+      packages: "apollos-core"
+    "vendor":
+      root: "../../Products/junction/"
+      framework: "stylesheets"
+
+  sass:
+    group: "assets"
+    src: "_source/client/stylesheets/**/*"
+    dest: "dapperink/client/stylesheets"
+    lint: true
+    comb: true
+
+  javascript:
+    group: "assets"
+    src: "_source/**/*"
+    dest: "dapperink"
+
+  markup:
+    group: "assets"
+    src: "_source/client/templates/**/*"
+    dest: "dapperink/client/templates"
+    minify: true
+
+  copy:
+    group: "assets"
+    src: "_source/public/**/*"
+    dest: "dapperink/public"
+
+  settings:
+    group: "assets"
+    "@extend": "copy"
+    src: "settings"
+    dest: "dapperink/"
+    ext: [ "json" ]
+
+  private:
+    group: "assets"
+    "@extend": "copy"
+    src: "_source/private/**/*"
+    dest: "dapperink/private"
+
+
+  meteor:
+
+    "dev": true
+    "src": "dapperink"
+    "settings": "settings.json"
+    "packages": [
+      "meteor-platform"
+      "newspring:apollos-core"
+      "meteorhacks:fast-render"
+      "meteorhacks:subs-manager"
+      "meteorhacks:kadira"
+    ]
+    "platforms": [
+      "server"
+      "browser"
+    ]

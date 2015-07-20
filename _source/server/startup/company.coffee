@@ -1,7 +1,7 @@
 
-if Den.company.find().count() is 0
+if Apollos.company.find().count() is 0
 
-  Den.company.insert
+  Apollos.company.insert
 
     name: "Dapper Ink"
     description: "Welcome to Dapper Ink. We're your one-stop-shop for all things print and design. Working in the beautiful upstate of South Carolina since 2007, we serve our local and regional community by providing top notch artwork and printed goods. With small minimums and complimentary design services, we're the perfect match for providing apparel and accessories for schools, greeks, small businesses, summer camps, and local events. We pride ourselves on creative designs, timely service, and great customer experiences. Almost all of our work is handled start to finish in house, which guarantees our careful attention to detail throughout production."
