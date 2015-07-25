@@ -143,6 +143,9 @@ class quote extends Apollos.Component
 
     productName = event.currentTarget.dataset.product
 
+    self.$("[data-product]").removeClass("active")
+    self.$(event.currentTarget).addClass("active")
+
     allProducts = self.products()
 
     for _product in allProducts

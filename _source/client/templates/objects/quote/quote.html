@@ -12,15 +12,9 @@
       <div class="grid">
       {{#each products}}
 
-        <div class="grid__item text-center one-third lap-and-up-one-fifth">
-          <a href="#" data-product={{name}}>
-            <div class="icon--large fa fa-shirtsinbulk text-brand">
-            </div>
-
-            <h5>
-              <small>{{#if label}}{{label}}{{else}}{{name}}{{/if}}</small>
-            </h5>
-
+        <div class="grid__item text-center one-whole lap-and-up-two-fifths">
+          <a href="#" class="btn--filled btn--small one-whole" data-product={{name}}>
+            {{#if label}}{{label}}{{else}}{{name}}{{/if}}
           </a>
         </div>
 

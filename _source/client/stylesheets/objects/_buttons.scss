@@ -12,3 +12,8 @@
   color: $base-font-color;
   background-color: white;
 }
+
+.btn--filled.active {
+  border-color: map-get($colors, secondary);
+  background-color: map-get($colors, secondary);
+}
