@@ -36,7 +36,8 @@ class productModifier extends Apollos.Component
       return
 
     modifiers = product.modifiers
-
+    modifiers or= []
+    
     index = 1
     for modifier in modifiers
       modifier.count = index + 1

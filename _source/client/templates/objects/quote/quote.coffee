@@ -1,11 +1,24 @@
 
 
-modifyPrice = (modifier, price) ->
+modifyPrice = (modifier, price, modifiers) ->
+
+  price = Number(price)
+
+
+  if modifier.modifier and modifiers[modifier.modifier]
+    if modifiers[modifier.modifier].value
+      modifier.value = modifiers[modifier.modifier].value
 
   if modifier.action is "add"
     price += modifier.value
 
-  return price
+  if modifier.action is "multiply"
+    price = modifier.value * price
+
+  if modifier.action is "divide"
+    price = price / modifier.value
+
+  return price.toFixed(2)
 
 
 class quote extends Apollos.Component
@@ -58,13 +71,11 @@ class quote extends Apollos.Component
 
     product = Apollos.products.findOne({name: product})
 
-
-    # early return because not base price and message
+    # early return because no base price and message
     if product.message and not product.basePrice
       self.price.set false
       self.message.set product.message
       return
-
 
     basePrice = product.basePrice
     totalPrice += basePrice
@@ -77,7 +88,6 @@ class quote extends Apollos.Component
 
     if modifiedBase
       for modifier, value of modifiedBase
-
         # early return for message
         if value.message
           self.price.set false
@@ -89,15 +99,19 @@ class quote extends Apollos.Component
           totalPrice += value
           continue
 
+        if value.modifier?.length
+          for _modifier in value.modifier
+            totalPrice = modifyPrice _modifier, totalPrice
+
         # low range
         if value.low?.modifier
-          totalPrice = modifyPrice value.low.modifier[0], totalPrice
+          for lowModifier in value.low.modifier
+            totalPrice = modifyPrice lowModifier, totalPrice
           multiplier = value.low.value
 
         # high range
         if value.high?.modifier and value.low?
           highPrice = modifyPrice value.high.modifier[0], totalPrice
-
           highPriceMultiplier = value.high.value
 
 
@@ -110,6 +124,14 @@ class quote extends Apollos.Component
     if highPrice
       # highPrice = totalBasePrice * highPriceMultiplier
       totalPrice = "#{totalBasePrice.toFixed(2)} - #{highPrice.toFixed(2)}"
+
+
+
+    # final overiding calculation
+    if product.modifiers.length is Object.keys(modifiedBase).length
+      if product.modifier
+        for _modifier in product.modifier
+          totalPrice = modifyPrice _modifier, totalPrice, modifiedBase
 
     # render
     self.price.set totalPrice
@@ -162,7 +184,24 @@ class quote extends Apollos.Component
     #
     # ###
     if modifier.name is serviceModifier
-      for option in modifier.options
+
+      ###
+
+        Special case for optionless modifiers
+
+      ###
+      options = modifier.options
+      options or= []
+
+      if not options.length and modifier.modifier[0]
+        options.push({
+          name: "#{value}"
+          low:
+            modifier: [modifier.modifier[0]]
+            value: value
+        })
+
+      for option in options
 
         if option.name isnt value
           continue
@@ -174,12 +213,12 @@ class quote extends Apollos.Component
 
         if option.basePrice
           modifiedPrice[modifierName] = option.basePrice
-
         else
           modifiedPrice[modifierName] = option
 
         self.modifiedBase.set(modifiedPrice)
 
+      self.setPrice(0, self.productName.get())
       return
 
 
@@ -200,8 +239,12 @@ class quote extends Apollos.Component
 
       if option.basePrice
         modifiedPrice[modifierName] = option.basePrice
+      else
+        modifiedPrice[modifierName] = option
+
 
       self.modifiedBase.set(modifiedPrice)
+      self.setPrice(0, self.productName.get())
       return
 
   createInquiry: (event) ->
@@ -249,6 +292,7 @@ class quote extends Apollos.Component
       name: productName
     })
 
+    product.modifiers or = []
     if options.length isnt product.modifiers.length
       for modifier in product.modifiers
         names = []
@@ -268,7 +312,8 @@ class quote extends Apollos.Component
       return
 
     price = self.price.get()
-    
+    price or= "call for pricing"
+
     route = Apollos.router.current()
     service = route.params?.service
     service or= window.location.pathname

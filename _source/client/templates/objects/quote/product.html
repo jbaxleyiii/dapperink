@@ -3,9 +3,13 @@
 
   <section class="soft-double-bottom soft-sides text-center constrain-wide">
     <div class="grid text-center">
-    {{#each modifiers}}
-      {{> modifier count=count modifier=this}}
-    {{/each}}
+      {{#each modifiers}}
+        <div class="grid__item one-whole text-center lap-and-up-one-third">
+
+          {{> modifier count=count modifier=this}}
+
+        </div>
+      {{/each}}
     </div>
   </section>
 

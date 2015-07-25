@@ -1,17 +1,14 @@
 
 <template name="modifier">
 
-  <div class="grid__item one-whole text-center lap-and-up-one-third">
+
 
     {{#with modifier}}
       <h6 class="text-left push-bottom">
         {{count}}. {{#if label}}{{label}}{{else}}{{name}}{{/if}}
       </h6>
 
-
-
         {{#if $eq type "select"}}
-
           {{> select
             name=name
             items=modifiers
@@ -20,10 +17,19 @@
             hideLabel=true
             prefill=false
           }}
-
         {{/if}}
+
+      <div class="soft-ends">
+        {{#if $eq type "input"}}
+          {{>Apollos.Forms.Input
+            name=input.name
+            label=input.label
+            placeholder=input.label
+            type="number"
+          }}
+        {{/if}}
+      </div>
 
     {{/with}}
 
-  </div>
 </template>

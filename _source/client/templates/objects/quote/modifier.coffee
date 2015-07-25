@@ -10,6 +10,7 @@ class modifier extends Apollos.Component
 
   events: -> [
     "change select": @.update
+    "keyup input, blur input": @.update
   ]
 
   update: (event) ->
