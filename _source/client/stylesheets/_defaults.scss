@@ -111,7 +111,7 @@ $ratios: extend($ratios, (
 $brands: "facebook", "twitter", "instagram";
 $constraints: (
   "copy": (
-    min-width: 280px,
+    min-width: 240px,
     max-width: 768px
   ),
   "small-copy": (

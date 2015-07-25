@@ -1,0 +1,29 @@
+
+<template name="modifier">
+
+  <div class="grid__item one-whole text-center lap-and-up-one-third">
+
+    {{#with modifier}}
+      <h6 class="text-left push-bottom">
+        {{count}}. {{#if label}}{{label}}{{else}}{{name}}{{/if}}
+      </h6>
+
+
+
+        {{#if $eq type "select"}}
+
+          {{> select
+            name=name
+            items=modifiers
+            includeBlank=true
+            placeholder=false
+            hideLabel=true
+            prefill=false
+          }}
+
+        {{/if}}
+
+    {{/with}}
+
+  </div>
+</template>

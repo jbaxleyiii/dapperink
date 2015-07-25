@@ -8,20 +8,11 @@ class select extends Apollos.Forms.Select
 
 
   onRendered: ->
+    # library requires jquery
     _select = @.$("select")
 
     _select.select2({
       minimumResultsForSearch: Infinity
     })
-
-    super
-
-
-  onDestroyed: ->
-
-    _select = @.$("select")
-
-    if _select and _select.select2
-      _select.select2("destroy")
 
     super

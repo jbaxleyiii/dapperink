@@ -34,8 +34,8 @@
   text-align: left;
 
   &:hover {
+    color: map-get($colors, light-primary);
     background-color: $brand-color;
-    // color: white;
   }
   &[aria-selected] {
     cursor: pointer;
@@ -50,6 +50,8 @@
   border-bottom: none;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  background-color: map-get($colors, light-tertiary);
+  box-shadow: 0 4px 5px 3px darken(map-get($colors, light-tertiary), 10);
 }
 
 .select2-container--open .select2-dropdown--below {

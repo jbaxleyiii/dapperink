@@ -60,6 +60,7 @@ tasks:
       "meteorhacks:fast-render"
       "meteorhacks:subs-manager"
       "meteorhacks:kadira"
+      "hybrid:device"
     ]
     "platforms": [
       "server"

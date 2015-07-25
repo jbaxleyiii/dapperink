@@ -10,16 +10,15 @@
 
   vertical-align: middle;
 
-  color: $base-font-color;
-  border: $base-border-size solid map-get($colors, dark);
-  background-color: $brand-color;
+  color: map-get($colors, light-primary);
+  border-color: map-get($colors, light-tertiary);
+  background-color: map-get($colors, light-tertiary);
 
   font-size: $button-height * .375;
   font-weight: 700;
 
   &:hover {
-    color: $base-font-color;
-    // background-color: map-get($colors, base);
+    border-color: $brand-color;
   }
 }
 

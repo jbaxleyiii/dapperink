@@ -10,82 +10,95 @@ Apollos.products.allow
     return true
 
 
-modifier = Apollos.generateSchema
-  action:
-    type: String
-    optional: false
-  value:
-    type: Number
-    optional: true
-    decimal: true
+modifier = Apollos.generateSchema("modifier",
+  {
+    action:
+      type: String
+      optional: false
+    value:
+      type: Number
+      optional: true
+      decimal: true
+  }, true
+)
 
 
-range = Apollos.generateSchema
 
-  value:
-    type: Number
-    optional: true
-    decimal: true
-  modifier:
-    type: [modifier]
-    optional: true
-
-
-options = Apollos.generateSchema
-
-  name:
-    type: String
-    optional: false
-  label:
-    type: String
-    optional: true
-  message:
-    type: String
-    optional: true
-  low:
-    type: range
-    optional: true
-  high:
-    type: range
-    optional: true
-  basePrice:
-    type: Number
-    optional: true
-    decimal: true
-  value:
-    type: Number
-    optional: true
-    decimal: true
-  modifier:
-    type: [modifier]
-    optional: true
+range = Apollos.generateSchema("range",
+  {
+    value:
+      type: Number
+      optional: true
+      decimal: true
+    modifier:
+      type: [modifier]
+      optional: true
+  }, true
+)
 
 
-modifiers = Apollos.generateSchema
-  name:
-    type: String
-    optional: false
-  label:
-    type: String
-    optional: true
-  description:
-    type: String
-    optional: true
-  required:
-    type: Boolean
-    optional: true
-  type:
-    type: String
-    optional: false
-  range:
-    type: Boolean
-    optional: true
-  options:
-    type: [options]
-    optional: true
-  modifer:
-    type: [modifier]
-    optional: true
+options = Apollos.generateSchema("options",
+  {
+    name:
+      type: String
+      optional: false
+    label:
+      type: String
+      optional: true
+    message:
+      type: String
+      optional: true
+    low:
+      type: range
+      optional: true
+    high:
+      type: range
+      optional: true
+    basePrice:
+      type: Number
+      optional: true
+      decimal: true
+    value:
+      type: Number
+      optional: true
+      decimal: true
+    modifier:
+      type: [modifier]
+      optional: true
+  }, true
+)
+
+
+
+modifiers = Apollos.generateSchema("modifiers"
+  {
+    name:
+      type: String
+      optional: false
+    label:
+      type: String
+      optional: true
+    description:
+      type: String
+      optional: true
+    required:
+      type: Boolean
+      optional: true
+    type:
+      type: String
+      optional: false
+    range:
+      type: Boolean
+      optional: true
+    options:
+      type: [options]
+      optional: true
+    modifer:
+      type: [modifier]
+      optional: true
+  }, true
+)
+
 
 
 

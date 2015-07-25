@@ -10,19 +10,22 @@ Apollos.company.allow
   remove: (userId, doc) ->
     return true
 
-service = Apollos.generateSchema
-  name:
-    type: String
-    optional: false
-  label:
-    type: String
-    optional: true
-  template:
-    type: String
-    optional: true
-  url:
-    type: [String]
-    optional: true
+service = Apollos.generateSchema("service",
+  {
+    name:
+      type: String
+      optional: false
+    label:
+      type: String
+      optional: true
+    template:
+      type: String
+      optional: true
+    url:
+      type: [String]
+      optional: true
+  }, true
+)
 
 
 company = Apollos.generateSchema

@@ -79,10 +79,18 @@ class ad extends Apollos.Component
       if err
         throw new Apollos.Error err
         return
+      route = Apollos.router.current()
+      service = route.params?.service
+
+      service or= window.location.pathname
 
       Apollos.inquiries.insert({
         email: email
         file: file._id
+        type: service
+        customer: Device
+        responded: false
+        viewed: false
       })
 
       Session.set("submitting", true)

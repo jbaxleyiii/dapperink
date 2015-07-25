@@ -1,7 +1,7 @@
 
-if Apollos.services.find().count() is 0
 
-  Apollos.services.insert
+Apollos.services.upsert {name: "screen-printing"},
+  $set:
     name: "screen-printing"
     label: "Screen printing"
     description: "Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla."
@@ -16,8 +16,9 @@ if Apollos.services.find().count() is 0
       modifier: "volume"
 
 
-  Apollos.services.insert
-    name: "letter-press"
+Apollos.services.upsert {name: "letterpress"},
+  $set:
+    name: "letterpress"
     label: "Letter press"
     description: "Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla."
     colors:
@@ -31,7 +32,8 @@ if Apollos.services.find().count() is 0
       modifier: "volume"
 
 
-  Apollos.services.insert
+Apollos.services.upsert {name: "custom-printing"},
+  $set:
     name: "custom-printing"
     label: "Custom Printing"
     description: "Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla."

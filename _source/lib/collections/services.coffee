@@ -9,19 +9,23 @@ Apollos.services.allow
   remove: (userId, doc) ->
     return true
 
-quote = Apollos.generateSchema
-  name:
-    type: String
-    optional: true
-  label:
-    type: String
-    optional: true
-  action:
-    type: String
-    optional: true
-  modifier:
-    type: String
-    optional: true
+quote = Apollos.generateSchema("quote",
+  {
+    name:
+      type: String
+      optional: true
+    label:
+      type: String
+      optional: true
+    action:
+      type: String
+      optional: true
+    modifier:
+      type: String
+      optional: true
+
+  }, true
+)
 
 
 services = Apollos.generateSchema

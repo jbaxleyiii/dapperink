@@ -16,23 +16,17 @@
 
     {{> Hero active=serviceName}}
 
-
-
-    <section class="soft-double-top soft-sides text-center constrain-small-copy hard-bottom">
-      <h4 class="push-double-top">
-        Quick Estimate
-      </h4>
-      <p>
-        A simple and easy way to get a quick estimate of you next project.
-      </p>
-    </section>
-
-
     {{#with service}}
+      <section class="soft-double-top soft-sides text-center constrain-small-copy hard-bottom">
+        <h4 class="push-double-top">
+          Quick Estimate
+        </h4>
+        <p>
+          A simple and easy way to get a quick estimate of you next project.
+        </p>
+      </section>
       {{> quote}}
     {{/with}}
-
-
 
     {{> ad active=serviceName}}
 

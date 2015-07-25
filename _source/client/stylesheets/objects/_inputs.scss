@@ -30,3 +30,10 @@
     background-color: white;
   }
 }
+
+
+.input.fa.fa-caret-down {
+  &:before {
+    display: none;
+  }
+}

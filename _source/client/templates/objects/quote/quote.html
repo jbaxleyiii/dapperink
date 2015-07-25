@@ -1,8 +1,11 @@
 <template name="quote">
+  <section class="hard flush">
 
+
+  {{#Apollos.Forms.Form name='quote' class="hard text-center"}}
   <section class="soft-double-ends soft-sides text-center constrain-copy">
     <h6 class="text-left push-bottom">
-      {{quote.action}}
+      1. {{component.data.quote.action}}
     </h6>
 
     {{#if products}}
@@ -29,63 +32,12 @@
 
   </section>
 
-  {{#if product.get}}
-    {{#with product.get}}
-    <section class="soft-double-bottom soft-sides text-center constrain-wide">
-      <div class="grid text-center">
-      {{#if modifiers}}
-        {{#each modifiers}}
-          <div class="grid__item one-whole text-center lap-and-up-one-third">
-
-            {{!-- <h6 class="text-center push-bottom">
-              {{#if label}}{{label}}{{else}}{{name}}{{/if}}
-            </h6>--}}
-            {{#if $eq type "select"}}
-              {{#with this}}
-                {{> select}}
-              {{/with}}
-
-            {{/if}}
-          </div>
-        {{/each}}
-      {{/if}}
-      </div>
-    </section>
-    {{/with}}
+  {{#if productName.get}}
+    {{> productModifier name=productName.get}}
   {{/if}}
-  {{!--
 
-  <section class="soft-double-bottom soft-sides text-center constrain-wide">
-    <div class="grid">
-      <div class="grid__item one-whole text-center lap-and-up-one-third">
-        <h6 class="text-center push-bottom">
-          2. Choose Quantity
-        </h6>
-        {{> select name="Quantity"}}
-        <div class="btn--filled btn--small constrain-btn push-bottom">
-          50-100
-        </div>
-      </div>
 
-      <div class="grid__item one-whole text-center lap-and-up-one-third">
-        <h6 class="text-center push-bottom">
-          3. Choose Quality
-        </h6>
-        {{> select name="Quality"}}
-      </div>
-
-      <div class="grid__item one-whole text-center lap-and-up-one-third">
-        <h6 class="text-center push-bottom">
-          2. Choose How Many Colors
-        </h6>
-        {{> select name="Colors"}}
-      </div>
-    </div>
-
-  </section>
-
-  --}}
-  <section class="flush-top push-double-bottom soft-sides text-center constrain-small-copy hard-bottom">
+  <section class="hard-ends lap-and-up-push-double-bottom soft-sides text-center constrain-small-copy hard-bottom">
 
     <h5 class="push-double-bottom">
       <small>*Price discounts available for multiple products in the same order, please contact us for more information.</small>
@@ -97,11 +49,11 @@
     <div class="grid flush">
 
       <div class="grid__item hard one-whole lap-and-up-one-half background--primary">
-        <div class="handheld-ratio--none lap-and-up-ratio--landscape ">
+        <div class="handheld-ratio--none lap-ratio--square lap-wide-and-up-ratio--landscape ">
           <div class="ratio__item text-center soft-double floating">
             <div class="floating__item">
               {{#if price.get}}
-                <h4 class="text-white"> Price Range:</h4>
+                <h4 class="text-white">Estimated Price per Item:</h4>
                 <h2 class="text-white flush">${{price.get}}</h2>
 
               {{else}}
@@ -112,7 +64,7 @@
                     {{message.get}}
                   </h4>
                 {{else}}
-                  <h4 class="text-white"> Price Range:</h4>
+                  <h4 class="text-white"> Estimated Price per Item:</h4>
                   <h2 class="text-white flush">$0</h2>
                 {{/if}}
 
@@ -123,38 +75,44 @@
       </div>
 
       <div class="grid__item hard one-whole lap-and-up-one-half background--secondary">
-        <div class="handheld-ratio--none lap-and-up-ratio--landscape">
+        <div class="handheld-ratio--none lap-ratio--square lap-wide-and-up-ratio--landscape ">
           <div class="ratio__item text-center soft-double floating">
             <div class="floating__item one-whole">
-              <p class="text-white">
-                Let's talk designs and get your apparel printed.
-              </p>
-              {{#Apollos.Forms.Form name='quote' class="hard text-center"}}
-              <div class="grid one-whole handheld-hard text-center lap-and-up-one-half" style="margin: 0 auto;">
+              {{#if submitted.get}}
+              <h4 class="text-white uppercase flush">
+                Thank you for your submission! We will be in touch!
+              </h4>
+              {{else}}
+                <p class="text-white">
+                  Let's talk designs and get your apparel printed.
+                </p>
 
-                <div class="grid__item hard one-whole push-bottom push-half-top">
+                <div class="grid one-whole handheld-hard text-center lap-wide-and-up-one-half" style="margin: 0 auto;">
 
-                  {{>Apollos.Forms.Input
-                    name="email"
-                    label="Your email"
-                    placeholder="Your email"
-                    class="input--white flush hard"
-                    validate="isEmail"
-                    errorText="Please enter a valid email"
-                    id="quote-email"
-                  }}
+                  <div class="grid__item hard one-whole push-bottom push-half-top">
+
+                    {{>Apollos.Forms.Input
+                      name="email"
+                      label="Your email"
+                      placeholder="Your email"
+                      class="input--white flush hard"
+                      validate="isEmail"
+                      errorText="Please enter a valid email"
+                      id="quote-email"
+                    }}
+
+                  </div>
+
+                  <div class="grid__item one-whole hard one-whole text-left">
+                    <button type="submit" class="btn--light btn--small one-whole">
+                      Start a Conversation
+                    </button>
+                  </div>
 
                 </div>
+              {{/if}}
 
-                <div class="grid__item one-whole hard one-whole text-left">
-                  <button type="submit" class="btn--light btn--small one-whole">
-                    Start a Conversation
-                  </button>
-                </div>
 
-              </div>
-
-              {{/Apollos.Forms.Form}}
             </div>
           </div>
         </div>
@@ -162,6 +120,7 @@
 
     </div>
   </section>
-
+  {{/Apollos.Forms.Form}}
+    </section>
 
 </template>
