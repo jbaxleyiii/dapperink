@@ -7,11 +7,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "norma-sass": "^0.4.9"
-  },
-  "devDependencies": {
-    "norma-docker": "newspring/norma-docker"
-  }
+  "license": "MIT"
 }
