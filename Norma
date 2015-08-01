@@ -12,6 +12,10 @@ tasks:
       root: "../../Products/junction/"
       framework: "stylesheets"
 
+  bower:
+    "dapperink/":
+      settings: "https://github.com/jbaxleyiii/settings.git"
+
   sass:
     group: "assets"
     src: "_source/client/stylesheets/**/*"
@@ -30,30 +34,9 @@ tasks:
     dest: "dapperink/client/templates"
     minify: true
 
-  copy:
-    group: "assets"
-    src: "_source/public/**/*"
-    dest: "dapperink/public"
-
-  settings:
-    group: "assets"
-    "@extend": "copy"
-    src: "settings"
-    dest: "dapperink/"
-    ext: [ "json" ]
-
-  private:
-    group: "assets"
-    "@extend": "copy"
-    src: "_source/private/**/*"
-    dest: "dapperink/private"
-
-
   meteor:
-
-    "dev": true
     "src": "dapperink"
-    "settings": "settings.json"
+    "settings": "dapperink/settings/sites/dapperink/settings.json"
     "packages": [
       "meteor-platform"
       "newspring:apollos-core"

@@ -1,0 +1,31 @@
+machine:
+  node:
+    version: 0.10.34
+
+## Customize dependencies
+dependencies:
+  cache_directories:
+    - "node_modules/"
+    - "~/.norma"
+    - "~/.meteor"
+  pre:
+    # - sudo apt-get update && sudo apt-get install jq wget
+    # - wget https://storage.googleapis.com/kubernetes-release/release/v0.18.2/bin/linux/amd64/kubectl && chmod +x kubectl
+    - if [ ! -f $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
+    - sudo ln -s $HOME/.meteor/meteor /usr/bin/meteor
+    - npm install -g normajs
+    - npm install -g mupx
+
+## Customize test commands
+test:
+  override:
+    - norma build
+deployment:
+  hub:
+    branch: master
+    commands:
+      # - docker push newspring/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
+      - cp ./dapperink/settings/sites/dapperink/settings.json ./settings.json
+      - cp ./dapperink/settings/sites/dapperink/mup.json ./mup.json
+      # - ./kubectl rolling-update $CIRCLE_PROJECT_REPONAME --image="newspring/$SITE:$CIRCLE_SHA1" --logtostderr=true --timeout="3m0s" --update-period="1m"
+      - mupx deploy

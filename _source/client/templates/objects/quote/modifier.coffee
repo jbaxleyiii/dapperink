@@ -35,3 +35,8 @@ class modifier extends Apollos.Component
     )
 
     return options
+
+  insertDOMElement: (parent, node, before) ->
+    $(node).velocity("transition.slideLeftIn", { stagger: 250 })
+
+    super

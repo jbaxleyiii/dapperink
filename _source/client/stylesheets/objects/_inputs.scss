@@ -31,6 +31,12 @@
   }
 }
 
+.input {
+  @include media-query(handheld) {
+    padding-bottom: $half-spacing-unit;
+  }
+}
+
 
 .input.fa.fa-caret-down {
   &:before {

@@ -5,3 +5,8 @@
     background-size: contain;
   }
 }
+
+
+@include namespace(auto) {
+  width: auto;
+}
