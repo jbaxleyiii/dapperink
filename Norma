@@ -3,6 +3,7 @@ name: "dapperink.com"
 tasks:
 
   link:
+    endpoint: "NewSpring/norma-link"
     "dapperink/":
       build: true
       packages: "normajs/apollos-core#refactor-package"
