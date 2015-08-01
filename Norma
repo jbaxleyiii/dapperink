@@ -5,12 +5,9 @@ tasks:
   link:
     "dapperink/":
       build: true
-      watch: true
-      root: "../../Products/apollos/packages/"
-      packages: "apollos-core"
+      packages: "normajs/apollos-core#refactor-package"
     "vendor":
-      root: "../../Products/junction/"
-      framework: "stylesheets"
+      framework: "normajs/junction-framework"
 
   bower:
     "dapperink/":
