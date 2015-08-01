@@ -1,2 +1,4 @@
-# norma-meteor-base
-Norma Scaffold for working on Meteor projects
+# Dapper Ink
+New site for dapperink.com
+
+<!-- mup setup --config=dapperink/settings/sites/dapperink/mup.json --settings=dapperink/settings/sites/dapperink/staging.json -->

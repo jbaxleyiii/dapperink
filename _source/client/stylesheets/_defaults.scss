@@ -1,9 +1,11 @@
 
 $is-newspring: false;
 $colors: (
-  "primary": #e27242,
-  "secondary": #2f3440,
-  "tertiary": #3f5666,
+
+  "primary": #9fdaae,
+  "secondary": #bbe2c5,
+  "tertiary": #d9eadd,
+
 
   "dark-primary": #303030,
   "dark-secondary": #505050,
@@ -15,19 +17,39 @@ $colors: (
 
   "alert": #c64f55
 );
+// $colors: (
+//   "primary": #e27242,
+//   "secondary": #2f3440,
+//   "tertiary": #3f5666,
+//
+//   "dark-primary": #303030,
+//   "dark-secondary": #505050,
+//   "dark-tertiary": #858585,
+//
+//   "light-primary": #fff,
+//   "light-secondary": #f7f7f7,
+//   "light-tertiary": #ddd,
+//
+//   "alert": #c64f55
+// );
 $fonts: extend($fonts, (
-  roboto: (
+  raleway: (
     h1: (
-      font-family: "Roboto Condensed",
-      font-size: 3em,
+      font-family: "Raleway",
+      font-size: 4em,
       line-height: .9,
-      letter-spacing: 3px,
-      font-weight: 800,
+      letter-spacing: 0,
+      font-weight: 700,
       text-transform: uppercase,
-      margin-bottom: $base-spacing-unit
+      margin-bottom: $base-spacing-unit,
+      media-query: (
+        handheld: (
+          font-size: 2.25em
+        )
+      )
     ),
     h2: (
-      font-family: "Roboto Condensed",
+      font-family: "Raleway",
       font-size: 2.25em,
       letter-spacing: 3px,
       line-height: .9,
@@ -35,7 +57,7 @@ $fonts: extend($fonts, (
       margin-bottom: $base-spacing-unit
     ),
     h3: (
-      font-family: "Roboto Condensed",
+      font-family: "Raleway",
       font-size: 1.15em,
       line-height: .9,
       font-weight: 400,
@@ -43,24 +65,25 @@ $fonts: extend($fonts, (
       margin-bottom: $base-spacing-unit
     ),
     h4: (
-      font-family: "Roboto Condensed",
+      font-family: "Raleway",
       font-size: 1.15em,
       line-height: 1,
-      font-weight: 700,
+      font-weight: 400,
       text-transform: uppercase,
       margin-bottom: $half-spacing-unit
     ),
     h5: (
-      font-family: "Roboto Condensed",
-      font-size: 1em,
+      font-family: "Raleway",
+      font-size: .875em,
       line-height: 1,
+      font-weight: 400,
       margin-bottom: $half-spacing-unit
     ),
     h5 small: (
-      color: darken(map-get($colors, light-tertiary), 10)
+      color: lighten(map-get($colors, dark-tertiary), 10)
     ),
     h6: (
-      font-family: "Roboto Condensed",
+      font-family: "Raleway",
       font-size: 1em,
       line-height: 1,
       margin-bottom: $half-spacing-unit
@@ -88,13 +111,13 @@ $fonts: extend($fonts, (
 
 // type sets
 $typography: extend($typography, (
-  h1: "roboto",
-  h2: "roboto",
-  h3: "roboto",
-  h4: "roboto",
-  h5: "roboto",
-  h5 small: "roboto",
-  h6: "roboto",
+  h1: "raleway",
+  h2: "raleway",
+  h3: "raleway",
+  h4: "raleway",
+  h5: "raleway",
+  h5 small: "raleway",
+  h6: "raleway",
   p: "serif",
   small: "serif"
 ));

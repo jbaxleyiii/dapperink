@@ -41,5 +41,5 @@ out/*
 dapperink
 
 settings.json
-package.json
 dapperink.pem
+mup.json

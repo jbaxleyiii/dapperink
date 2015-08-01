@@ -19,11 +19,11 @@ class Hero extends Apollos.Component
 
     switch active
       when "screen-printing"
-        self.img.set("screen2.b&w.jpg")
+        self.img.set("dapperphoto2.jpg")
       when "letterpress"
-        self.img.set("letterpress.b&w.jpg")
+        self.img.set("dapperphoto3.jpg")
       when "custom-printing"
-        self.img.set("storefront.b&w.jpg")
+        self.img.set("dapperphoto1.jpg")
 
 
 
@@ -41,3 +41,13 @@ class Hero extends Apollos.Component
       return "active"
 
     return
+
+
+class HeroImage extends Apollos.Component
+  @register "HeroImage"
+
+  insertDOMElement: (parent, node, before) ->
+    if not node.id
+      $(node).velocity("transition.slideLeftIn", { stagger: 250 })
+    
+    super

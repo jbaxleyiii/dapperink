@@ -1,68 +1,69 @@
 <template name="Hero">
-  <div class="section background--primary one-whole text-center soft-half">
-    <h4 class="text-white uppercase flush hard">
-      Dapper Ink
-    </h4>
 
-  </div>
-  <section class="overlay--solid-dark hard background--fill transition" style="background-image:url(/images/{{img.get}})">
-    <div class="overlay__item background--fill geo" style="background-image:url(/assets/dapper.geodesic.hero.png)">
-      <div class="ratio--square lap-and-up-ratio--landscape" >
-        <div class="ratio__item floating">
-          <div class="floating__item">
-
-            <h1 class="text-white hard push-half-bottom uppercase">
-              We are printers
-            </h1>
-
-            <div class="grid one-whole">
-              {{!--
-              {{#each serviceList}}
-                <div class="grid__item one-third text-center active">
-                  <a href="{{pathFor 'service' service=this.preferredUrl}}" >
-                    <h5 class="uppercase text-center">
-                      <small class="{{#if isActive this.url}}text-brand{{else}}text-white{{/if}}">{{name}}</small>
-                    </h5>
-                  </a>
-                </div>
-              {{/each}}
-              --}}
-              <div class="grid__item one-third text-center active" style="vertical-align: middle;">
-                <a href="/screen-printing" >
-                  <h5 class="uppercase text-center display-inline-block flush">
-                    <small class="{{#if isActive '/screen-printing'}}text-brand{{else}}text-white{{/if}}">
-                      Screen Printing
-                    </small>
-                  </h5>
-                </a>
-              </div>
-
-              <div class="grid__item one-third text-center active" style="vertical-align: middle;">
-                <a href="letterpress">
-                  <h5 class="uppercase text-center display-inline-block flush">
-                    <small class="{{#if isActive '/letterpress'}}text-brand{{else}}text-white{{/if}}">
-                      Letterpress
-                    </small>
-                  </h5>
-                </a>
-              </div>
-
-              <div class="grid__item one-third text-center active" style="vertical-align: middle;">
-                <a href="custom-printing" >
-                  <h5 class="uppercase text-center display-inline-block flush">
-                    <small class="{{#if isActive '/custom-printing'}}text-brand{{else}}text-white{{/if}}">
-                      Custom Printing
-                    </small>
-                  </h5>
-                </a>
-              </div>
-
-
-            </div>
-
+  <section class="one-whole soft-double-top hard-bottom flush handheld-hard-sides">
+    <div class="one-whole text-center">
+      <div class="handheld-soft soft-double-top text-center">
+        <h1 class="uppercase">
+          Dapper Ink
+        </h1>
+        <div class="grid one-whole text-center">
+          <div class="grid__item one-quarter">
+            <hr class="flush-top"/>
           </div>
 
         </div>
+
+
+        <div class="grid flush soft-double-bottom">
+          <div class="grid__item lap-and-up-auto handheld-one-third handheld-hard">
+            <a href="/screen-printing" >
+              <h5 class=" uppercase text-center display-inline-block flush">
+                <small class="{{#if isActive '/screen-printing'}}text-brand{{/if}}">
+                  Screen Printing
+                </small>
+              </h5>
+            </a>
+          </div>
+          <div class="grid__item lap-and-up-auto handheld-one-third handheld-hard">
+            <a href="/letterpress" >
+              <h5 class=" uppercase text-center display-inline-block flush">
+                <small class="{{#if isActive '/letterpress'}}text-brand{{/if}}">
+                  letterpress
+                </small>
+              </h5>
+            </a>
+          </div>
+          <div class="grid__item lap-and-up-auto handheld-one-third handheld-hard">
+            <a href="/custom-printing" >
+              <h5 class=" uppercase text-center display-inline-block flush">
+                <small class="{{#if isActive '/custom-printing'}}text-brand{{/if}}">
+                  Custom Printing
+                </small>
+              </h5>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  {{> HeroImage image=img.get}}
+
+</template>
+
+<template name="HeroImage">
+
+  <section class="
+    background--secondary
+    flush hard
+    "
+    >
+    <div class="ratio--thin background--fill" style="background-image:url(//s3.amazonaws.com/images.dapperink/dapper/site/images/{{image}})">
+      <div class="ratio__item">
+
       </div>
     </div>
   </section>

@@ -51,6 +51,7 @@ class quote extends Apollos.Component
     "submit form": @.createInquiry
   ]
 
+
   onRendered: ->
     self = @
     serviceModifier = self.data().quote.modifier
@@ -123,7 +124,7 @@ class quote extends Apollos.Component
     # if top range
     if highPrice
       # highPrice = totalBasePrice * highPriceMultiplier
-      totalPrice = "#{totalBasePrice.toFixed(2)} - #{highPrice.toFixed(2)}"
+      totalPrice = "#{Number(totalBasePrice).toFixed(2)} - #{Number(highPrice).toFixed(2)}"
 
 
 
@@ -154,6 +155,17 @@ class quote extends Apollos.Component
 
       self.productName.set _product.name
       break
+
+
+    options =
+      speed: 1000
+      easing: 'easeOutCubic'
+      offset: 250
+
+
+    smoothScroll.animateScroll(
+      null, '#modifier', options
+    );
 
     return
 
@@ -339,4 +351,19 @@ class quote extends Apollos.Component
     setTimeout ->
       self.submitted.set false
       self.productName.set false
+      options =
+        speed: 1000
+        easing: 'easeOutCubic'
+        offset: 250
+
+      smoothScroll.animateScroll(
+        null, '#products', options
+      );
+
     , 5000
+
+  insertDOMElement: (parent, node, before) ->
+    if not node.id
+      $(node).velocity("transition.slideLeftIn", { stagger: 250 })
+
+    super

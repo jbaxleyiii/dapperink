@@ -9,6 +9,9 @@
     </h6>
 
     {{#if products}}
+    <div id="products">
+
+
       <div class="grid">
       {{#each products}}
 
@@ -21,14 +24,18 @@
 
       {{/each}}
       </div>
+    </div>
     {{/if}}
 
 
   </section>
 
-  {{#if productName.get}}
-    {{> productModifier name=productName.get}}
-  {{/if}}
+  <div id="modifier">
+    {{#if productName.get}}
+      {{> productModifier name=productName.get}}
+    {{/if}}
+  </div>
+
 
 
   <section class="hard-ends lap-and-up-push-double-bottom soft-sides text-center constrain-small-copy hard-bottom">
