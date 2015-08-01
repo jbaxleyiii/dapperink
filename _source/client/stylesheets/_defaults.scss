@@ -1,36 +1,21 @@
 
 $is-newspring: false;
-$colors: (
+// $colors: (
+//   "primary": #9fdaae,
+//   "secondary": #bbe2c5,
+//   "tertiary": #d9eadd
+// );
+$colors: extend($colors, (
+  "primary": #88a388,
+  "secondary": #657c69,
+  "tertiary": #3c563c
+));
 
-  "primary": #9fdaae,
-  "secondary": #bbe2c5,
-  "tertiary": #d9eadd,
 
-
-  "dark-primary": #303030,
-  "dark-secondary": #505050,
-  "dark-tertiary": #858585,
-
-  "light-primary": #fff,
-  "light-secondary": #f7f7f7,
-  "light-tertiary": #ddd,
-
-  "alert": #c64f55
-);
 // $colors: (
 //   "primary": #e27242,
 //   "secondary": #2f3440,
-//   "tertiary": #3f5666,
-//
-//   "dark-primary": #303030,
-//   "dark-secondary": #505050,
-//   "dark-tertiary": #858585,
-//
-//   "light-primary": #fff,
-//   "light-secondary": #f7f7f7,
-//   "light-tertiary": #ddd,
-//
-//   "alert": #c64f55
+//   "tertiary": #3f5666
 // );
 $fonts: extend($fonts, (
   raleway: (
