@@ -1,15 +1,13 @@
 machine:
   node:
     version: 0.10.34
-  services:
-    - docker
 
 ## Customize dependencies
 dependencies:
   cache_directories:
     - "node_modules/"
     - "~/.norma"
-    - ../.meteor
+    - "~/.meteor"
   pre:
     # - sudo apt-get update && sudo apt-get install jq wget
     # - wget https://storage.googleapis.com/kubernetes-release/release/v0.18.2/bin/linux/amd64/kubectl && chmod +x kubectl
@@ -17,25 +15,17 @@ dependencies:
     - sudo ln -s $HOME/.meteor/meteor /usr/bin/meteor
     - npm install -g normajs
     - npm install -g mupx
-    - norma build
-  override:
-    - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 
 ## Customize test commands
 test:
   override:
-    - docker build -t newspring/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 .
-    - docker run --name mongo -d mongo --storageEngine=wiredTiger
-    - docker run -d --name $CIRCLE_PROJECT_REPONAME -p 80:80 newspring/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 -e MONGO_URL=mongodb://mongo -e ROOT_URL=http://localhost --link mongo:mongo
-
+    - norma build
 deployment:
   hub:
-    branch: alpha
+    branch: master
     commands:
       # - docker push newspring/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
-      - cp ./workbench/settings/staging.json ./settings.json
-      - cp ./workbench/settings/sites/my.newspring.cc/mup.json ./mup.json
-      - cp ./workbench/settings/ssl/bundle.crt .
-      - cp ./workbench/settings/ssl/private.key .
+      - cp ./dapperink/settings/sites/dapperink/settings.json ./settings.json
+      - cp ./dapperink/settings/sites/dapperink/mup.json ./mup.json
       # - ./kubectl rolling-update $CIRCLE_PROJECT_REPONAME --image="newspring/$SITE:$CIRCLE_SHA1" --logtostderr=true --timeout="3m0s" --update-period="1m"
       - mupx deploy
