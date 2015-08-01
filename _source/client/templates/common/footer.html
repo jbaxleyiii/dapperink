@@ -3,25 +3,12 @@
   <section class="background--tertiary soft lap-and-up-soft-double-ends text-center">
     <div class="constrain-small-copy">
       <div class="grid">
+        {{#each company.social}}
         <div class="grid__item one-quarter text-center">
-          <a href="#" class="icon fa fa-map-marker icon--white" style="line-height: 52px; font-size: 30px;">
+          <a href="{{link}}" target="_blank" class="icon--{{name}} icon--white">
           </a>
         </div>
-
-        <div class="grid__item one-quarter text-center">
-          <a href="#" class="icon--facebook icon--white">
-          </a>
-        </div>
-
-        <div class="grid__item one-quarter text-center">
-          <a href="#" class="icon--twitter icon--white">
-          </a>
-        </div>
-
-        <div class="grid__item one-quarter text-center">
-          <a href="#" class="icon--instagram icon--white">
-          </a>
-        </div>
+        {{/each}}
       </div>
     </div>
   </section>

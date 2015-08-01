@@ -5,3 +5,8 @@ class Footer extends Apollos.Component
   year: ->
     now = new Date()
     return now.getFullYear()
+
+  company: ->
+    company = Apollos.company.findOne()
+    console.log company
+    return company

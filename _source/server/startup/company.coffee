@@ -18,7 +18,7 @@ Apollos.company.upsert {name: "Dapper Ink"},
         link: "https://instagram.com/DapperInk/"
       }
       {
-        name: "dribble"
+        name: "dribbble"
         link: "https://dribbble.com/DapperInk"
       }
     ]
