@@ -71,7 +71,11 @@ $fonts: extend($fonts, (
     ),
     h5 small: (
       color: darken(map-get($colors, light-tertiary), 10),
-      font-size: 14px
+      media-query: (
+        handheld: (
+          font-size: 14px
+        )
+      )
     ),
     h6: (
       font-family: "Roboto Condensed",
