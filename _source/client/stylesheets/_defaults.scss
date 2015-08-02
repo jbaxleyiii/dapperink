@@ -12,12 +12,73 @@ $colors: extend($colors, (
 ));
 
 
-// $colors: (
+// $colors: extend($colors, (
 //   "primary": #e27242,
 //   "secondary": #2f3440,
 //   "tertiary": #3f5666
-// );
+// ));
 $fonts: extend($fonts, (
+  roboto: (
+    h1: (
+      font-family: "Roboto Condensed",
+      // font-size: 3em,
+      // line-height: .9,
+      // letter-spacing: 3px,
+      // font-weight: 800,
+      // text-transform: uppercase,
+      // margin-bottom: $base-spacing-unit
+      font-size: 4.5em,
+      line-height: .9,
+      letter-spacing: 0,
+      font-weight: 700,
+      text-transform: uppercase,
+      margin-bottom: $base-spacing-unit,
+      media-query: (
+        handheld: (
+          font-size: 2.75em
+        )
+      )
+    ),
+    h2: (
+      font-family: "Roboto Condensed",
+      font-size: 2.25em,
+      letter-spacing: 3px,
+      line-height: .9,
+      text-transform: uppercase,
+      margin-bottom: $base-spacing-unit
+    ),
+    h3: (
+      font-family: "Roboto Condensed",
+      font-size: 1.15em,
+      line-height: .9,
+      font-weight: 400,
+      text-transform: uppercase,
+      margin-bottom: $base-spacing-unit
+    ),
+    h4: (
+      font-family: "Roboto Condensed",
+      font-size: 1.15em,
+      line-height: 1,
+      font-weight: 700,
+      text-transform: uppercase,
+      margin-bottom: $half-spacing-unit
+    ),
+    h5: (
+      font-family: "Roboto Condensed",
+      font-size: 1em,
+      line-height: 1,
+      margin-bottom: $half-spacing-unit
+    ),
+    h5 small: (
+      color: darken(map-get($colors, light-tertiary), 10)
+    ),
+    h6: (
+      font-family: "Roboto Condensed",
+      font-size: 1em,
+      line-height: 1,
+      margin-bottom: $half-spacing-unit
+    )
+  ),
   raleway: (
     h1: (
       font-family: "Raleway",
@@ -93,16 +154,16 @@ $fonts: extend($fonts, (
     )
   )
 ));
-
+$headings: "roboto";
 // type sets
 $typography: extend($typography, (
-  h1: "raleway",
-  h2: "raleway",
-  h3: "raleway",
-  h4: "raleway",
-  h5: "raleway",
-  h5 small: "raleway",
-  h6: "raleway",
+  h1: $headings,
+  h2: $headings,
+  h3: $headings,
+  h4: $headings,
+  h5: $headings,
+  h5 small: $headings,
+  h6: $headings,
   p: "serif",
   small: "serif"
 ));
