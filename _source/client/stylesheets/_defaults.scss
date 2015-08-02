@@ -35,7 +35,7 @@ $fonts: extend($fonts, (
       margin-bottom: $base-spacing-unit,
       media-query: (
         handheld: (
-          font-size: 2.75em
+          font-size: 2.5em
         )
       )
     ),
@@ -70,7 +70,8 @@ $fonts: extend($fonts, (
       margin-bottom: $half-spacing-unit
     ),
     h5 small: (
-      color: darken(map-get($colors, light-tertiary), 10)
+      color: darken(map-get($colors, light-tertiary), 10),
+      font-size: 14px
     ),
     h6: (
       font-family: "Roboto Condensed",
