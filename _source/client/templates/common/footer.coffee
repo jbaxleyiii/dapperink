@@ -8,5 +8,5 @@ class Footer extends Apollos.Component
 
   company: ->
     company = Apollos.company.findOne()
-    console.log company
+
     return company

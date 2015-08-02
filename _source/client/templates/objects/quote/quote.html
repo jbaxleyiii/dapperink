@@ -15,9 +15,12 @@
       <div class="grid">
       {{#each products}}
 
-        <div class="grid__item text-center one-whole lap-and-up-two-fifths">
-          <a href="#" class="btn--filled btn--small one-whole" data-product={{name}}>
-            {{#if label}}{{label}}{{else}}{{name}}{{/if}}
+        <div class="grid__item text-center one-whole lap-and-up-auto">
+
+          <a href="#" class="btn btn--text one-whole" data-product={{name}} style="padding: 5px;">
+            <h4>
+            [ {{#if label}}{{label}}{{else}}{{name}}{{/if}} ]
+            </h4>
           </a>
         </div>
 

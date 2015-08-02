@@ -1,14 +1,44 @@
 
+.btn,
 .btn--filled,
-.btn--light {
-  @include radius(3px);
+.btn--light,
+.btn--gray {
+  @include radius(4px);
 
   padding: $base-spacing-unit;
 
   font-weight: 700;
 }
 
-.btn--filled.active {
-  border-color: map-get($colors, secondary);
-  background-color: map-get($colors, secondary);
+.btn--text {
+  color: map-get($colors, dark-tertiary);
+  border: none;
+  background-color: transparent;
+  &:hover {
+    color: map-get($colors, primary);
+    background-color: transparent;
+  }
+}
+
+.btn--text.active {
+  color: map-get($colors, primary);
+  background-color: transparent;
+}
+
+.btn--nav {
+  padding: $half-spacing-unit $base-spacing-unit;
+}
+
+.btn--gray {
+  color: map-get($colors, dark-tertiary);
+  border-color: map-get($colors, dark-tertiary);
+  background-color: transparent;
+  &:hover {
+    border-color: map-get($colors, primary);
+  }
+}
+
+.btn--filled {
+  border-color: map-get($colors, primary);
+  background-color: map-get($colors, primary);
 }

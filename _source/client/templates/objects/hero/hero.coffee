@@ -43,6 +43,7 @@ class Hero extends Apollos.Component
     return
 
 
+
 class HeroImage extends Apollos.Component
   @register "HeroImage"
 
@@ -68,3 +69,6 @@ class HeroAlt extends Hero
         self.img.set("letterpress.b&w.jpg")
       when "custom-printing"
         self.img.set("storefront.b&w.jpg")
+
+class HeroImageAlt extends HeroImage
+  @register "HeroImageAlt"

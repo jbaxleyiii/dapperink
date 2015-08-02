@@ -5,17 +5,17 @@
     </h4>
 
   </div>
-  <section class="overlay--solid-dark hard background--fill transition" style="background-image:url(//s3.amazonaws.com/images.dapperink/dapper/site/images/{{img.get}})">
+  <section class="overlay--solid-dark hard background--fill background--secondary">
     <div class="overlay__item background--fill geo" style="background-image:url(/assets/dapper.geodesic.hero.png)">
       <div class="ratio--square lap-and-up-ratio--landscape" >
         <div class="ratio__item floating">
-          <div class="floating__item">
+          <div class="floating__item lap-and-up-one-half">
 
             <h1 class="text-white hard push-half-bottom uppercase">
               We are printers
             </h1>
 
-            <div class="grid one-whole">
+            <div class="grid flush one-whole">
               {{!--
               {{#each serviceList}}
                 <div class="grid__item one-third text-center active">
@@ -27,36 +27,25 @@
                 </div>
               {{/each}}
               --}}
-              <div class="grid__item one-third text-center active" style="vertical-align: middle;">
-                <a href="/screen-printing" >
-                  <h5 class="uppercase text-center display-inline-block flush">
-                    <small class="{{#if isActive '/screen-printing'}}text-brand{{else}}text-white{{/if}}">
-                      Screen Printing
-                    </small>
-                  </h5>
+              <div class="grid__item hard handheld-one-whole one-third text-center active">
+                <a href="/screen-printing" class="btn btn--nav {{#if isActive '/screen-printing'}}btn--filled{{else}}btn--gray{{/if}}">
+                    Screen Printing
                 </a>
               </div>
 
-              <div class="grid__item one-third text-center active" style="vertical-align: middle;">
-                <a href="letterpress">
-                  <h5 class="uppercase text-center display-inline-block flush">
-                    <small class="{{#if isActive '/letterpress'}}text-brand{{else}}text-white{{/if}}">
-                      Letterpress
-                    </small>
-                  </h5>
+              <div class="grid__item hard handheld-one-whole one-third text-center active" style="vertical-align: middle;">
+
+                <a href="/letterpress" class="btn btn--nav {{#if isActive '/letterpress'}}btn--filled{{else}}btn--gray{{/if}}">
+                    Letterpress
                 </a>
+
               </div>
 
-              <div class="grid__item one-third text-center active" style="vertical-align: middle;">
-                <a href="custom-printing" >
-                  <h5 class="uppercase text-center display-inline-block flush">
-                    <small class="{{#if isActive '/custom-printing'}}text-brand{{else}}text-white{{/if}}">
-                      Custom Printing
-                    </small>
-                  </h5>
+              <div class="grid__item hard handheld-one-whole one-third text-center active" style="vertical-align: middle;">
+                <a href="/custom-printing" class="btn btn--nav {{#if isActive '/custom-printing'}}btn--filled{{else}}btn--gray{{/if}}">
+                    Custom Printing
                 </a>
               </div>
-
 
             </div>
 
@@ -65,5 +54,26 @@
         </div>
       </div>
     </div>
+    {{> HeroImageAlt image=img.get}}
   </section>
+
+
+
+</template>
+
+<template name="HeroImageAlt">
+
+  <div class="
+    background--secondary
+    flush hard
+    "
+    style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"
+    >
+    <div class="ratio--square lap-and-up-ratio--landscape background--fill" style="background-image:url(//s3.amazonaws.com/images.dapperink/dapper/site/images/{{image}})">
+      <div class="ratio__item">
+
+      </div>
+    </div>
+  </section>
+
 </template>
