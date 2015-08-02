@@ -49,5 +49,22 @@ class HeroImage extends Apollos.Component
   insertDOMElement: (parent, node, before) ->
     if not node.id
       $(node).velocity("transition.slideLeftIn", { stagger: 250 })
-    
+
     super
+
+
+class HeroAlt extends Hero
+  @register "HeroAlt"
+
+  onCreated: ->
+
+    self = @
+    active = self.data()?.active
+
+    switch active
+      when "screen-printing"
+        self.img.set("screen2.b&w.jpg")
+      when "letterpress"
+        self.img.set("letterpress.b&w.jpg")
+      when "custom-printing"
+        self.img.set("storefront.b&w.jpg")

@@ -12,7 +12,11 @@
 </template>
 
 <template name="service">
+  {{!--
   {{> Hero active=serviceName}}
+  --}}
+
+  {{> HeroAlt active=serviceName}}
 
   {{#with service}}
     <section id="#quote" class="soft-double-top soft-sides text-center constrain-small-copy hard-bottom">
