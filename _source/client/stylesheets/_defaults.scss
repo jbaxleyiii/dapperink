@@ -168,7 +168,7 @@ $typography: extend($typography, (
   h4: $headings,
   h5: $headings,
   h5 small: $headings,
-  h6: $headings,
+  h6: "serif",
   p: "serif",
   small: "serif"
 ));
