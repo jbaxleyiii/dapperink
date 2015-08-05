@@ -21,7 +21,7 @@ $fonts: extend($fonts, (
   roboto: (
     h1: (
       font-family: "Roboto Condensed",
-      font-size: 3em,
+      font-size: 2.5em,
       line-height: .9,
       letter-spacing: 3px,
       font-weight: 800,
@@ -59,9 +59,16 @@ $fonts: extend($fonts, (
       margin-bottom: $half-spacing-unit
     ),
     h5 small: (
-      color: darken(map-get($colors, light-tertiary), 10)
+      color: darken(map-get($colors, light-tertiary), 10),
+      font-size: .75em
     ),
     h6: (
+      font-family: "Roboto Condensed",
+      font-size: 1em,
+      line-height: 1,
+      margin-bottom: $half-spacing-unit
+    ),
+    input: (
       font-family: "Roboto Condensed",
       font-size: 1em,
       line-height: 1,
@@ -152,7 +159,8 @@ $typography: extend($typography, (
   h4: $headings,
   h5: $headings,
   h5 small: $headings,
-  h6: $headings,
+  input: $headings,
+  h6: "serif",
   p: "serif",
   small: "serif"
 ));
@@ -170,10 +178,10 @@ $brands: "facebook", "twitter", "instagram", "dribbble";
 $constraints: (
   "copy": (
     min-width: 240px,
-    max-width: 768px
+    max-width: 600px
   ),
   "small-copy": (
-    max-width: 550px
+    max-width: 480px
   ),
   "wide": (
     max-width: 1024px

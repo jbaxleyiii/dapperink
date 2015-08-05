@@ -42,11 +42,33 @@
   }
 }
 
+
+.select2-container.select2-container--below,
+.select2-container.select2-container--above {
+  padding: 0;
+
+  border-color: map-get($colors, primary);
+  background-color: map-get($colors, primary);
+  .select2-selection__arrow > b {
+    border-color: map-get($colors, light-primary) transparent transparent transparent;
+  }
+
+  &.select2-container--open {
+    padding: auto;
+
+    border-color: map-get($colors, light-tertiary);
+    background-color: map-get($colors, light-tertiary);
+  }
+}
+
+
 .select2-container--open .select2-dropdown {
   left: 0;
 }
 
 .select2-container--open .select2-dropdown--above {
+  margin-top: -13px;
+
   border-bottom: none;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -55,7 +77,7 @@
 }
 
 .select2-container--open .select2-dropdown--below {
-  margin-top: -3px;
+  margin-top: -13px;
 
   border-top: none;
   border-top-left-radius: 0;

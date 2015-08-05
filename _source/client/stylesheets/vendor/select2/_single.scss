@@ -47,7 +47,7 @@
 
       border-width: 10px 10px 0 10px;
       border-style: solid;
-      border-color: map-get($colors, dark-tertiary) transparent transparent transparent;
+      border-color: map-get($colors, light-tertiary) transparent transparent transparent;
     }
   }
 }
