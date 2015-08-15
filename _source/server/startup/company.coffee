@@ -17,10 +17,6 @@ Apollos.company.upsert {name: "Dapper Ink"},
         name: "instagram"
         link: "https://instagram.com/DapperInk/"
       }
-      {
-        name: "dribbble"
-        link: "https://dribbble.com/DapperInk"
-      }
     ]
     location:
       street: "207 Wade Hampton Boulevard"

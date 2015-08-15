@@ -11,8 +11,11 @@ class select extends Apollos.Forms.Select
     # library requires jquery
     _select = @.$("select")
 
+    self = @
+    placeholder = self.data().placeholder
     _select.select2({
       minimumResultsForSearch: Infinity
+      placeholder: placeholder
     })
 
     super

@@ -119,31 +119,33 @@ class ad extends Apollos.Component
     mocks = {}
 
     mocks["screen-printing"] =
-      image: "5-tees.jpg"
-      title: "We are designers"
-      copy: "Have a great idea but need help fleshing it out? We have a phenomenal team of designers and we would love to help!"
+      image: "storefront.b&w.jpg"
+      title: "...and also really great designers"
+      copy: "Whether we’re creating a brand identity or a single tee shirt graphic, we make a meaningful designs that fulfill our clients’ needs and leave a lasting impression."
       cta:
         type: "button"
-        copy: "Meet our designers"
+        copy: "Let's talk!"
         link: "#team"
 
-    mocks["letterpress"] =
-      image: "screen2.b&w.jpg"
-      title: "We are printers"
-      copy: "Have a great idea but need help fleshing it out? We have a phenomenal team of designers and we would love to help!"
-      cta:
-        type: "button"
-        copy: "Meet our printers"
-        link: "#team"
-
-    mocks["custom-printing"] =
-      image: "screen1.b&w.jpg"
-      title: "Custom Design"
-      copy: "We are great at all kinds of print. Yes, including long form. Have an awesome banner you want printed? We can help."
-      cta:
-        type: "upload"
-        copy: "Send Artwork"
-        link: "#"
+    mocks["letterpress"] = mocks["screen-printing"]
+    mocks["custom-printing"] = mocks["screen-printing"]
+    # mocks["letterpress"] =
+    #   image: "screen2.b&w.jpg"
+    #   title: "We are printers"
+    #   copy: "Have a great idea but need help fleshing it out? We have a phenomenal team of designers and we would love to help!"
+    #   cta:
+    #     type: "button"
+    #     copy: "Meet our printers"
+    #     link: "#team"
+    #
+    # mocks["custom-printing"] =
+    #   image: "screen1.b&w.jpg"
+    #   title: "Custom Design"
+    #   copy: "We are great at all kinds of print. Yes, including long form. Have an awesome banner you want printed? We can help."
+    #   cta:
+    #     type: "upload"
+    #     copy: "Send Artwork"
+    #     link: "#"
 
 
     return mocks[service]

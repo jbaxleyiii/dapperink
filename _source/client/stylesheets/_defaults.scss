@@ -11,11 +11,12 @@ $is-newspring: false;
 //   "tertiary": #3c563c
 // ));
 
-
+$base-font-color: #303030;
 $colors: extend($colors, (
-  "primary": #e27242,
-  "secondary": #2f3440,
-  "tertiary": #3f5666
+  "primary": #ffc051,
+  "secondary": #36b1bf,
+  "tertiary": #3f5666,
+  "light-tertiary": #efefef
 ));
 $fonts: extend($fonts, (
   roboto: (
@@ -172,6 +173,10 @@ $ratios: extend($ratios, (
   ratio--thin: (
     width: 3,
     height: 1
+  ),
+  ratio--fat-rectangle: (
+    width: 640,
+    height: 415
   )
 ));
 $brands: "facebook", "twitter", "instagram", "dribbble";

@@ -19,6 +19,12 @@ class modifier extends Apollos.Component
 
     @.parent().update val, @.modifier()
 
+  placeholderText: ->
+    data = @.data()
+    label = if data.modifier.label then data.modifier.label else data.modifier.name
+    string = "#{data.count}. #{label}"
+    return string
+
   modifier: ->
     return @.data().modifier
 
@@ -30,7 +36,7 @@ class modifier extends Apollos.Component
 
       return {
         val: opt.name
-        name: opt.name
+        name: opt.label or opt.name
       }
     )
 

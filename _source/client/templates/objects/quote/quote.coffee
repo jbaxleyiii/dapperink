@@ -18,7 +18,7 @@ modifyPrice = (modifier, price, modifiers) ->
   if modifier.action is "divide"
     price = price / modifier.value
 
-  return price.toFixed(2)
+  return Math.round(price)
 
 
 class quote extends Apollos.Component
@@ -31,7 +31,11 @@ class quote extends Apollos.Component
     message: ""
     submitted: false
     selectedModifiers: {}
+
   ]
+
+  placeholderText: ->
+    return "1. #{@.data().quote.action}"
 
   subscriptions: -> [
     "products":
@@ -43,11 +47,18 @@ class quote extends Apollos.Component
   products: ->
     products = Apollos.products.find().fetch()
     if products.length
+      products = products.map( (opt) ->
+        return {
+          val: opt.name
+          name: opt.label or opt.name
+        }
+      )
       return products
+
     return []
 
   events: -> [
-    "click [data-product]": @.setProduct
+    "change #products": @.setProduct
     "submit form": @.createInquiry
   ]
 
@@ -65,6 +76,7 @@ class quote extends Apollos.Component
         return
 
       self.setPrice(totalPrice, product)
+
 
   setPrice: (totalPrice, product) ->
 
@@ -119,12 +131,12 @@ class quote extends Apollos.Component
     # multiply by modifiers
     if multiplier
       totalBasePrice = totalPrice
-      totalPrice = (totalPrice * multiplier).toFixed(2)
+      totalPrice = Math.round(totalPrice * multiplier)
 
     # if top range
     if highPrice
       # highPrice = totalBasePrice * highPriceMultiplier
-      totalPrice = "#{Number(totalBasePrice).toFixed(2)} - #{Number(highPrice).toFixed(2)}"
+      totalPrice = "#{Math.round(Number(totalBasePrice))} - #{Math.round(Number(highPrice))}"
 
 
 
@@ -142,30 +154,30 @@ class quote extends Apollos.Component
     event.preventDefault()
     self = @
 
-    productName = event.currentTarget.dataset.product
+    productName = event.target.value
 
-    self.$("[data-product]").removeClass("active")
-    self.$(event.currentTarget).addClass("active")
+    # self.$("[data-product]").removeClass("active")
+    # self.$(event.currentTarget).addClass("active")
 
     allProducts = self.products()
 
     for _product in allProducts
-      if _product.name isnt productName
+      if _product.val isnt productName
         continue
 
-      self.productName.set _product.name
+      self.productName.set _product.val
       break
 
 
-    options =
-      speed: 1000
-      easing: 'easeOutCubic'
-      offset: 250
-
-
-    smoothScroll.animateScroll(
-      null, '#modifier', options
-    );
+    # options =
+    #   speed: 1000
+    #   easing: 'easeOutCubic'
+    #   offset: 250
+    #
+    #
+    # smoothScroll.animateScroll(
+    #   null, '#modifier', options
+    # );
 
     return
 
@@ -217,7 +229,6 @@ class quote extends Apollos.Component
         })
 
       for option in options
-
         if option.name isnt value
           continue
 

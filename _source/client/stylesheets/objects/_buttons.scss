@@ -5,9 +5,21 @@
 .btn--gray {
   @include radius(4px);
 
+  width: 280px;
   padding: $base-spacing-unit;
 
+  text-transform: uppercase;
+
+  color: $base-font-color;
+  border: none;
+  background-color: white;
+
   font-weight: 700;
+
+  &:hover {
+    color: white;
+    background-color: map-get($colors, primary);
+  }
 }
 
 .btn--text {
@@ -37,15 +49,17 @@
 }
 
 .btn--gray {
-  color: map-get($colors, dark-tertiary);
-  border-color: map-get($colors, dark-tertiary);
-  background-color: transparent;
+  cursor: default;
+
+  color: $base-font-color;
+  background-color: map-get($colors, light-tertiary);
   &:hover {
-    border-color: map-get($colors, primary);
+    color: $base-font-color;
+    background-color: map-get($colors, light-tertiary);
   }
 }
 
-.btn--filled {
-  border-color: map-get($colors, primary);
-  background-color: map-get($colors, primary);
-}
+// .btn--filled {
+//   border-color: map-get($colors, primary);
+//   background-color: map-get($colors, primary);
+// }

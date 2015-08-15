@@ -1,52 +1,75 @@
 <template name="HeroAlt">
-  <div class="section background--primary one-whole text-center soft-half">
-    <h4 class="text-white uppercase flush hard">
-      Dapper Ink
-    </h4>
+  <div class="section  one-whole text-center soft">
+    <div class="flush hard lap-and-up-width-one-third">
+      {{> logo class="two-thirds palm-wide-one-third lap-one-quarter lap-wide-and-up-one-fifth" color="#FFC051"}}
+    </div>
+
 
   </div>
-  <section class="overlay--solid-dark hard background--fill background--secondary">
-    <div class="overlay__item background--fill geo" style="background-image:url(//s3.amazonaws.com/images.dapperink/dapper/site/assets/dapper.geodesic.hero.png)">
+  <section class="overlay--solid-dark-secondary hard background--fill background--secondary">
+    <div class="overlay__item" >
       <div class="ratio--square lap-and-up-ratio--landscape" >
-        <div class="ratio__item floating">
-          <div class="floating__item one-whole">
+        <div class="ratio__item floating--left handheld-text-center">
+          <div class="floating__item text-left">
+            <div class="lap-and-up-soft-double-left handheld-soft-half lap-and-up-push-left">
 
-            <h1 class="text-white hard soft-half-bottom handheld-flush push-bottom uppercase">
-              We are printers
-            </h1>
+              <div class="soft-top display-inline-block">
+                <a href="/screen-printing" class="display-inline-block lap-and-up-soft-right {{#if isActive '/screen-printing'}}text-primary{{else}}text-light{{/if}}">
+                  <h4 class="lowercase flush text-nav">
+                  [ Screen Prints ]
+                  </h4>
+                </a>
+                <a href="/letterpress" class="display-inline-block lap-and-up-soft-right {{#if isActive '/letterpress'}}text-primary{{else}}text-light{{/if}}">
+                  <h4 class="lowercase flush text-nav">
+                  [ letterpress ]
+                  </h4>
+                </a>
+                <a href="/custom-printing" class="display-inline-block {{#if isActive '/custom-printing'}}text-primary{{else}}text-light{{/if}}">
+                  <h4 class="lowercase flush text-nav">
+                  [ posters & signs ]
+                  </h4>
+                </a>
+              </div>
 
-            <div class="grid flush one-whole soft-half-top">
-              {{!--
-              {{#each serviceList}}
-                <div class="grid__item one-third text-center active">
-                  <a href="{{pathFor 'service' service=this.preferredUrl}}" >
-                    <h5 class="uppercase text-center">
-                      <small class="{{#if isActive this.url}}text-brand{{else}}text-white{{/if}}">{{name}}</small>
-                    </h5>
+
+              <h2 class="text-massive text-white soft-half-top  flush uppercase">
+                We<br>are<br>printers
+              </h2>
+
+              <div class="grid flush one-whole soft-half-top">
+                {{!--
+                {{#each serviceList}}
+                  <div class="grid__item one-third text-center active">
+                    <a href="{{pathFor 'service' service=this.preferredUrl}}" >
+                      <h5 class="uppercase text-center">
+                        <small class="{{#if isActive this.url}}text-brand{{else}}text-white{{/if}}">{{name}}</small>
+                      </h5>
+                    </a>
+                  </div>
+                {{/each}}
+
+                <div class="grid__item hard handheld-one-whole lap-and-up-auto text-center uppercase"  style="vertical-align: middle; margin-right: 10px;">
+                  <a href="/screen-printing" style=" min-width: 240px;" class="btn btn--nav {{#if isActive '/screen-printing'}}btn--filled{{else}}btn--gray{{/if}}">
+                      Screen Printing
                   </a>
                 </div>
-              {{/each}}
-              --}}
-              <div class="grid__item hard handheld-one-whole lap-and-up-auto text-center uppercase"  style="vertical-align: middle; margin-right: 10px;">
-                <a href="/screen-printing" style=" min-width: 240px;" class="btn btn--nav {{#if isActive '/screen-printing'}}btn--filled{{else}}btn--gray{{/if}}">
-                    Screen Printing
-                </a>
+
+                <div class="grid__item hard handheld-one-whole lap-and-up-auto text-center uppercase" style="vertical-align: middle; margin-right: 10px;">
+
+                  <a href="/letterpress" style=" min-width: 240px;" class="btn btn--nav {{#if isActive '/letterpress'}}btn--filled{{else}}btn--gray{{/if}}">
+                      Letterpress
+                  </a>
+
+                </div>
+
+                <div class="grid__item hard handheld-one-whole lap-and-up-auto text-center uppercase" style="vertical-align: middle;">
+                  <a href="/custom-printing" style=" min-width: 240px;" class="btn btn--nav {{#if isActive '/custom-printing'}}btn--filled{{else}}btn--gray{{/if}}">
+                      Custom Printing
+                  </a>
+                </div>
+                --}}
+
               </div>
-
-              <div class="grid__item hard handheld-one-whole lap-and-up-auto text-center uppercase" style="vertical-align: middle; margin-right: 10px;">
-
-                <a href="/letterpress" style=" min-width: 240px;" class="btn btn--nav {{#if isActive '/letterpress'}}btn--filled{{else}}btn--gray{{/if}}">
-                    Letterpress
-                </a>
-
-              </div>
-
-              <div class="grid__item hard handheld-one-whole lap-and-up-auto text-center uppercase" style="vertical-align: middle;">
-                <a href="/custom-printing" style=" min-width: 240px;" class="btn btn--nav {{#if isActive '/custom-printing'}}btn--filled{{else}}btn--gray{{/if}}">
-                    Custom Printing
-                </a>
-              </div>
-
             </div>
 
           </div>

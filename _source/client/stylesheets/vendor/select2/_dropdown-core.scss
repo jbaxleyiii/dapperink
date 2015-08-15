@@ -47,11 +47,12 @@
 .select2-container.select2-container--above {
   padding: 0;
 
+  color: white;
   border-color: map-get($colors, primary);
   background-color: map-get($colors, primary);
-  .select2-selection__arrow > b {
-    border-color: map-get($colors, light-primary) transparent transparent transparent;
-  }
+  // .select2-selection__arrow > b {
+  //   border-color: map-get($colors, light-primary) transparent transparent transparent;
+  // }
 
   &.select2-container--open {
     padding: auto;
@@ -64,27 +65,34 @@
 
 .select2-container--open .select2-dropdown {
   left: 0;
-}
 
-.select2-container--open .select2-dropdown--above {
-  margin-top: -13px;
+  margin-top: -1px;
 
   border-bottom: none;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   background-color: map-get($colors, light-tertiary);
-  box-shadow: 0 4px 5px 3px darken(map-get($colors, light-tertiary), 10);
 }
 
-.select2-container--open .select2-dropdown--below {
-  margin-top: -13px;
-
-  border-top: none;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  background-color: map-get($colors, light-tertiary);
-  box-shadow: 0 4px 5px 3px darken(map-get($colors, light-tertiary), 10);
-}
+// .select2-container--open .select2-dropdown--above {
+//   margin-top: -66px;
+//
+//   border-bottom: none;
+//   border-bottom-right-radius: 0;
+//   border-bottom-left-radius: 0;
+//   background-color: map-get($colors, light-tertiary);
+//   // box-shadow: 0 0 1px 2px darken(map-get($colors, light-tertiary), 10);
+// }
+//
+// .select2-container--open .select2-dropdown--below {
+//   margin-top: -66px;
+//
+//   border-top: none;
+//   border-top-left-radius: 0;
+//   border-top-right-radius: 0;
+//   background-color: map-get($colors, light-tertiary);
+//   // box-shadow: 0 1px 2px 2px darken(map-get($colors, light-tertiary), 10);
+// }
 
 .select2-search--dropdown {
   display: block;
