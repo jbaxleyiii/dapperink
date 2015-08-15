@@ -1,42 +1,16 @@
+label {
+  color: #999;
 
-.input--white {
-  input {
-    @include radius(3px);
-    @include placeholder {
-      display: block;
-
-      color: map-get($colors, light-tertiary);
-    }
-
-    padding: $base-spacing-unit - 1px;
-
-    border-bottom: none;
-    background-color: #fff;
-  }
-
-
-  label {
-    display: none;
-  }
-
-  .input__status {
-    left: 0;
-
-    width: 100%;
-    padding-top: $half-spacing-unit;
-    padding-left: $base-spacing-unit - 1px;
-
-    border-radius: 3px;
-    background-color: white;
-  }
+  font-style: italic;
 }
 
 .input {
-  @include media-query(handheld) {
-    padding-bottom: $half-spacing-unit;
-  }
+  padding-bottom: $base-spacing-unit;
 }
 
+input {
+  color: white;
+}
 
 .input.fa.fa-caret-down {
   &:before {

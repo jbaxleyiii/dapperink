@@ -188,10 +188,7 @@ $constraints: (
   "small-copy": (
     max-width: 480px
   ),
-  "wide": (
-    max-width: 1024px
-  ),
-  "btn": (
-    min-width: 150px
+  "submit": (
+    max-width: 400px
   )
 );

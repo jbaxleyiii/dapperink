@@ -32,6 +32,22 @@
 }
 
 
+.summary {
+  h6 {
+    font-size: .9em;
+  }
+
+  h5 {
+    font-weight: 400;
+  }
+}
+
+.modal--dark {
+  @extend %_modal;
+
+  background-color: rgba(#000, .9);
+}
+
 //
 // @name .overlay--solid-dark
 // @class .overlay--solid-dark
