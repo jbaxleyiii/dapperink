@@ -59,6 +59,16 @@
   }
 }
 
+.btn--light.disabled {
+  cursor: inherit;
+
+  opacity: .25;
+  &:hover {
+    color: $base-font-color;
+    background-color: #fff;
+  }
+}
+
 // .btn--filled {
 //   border-color: map-get($colors, primary);
 //   background-color: map-get($colors, primary);

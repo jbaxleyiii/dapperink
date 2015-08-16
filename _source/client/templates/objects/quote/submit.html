@@ -2,21 +2,20 @@
 
 
   <div class="grid__item hard one-whole background--dark">
-    <div class="handheld-ratio--none lap-wide-and-up-ratio--fat-rectangle lap-ratio--square ">
+    <div class="handheld-ratio--none lap-and-up-ratio--fat-rectangle  ">
       <div class="ratio__item text-center soft handheld-soft-double-ends handheld-push-double-ends lap-and-up-soft-double floating">
         <div class="floating__item one-whole">
 
 
           <p class="text-white">
-            Like what you see? Great! Now let’s get
-started on that print.
+            Ready to talk with one of our team members?  Here’s how to move forward with your inquiry.
           </p>
 
           <div class="grid one-whole handheld-hard text-center lap-wide-and-up-one-half" style="margin: 0 auto;">
 
 
             <div class="grid__item one-whole hard one-whole text-center">
-              <button type="submit" class="btn--light btn--small one-whole">
+              <button type="submit" class="btn--light btn--small one-whole {{#unless ready}}disabled{{/unless}}" disabled="{{#unless ready}}true{{/unless}}">
                 Send this quote
               </button>
             </div>
@@ -36,72 +35,81 @@ started on that print.
 
   <div class="modal--dark modal--active floating">
     <div class="floating__item one-whole">
+      <div class="handheld-ratio--none lap-and-up-ratio--fat-rectangle" style="max-width: 650px; margin: 0 auto;">
 
-      <section class="lap-and-up-two-thirds text-left lap-and-up-soft-double lap-and-up-hard-bottom background--dark" style="position: relative">
-        <div style="position: absolute; top: 0; right: 0" class="soft">
-          <div class="icon" style="cursor: pointer;">
-            {{> closeIcon}}
+
+        <section class="handheld-soft-double-top ratio__item text-left lap-and-up-soft-ends-double lap-and-up-hard-bottom background--dark">
+          <div style="position: absolute; top: 0; right: 0; z-index: 100" class="soft close">
+            <div  style="cursor: pointer; width: 32px; height: 32px;">
+              {{> closeIcon}}
+            </div>
+
           </div>
 
-        </div>
-
-        <div class="grid">
-          <div class="grid__item lap-and-up-two-thirds" style="vertical-align:bottom;">
+          {{#if submitted.get}}
+          <div class="handheld-soft-double-top lap-and-up-two-thirds one-whole">
             <p class="text-white push-double-bottom">
-              Send us your contact info, and we’ll quickly get back to you with instructions on sending us your project idea.
+              Thank you for contacting us.
+              We will follow up very soon.
             </p>
+          </div>
+
+          {{else}}
+          <div class="grid">
+            <div class="grid__item handheld-soft-double-top lap-and-up-two-thirds lap-and-up-soft-double-left lap-and-up-soft-ends" style="vertical-align:bottom;">
+              <p class="text-white push-double-bottom">
+                Send us your contact info, and we’ll quickly get back to you with instructions on sending us your project idea.
+              </p>
 
 
-            {{> Apollos.Forms.Input
-              name="Name"
-              class="push-top"
-            }}
+              {{> Apollos.Forms.Input
+                name="Name"
+                class="push-top"
+              }}
 
-            {{> Apollos.Forms.Input
-              name="Email"
-            }}
+              {{> Apollos.Forms.Input
+                name="Email"
+              }}
 
-            <div class="grid summary soft-half-bottom">
-              <div class="grid__item one-third lap-and-up-one-quarter text-right">
-                <h6 class="text-white">Product:</h6>
+              {{#if query.product.label}}
+              <div class="grid summary soft-half-bottom">
+                <div class="grid__item one-third lap-and-up-one-quarter text-right">
+                  <h6 class="text-white">Product:</h6>
+                </div>
+                <div class="grid__item soft-half-left two-thirds text-left">
+                  <h5 class="text-primary uppercase flush">{{query.product.label}}</h5>
+                </div>
               </div>
-              <div class="grid__item soft-half-left two-thirds text-left">
-                <h5 class="text-primary uppercase flush">Short sleeve t-shirt</h5>
+              {{/if}}
+              {{#each query.options}}
+              <div class="grid summary soft-half-bottom">
+                <div class="grid__item one-third lap-and-up-one-quarter text-right">
+                  <h6 class="text-white capitalize">{{name}}:</h6>
+                </div>
+                <div class="grid__item soft-half-left two-thirds text-left">
+                  <h5 class="text-primary uppercase flush">{{value}}</h5>
+                </div>
               </div>
+              {{/each}}
+
             </div>
-            <div class="grid summary soft-half-bottom">
-              <div class="grid__item one-third lap-and-up-one-quarter text-right">
-                <h6 class="text-white">Quantity:</h6>
-              </div>
-              <div class="grid__item soft-half-left two-thirds text-left">
-                <h5 class="text-primary uppercase flush">100 - 200</h5>
-              </div>
-            </div>
-            <div class="grid summary soft-double-bottom">
-              <div class="grid__item one-third lap-and-up-one-quarter text-right">
-                <h6 class="text-white">Quality:</h6>
-              </div>
-              <div class="grid__item soft-half-left two-thirds text-left">
-                <h5 class="text-primary uppercase flush">Premium</h5>
-              </div>
+            <div class="grid__item soft lap-and-up-one-third soft-half-bottom" style="{{#unless MediaQuery 'handheld'}}position: absolute; bottom: 0; right: 0;{{/unless}}">
+              <button type="submit" class="btn push-top one-whole" name="button" style="width: 100%;">Send</button>
+
             </div>
 
           </div>
-          <div class="grid__item lap-and-up-one-third soft-half-bottom" style="vertical-align:bottom;">
-            <button type="submit" class="btn push-top one-whole" name="button">Send</button>
-
-          </div>
-
-        </div>
+          {{/if}}
 
 
 
-        {{!--
-          <h4 class="text-white uppercase flush">
-            Thank you for your submission! We will be in touch!
-          </h4>
-        --}}
-      </section>
+          {{!--
+            <h4 class="text-white uppercase flush">
+              Thank you for your submission! We will be in touch!
+            </h4>
+          --}}
+        </section>
+      </div>
     </div>
 
   </div>

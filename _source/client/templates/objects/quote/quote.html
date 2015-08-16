@@ -12,8 +12,6 @@
           </h4>
           <p>
             A simple, easy way to get an estimate of your next project.
-
-            Ready to talk with one of our team members?  Here’s how to move forward with your inquiry.
           </p>
         </section>
         <section class="lap-and-up-soft-double-sides text-center">
@@ -21,7 +19,7 @@
 
 
           {{#if products}}
-          <div id="products" class="soft-half-bottom">
+          <div id="products" class="soft-bottom">
 
             {{> select
               name=name
@@ -52,7 +50,7 @@
           <div class="grid flush">
 
             <div class="grid__item hard one-whole background--primary">
-              <div class="handheld-ratio--none lap-wide-and-up-ratio--fat-rectangle lap-ratio--square ">
+              <div class="handheld-ratio--none lap-and-up-ratio--fat-rectangle ">
                 <div class="ratio__item text-center soft soft-double-top handheld-push-top lap-and-up-soft-double floating">
                   <div class="floating__item">
                     {{#if price.get}}
@@ -74,16 +72,19 @@
                     {{/if}}
                   </div>
                 </div>
-                <h5 class="soft" style="{{#unless MediaQuery 'handheld'}}position:absolute; bottom: 0;{{/unless}}">
-                  <small class="text-white">*Price discounts available for multiple products in the same order, please contact us for more information.</small>
-                </h5>
+                <div class="one-whole" style="margin: 0 auto; {{#unless MediaQuery 'handheld'}}position:absolute; bottom: 0;{{/unless}}">
+                  <h5 class="soft constrain-small-copy" >
+                    <small class="text-white">*Price discounts available for multiple products in the same order, please contact us for more information.</small>
+                  </h5>
+                </div>
+
               </div>
             </div>
 
 
 
 
-            {{> submit submitted=true ready=false}}
+            {{> submit submitted=true ready=ready.get}}
 
 
 

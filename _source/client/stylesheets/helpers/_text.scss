@@ -1,23 +1,28 @@
+//
+// .text-massive {
+//   @include media-query(palm) {
+//     font-size: 3.125em;
+//   }
+//   @include media-query(palm-wide) {
+//     font-size: 4em;
+//   }
+//   @include media-query(anchored) {
+//     font-size: 8em;
+//   }
+//
+//   font-family: "Roboto";
+//   font-size: 6em;
+//   font-weight: 900;
+//   line-height: .9;
+//
+//   @media screen and (min-width: 350px) and (max-width: 480px) {
+//     font-size: 3.5em !important;
+//   }
+// }
 
-.text-massive {
-  @include media-query(palm) {
-    font-size: 3.125em;
-  }
-  @include media-query(palm-wide) {
-    font-size: 4em;
-  }
-  @include media-query(anchored) {
-    font-size: 8em;
-  }
-
-  font-family: "Roboto";
-  font-size: 6em;
-  font-weight: 900;
-  line-height: .9;
-
-  @media screen and (min-width: 350px) and (max-width: 480px) {
-    font-size: 3.5em !important;
-  }
+p > small > a {
+  font-family: "Roboto Condensed";
+  font-weight: 700;
 }
 
 .text-nav {
@@ -33,6 +38,10 @@
   letter-spacing: .25px;
 
   font-size: .8em;
+
+  @media screen and (min-width: 350px) and (max-width: 480px) {
+    font-size: .95em !important;
+  }
 }
 
 

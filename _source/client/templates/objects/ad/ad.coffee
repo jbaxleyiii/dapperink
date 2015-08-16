@@ -33,9 +33,33 @@ class ad extends Apollos.Component
 
   events: -> [
 
-    "submit form": @.submitForm
+    # "submit form": @.submitForm
+    "click a": @.email
 
   ]
+
+  email: (event) ->
+    event.preventDefault()
+    event.stopPropagation()
+
+    modal = Apollos.Component.getComponent("submitCard")
+    modal = modal.renderComponent()
+
+    route = Apollos.router.current()
+    service = route.params?.service
+    service or= window.location.pathname
+
+    data =
+      type: service
+      customer: Device
+      responded: false
+      viewed: false
+
+    modal = Blaze.renderWithData(
+      modal
+      { data: data, isQuote: false}
+      document.body
+    )
 
   submitForm: (event) ->
 
@@ -125,7 +149,7 @@ class ad extends Apollos.Component
       cta:
         type: "button"
         copy: "Let's talk!"
-        link: "#team"
+        link: "#"
 
     mocks["letterpress"] = mocks["screen-printing"]
     mocks["custom-printing"] = mocks["screen-printing"]

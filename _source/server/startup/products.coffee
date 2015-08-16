@@ -153,7 +153,7 @@ Apollos.products.upsert {name: "ss tee"},
         ]
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         range: true
@@ -198,7 +198,7 @@ Apollos.products.upsert {name: "ls tee"},
         ]
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         range: true
@@ -238,7 +238,7 @@ Apollos.products.upsert {name: "pullover"},
         ]
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         range: true
@@ -278,7 +278,7 @@ Apollos.products.upsert {name: "headwear"},
         ]
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         range: true
@@ -589,7 +589,7 @@ Apollos.products.upsert {name: "business card"},
         options: letterpressOptions
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         required: true
@@ -606,7 +606,7 @@ Apollos.products.upsert {name: "business card"},
     modifier: [
       {
         action: "divide"
-        modifier: "volume"
+        modifier: "quantity"
       }
       {
         action: "multiply"
@@ -630,7 +630,7 @@ Apollos.products.upsert {name: "small card"},
         options: letterpressOptions
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         required: true
@@ -647,7 +647,7 @@ Apollos.products.upsert {name: "small card"},
     modifier: [
       {
         action: "divide"
-        modifier: "volume"
+        modifier: "quantity"
       }
       {
         action: "multiply"
@@ -670,7 +670,7 @@ Apollos.products.upsert {name: "letterhead"},
         options: letterpressOptions
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         required: true
@@ -687,7 +687,7 @@ Apollos.products.upsert {name: "letterhead"},
     modifier: [
       {
         action: "divide"
-        modifier: "volume"
+        modifier: "quantity"
       }
       {
         action: "multiply"

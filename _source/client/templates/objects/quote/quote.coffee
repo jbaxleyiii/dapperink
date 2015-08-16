@@ -30,6 +30,7 @@ class quote extends Apollos.Component
     price: 0
     message: ""
     submitted: false
+    ready: false
     selectedModifiers: {}
 
   ]
@@ -87,6 +88,7 @@ class quote extends Apollos.Component
     # early return because no base price and message
     if product.message and not product.basePrice
       self.price.set false
+      self.ready.set true
       self.message.set product.message
       return
 
@@ -105,6 +107,7 @@ class quote extends Apollos.Component
         if value.message
           self.price.set false
           self.message.set value.message
+          self.ready.set true
           return
 
         # modifier number
@@ -275,33 +278,12 @@ class quote extends Apollos.Component
 
   createInquiry: (event) ->
 
-
     self = @
     event.preventDefault()
 
-    children = {}
-    for child in self.children()
-      data = child.data()
-      if not data.name
-        continue
-
-      children[data.name] = child
-
-    email = self.find("input[name=email]").value.toLowerCase()
-
-    if not Apollos.validate.isEmail email
-      children["email"].setStatus true
-      return
-
-    # Tracker.nonreactive ->
-    #   quote = self.data().quote
 
     productName = self.productName.get()
     if not productName
-      children["email"].setStatus "Please choose a product", true
-      setTimeout ->
-        children["email"].setStatus false
-      , 1500
       return
 
     storedOptions = self.selectedModifiers.get()
@@ -325,16 +307,6 @@ class quote extends Apollos.Component
         for choosenOptions in options
           names.push choosenOptions.name
 
-        if names.indexOf(modifier.name) is -1
-          children["email"].setStatus(
-            "Please #{modifier.label.toLowerCase()}"
-            true
-          )
-          setTimeout ->
-            children["email"].setStatus false
-          , 1500
-          break
-
       return
 
     price = self.price.get()
@@ -344,8 +316,10 @@ class quote extends Apollos.Component
     service = route.params?.service
     service or= window.location.pathname
 
-    Apollos.inquiries.insert({
-      email: email
+    modal = Apollos.Component.getComponent("submitCard")
+    modal = modal.renderComponent()
+
+    data =
       type: service
       customer: Device
       responded: false
@@ -355,23 +329,41 @@ class quote extends Apollos.Component
         label: product.label
       options: options
       price: price
-    })
 
-    self.submitted.set true
+    modal = Blaze.renderWithData(
+      modal
+      { data: data, isQuote: true}
+      document.body
+    )
 
-    setTimeout ->
-      self.submitted.set false
-      self.productName.set false
-      options =
-        speed: 1000
-        easing: 'easeOutCubic'
-        offset: 250
-
-      smoothScroll.animateScroll(
-        null, '#products', options
-      );
-
-    , 5000
+    # Apollos.inquiries.insert({
+    #   # email: email
+    #   type: service
+    #   customer: Device
+    #   responded: false
+    #   viewed: false
+    #   product:
+    #     name: product.name
+    #     label: product.label
+    #   options: options
+    #   price: price
+    # })
+    #
+    # self.submitted.set true
+    #
+    # setTimeout ->
+    #   self.submitted.set false
+    #   self.productName.set false
+    #   options =
+    #     speed: 1000
+    #     easing: 'easeOutCubic'
+    #     offset: 250
+    #
+    #   smoothScroll.animateScroll(
+    #     null, '#products', options
+    #   );
+    #
+    # , 5000
 
   insertDOMElement: (parent, node, before) ->
     if not node.id

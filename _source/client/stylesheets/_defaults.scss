@@ -134,15 +134,15 @@ $fonts: extend($fonts, (
   ),
   "serif": (
     h6: (
-      font-family: "georgia",
+      font-family: "Neuton",
       font-size: .75em,
       line-height: 1.15,
       margin-bottom: $half-spacing-unit
     ),
     p: (
-      font-size: .875em,
+      font-size: 1em,
       line-height: 1.25,
-      font-family: "georgia",
+      font-family: "Neuton",
       margin-bottom: $base-spacing-unit
     ),
     small: (
@@ -186,7 +186,7 @@ $constraints: (
     max-width: 600px
   ),
   "small-copy": (
-    max-width: 480px
+    max-width: 400px
   ),
   "submit": (
     max-width: 400px

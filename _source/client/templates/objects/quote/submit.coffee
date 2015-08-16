@@ -4,12 +4,62 @@ class submitCard extends Apollos.Component
 
   @register "submitCard"
 
-  events: -> [
-    "click .icon": @.destroy
+
+  vars: -> [
+    submitted: false
   ]
 
-  destroy: (event) ->
-    self = @
+  events: -> [
+    "click .close": @.destroy
+    "click button": @.submit
+  ]
 
-    event?.preventDefault()
+  onCreated: ->
+
+    self = @
+    data = self.data().data
+
+    self.query = data
+
+    self.isQuote = data.isQuote or false
+    $("html").addClass("modal--opened")
+
+
+  submit: (event) ->
+    self = @
+    children = {}
+    for child in self.children()
+      data = child.data()
+      if not data.name
+        continue
+
+      children[data.name] = child
+
+    email = self.find("input[name=Email]").value.toLowerCase()
+    name = self.find("input[name=Name]").value.toLowerCase()
+
+    if not name
+      children["Name"].setStatus true
+      return
+
+    if not Apollos.validate.isEmail email
+      children["Email"].setStatus true
+      return
+
+
+    quote = self.query
+
+    quote.email = email
+    quote.name = name
+
+    Apollos.inquiries.insert(quote)
+
+    self.submitted.set true
+
+
+  destroy: (event) ->
+
+    self = @
+    window.testView = @._internals.templateInstance.view
     Blaze.remove @._internals.templateInstance.view
+    $("html").removeClass("modal--opened")

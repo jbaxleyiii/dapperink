@@ -55,11 +55,16 @@ class productModifier extends Apollos.Component
 
     # this is really gross
     next = false
-    for mod in existingModList
+    for mod, index in existingModList
 
       if mod.name is modifier.name
+
+        if index is (existingModList.length - 1)
+          self.parent().ready.set true
+
         next = true
         continue
+
 
       if next
         mod.active = true
