@@ -144,7 +144,7 @@ class ad extends Apollos.Component
 
     mocks["screen-printing"] =
       image: "storefront.b&w.jpg"
-      title: "...and also really great designers"
+      title: "...and WE’RE ALSO DESIGNERS"
       copy: "Whether we’re creating a brand identity or a single tee shirt graphic, we make a meaningful designs that fulfill our clients’ needs and leave a lasting impression."
       cta:
         type: "button"
