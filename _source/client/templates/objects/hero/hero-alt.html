@@ -14,6 +14,14 @@
             <div class="lap-and-up-soft-double-left handheld-soft-half lap-and-up-push-left">
 
               <div class="soft-top display-inline-block">
+                {{#each serviceList}}
+                  <a href="{{this.url}}" class="display-inline-block lap-and-up-soft-right {{#if isActive this.url}}text-primary{{else}}text-light{{/if}}">
+                    <h4 class="lowercase flush text-nav">
+                    [ {{name}} ]
+                    </h4>
+                  </a>
+                {{/each}}
+                {{!--
                 <a href="/screen-printing" class="display-inline-block lap-and-up-soft-right {{#if isActive '/screen-printing'}}text-primary{{else}}text-light{{/if}}">
                   <h4 class="lowercase flush text-nav">
                   [ Screen Prints ]
@@ -29,6 +37,7 @@
                   [ posters & signs ]
                   </h4>
                 </a>
+                --}}
               </div>
 
               <div class="soft-ends ">
@@ -45,7 +54,7 @@
                 {{!--
                 {{#each serviceList}}
                   <div class="grid__item one-third text-center active">
-                    <a href="{{pathFor 'service' service=this.preferredUrl}}" >
+                    <a href="{{pathFor 'service' service=this.url}}" >
                       <h5 class="uppercase text-center">
                         <small class="{{#if isActive this.url}}text-brand{{else}}text-white{{/if}}">{{name}}</small>
                       </h5>

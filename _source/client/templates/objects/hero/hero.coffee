@@ -11,6 +11,37 @@ class Hero extends Apollos.Component
     img: "screen2.b&w.jpg"
   ]
 
+  serviceList: ->
+
+    rawList = [
+      {
+        name: "screen prints"
+        url: "/screen-printing"
+      }
+      {
+        name: "letterpress"
+        url: "/letterpress"
+      }
+      {
+        name: "posters & signs"
+        url: "/custom-printing"
+      }
+    ]
+    list = []
+
+    active = @.data()?.active
+    active = encodeURI(active)
+
+    for entry, index in rawList
+
+      if entry.url is "/#{active}" and index > 0
+        list.unshift entry
+      else
+        list.push entry
+
+
+
+    return list
 
   onCreated: ->
 
