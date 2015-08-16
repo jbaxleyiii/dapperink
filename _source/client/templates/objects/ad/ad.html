@@ -6,7 +6,7 @@
        <div class="floating__item soft constrain-copy text-left">
 
 
-         <div class="lap-and-up-one-half">
+         <div class="lap-and-up-one-half anchored-two-thirds">
            <h2 class="text-white push-double-top">{{mockData.title}}</h2>
            <p class="text-white push-top push-double-bottom">
              {{mockData.copy}}
@@ -14,7 +14,7 @@
          </div>
 
          {{#if $eq mockData.cta.type 'button'}}
-         <a href="{{mockData.cta.link}}" data-scroll class="btn--filled btn--small push-double-bottom">
+         <a href="{{mockData.cta.link}}" class="btn--filled btn--small push-double-bottom">
            {{mockData.cta.copy}}
          </a>
          {{else}}

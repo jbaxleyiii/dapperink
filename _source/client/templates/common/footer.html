@@ -7,7 +7,7 @@
 
         <div class="grid">
           <div class="grid__item one-quarter text-center">
-            <a href="" target="_blank" class="display-inline-block icon icon--white" style="padding: 18px; margin-top: -2px;">
+            <a href="https://www.google.com/maps/place/Dapper+Ink+Custom+Outfitters/@34.8624215,-82.3858222,17z/data=!3m1!4b1!4m2!3m1!1s0x88582e212255b5a9:0x57f80ae99099876" target="_blank" class="display-inline-block icon icon--white" style="padding: 18px; margin-top: -2px;">
                {{> mapIcon}}
             </a>
           </div>
@@ -20,14 +20,17 @@
         </div>
 
          {{else}}
-         <div  style="vertical-align: middle;" class="display-inline-block icon icon--white soft-half">
-           {{> mapIcon}}
-         </div>
-         <p  style="vertical-align: middle;" class="hard flush display-inline-block text-white">
-           <small>
-             Printing in beautiful Greenville, SC
-           </small>
-         </p>
+         <a target="_blank" href="https://www.google.com/maps/place/Dapper+Ink+Custom+Outfitters/@34.8624215,-82.3858222,17z/data=!3m1!4b1!4m2!3m1!1s0x88582e212255b5a9:0x57f80ae99099876">
+           <div  style="vertical-align: middle;" class="display-inline-block icon icon--white soft-half">
+             {{> mapIcon}}
+           </div>
+
+           <p  style="vertical-align: middle;" class="hard flush display-inline-block text-white">
+             <small>
+               Printing in beautiful Greenville, SC
+             </small>
+           </p>
+         </a>
          {{/if}}
       </div>
     </div>
