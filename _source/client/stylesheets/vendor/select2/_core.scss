@@ -8,9 +8,9 @@
   }
   @include media-query(handheld) {
     &:hover {
-      color: $base-font-color;
-      border-color: map-get($colors, light-tertiary);
-      background-color: map-get($colors, light-tertiary);
+      color: $base-font-color!important;
+      border-color: map-get($colors, light-tertiary)!important;
+      background-color: map-get($colors, light-tertiary)!important;
     }
   }
   @import "single-core";
