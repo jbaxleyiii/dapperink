@@ -34,6 +34,11 @@ p > small > a {
 
     font-size: 1.25em;
   }
+  @include media-query(lap-and-up) {
+    &:hover {
+      color: $brand-color;
+    }
+  }
 
   letter-spacing: .25px;
 
@@ -41,9 +46,6 @@ p > small > a {
 
   @media screen and (min-width: 350px) and (max-width: 480px) {
     font-size: .95em !important;
-  }
-  &:hover {
-    color: $brand-color;
   }
 }
 

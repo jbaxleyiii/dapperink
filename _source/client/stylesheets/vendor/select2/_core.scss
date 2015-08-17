@@ -1,6 +1,18 @@
 .select2-container {
   @extend %btn;
   @include radius(3px);
+  @include media-query(lap-and-up) {
+    &:hover {
+      border-color: $brand-color;
+    }
+  }
+  @include media-query(handheld) {
+    &:hover {
+      color: $base-font-color;
+      border-color: map-get($colors, light-tertiary);
+      background-color: map-get($colors, light-tertiary);
+    }
+  }
   @import "single-core";
 
   overflow: visible;
@@ -19,10 +31,6 @@
 
   font-size: 20px;
   font-weight: 700;
-
-  &:hover {
-    border-color: $brand-color;
-  }
 }
 
 .select-disabled {

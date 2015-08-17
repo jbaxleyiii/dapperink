@@ -1,5 +1,11 @@
 
 @mixin makeColors($color) {
+  .select2-results__option {
+    &:hover {
+      background-color: $color;
+    }
+  }
+
   small > a {
     color: $color;
   }
@@ -28,22 +34,18 @@
     background-color: #fff;
   }
 
+
   .select2-container {
     &:hover {
       border-color: $color;
       background-color: $color;
     }
 
+
     &.select2-container--open {
       .select2-selection__rendered {
         color: $color;
       }
-    }
-  }
-
-  .select2-results__option {
-    &:hover {
-      background-color: $color;
     }
   }
 
@@ -59,15 +61,17 @@
   fill: $brand-color;
 }
 
-.link-letterpress {
-  h4:hover {
-    color: map-get($colors, "secondary");
+@include media-query(lap-and-up) {
+  .link-letterpress {
+    h4:hover {
+      color: map-get($colors, "secondary");
+    }
   }
-}
 
-.link-custom-printing {
-  h4:hover {
-    color: map-get($colors, "tertiary");
+  .link-custom-printing {
+    h4:hover {
+      color: map-get($colors, "tertiary");
+    }
   }
 }
 
