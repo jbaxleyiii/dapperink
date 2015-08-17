@@ -22,42 +22,6 @@
   }
 }
 
-.btn--text {
-  color: map-get($colors, light-tertiary);
-  border: none;
-  background-color: transparent;
-
-  font-style: normal;
-  * {
-    text-transform: lowercase !important;
-  }
-  &:hover {
-    color: map-get($colors, primary);
-    background-color: transparent;
-  }
-
-  &.active {
-    color: map-get($colors, primary);
-    background-color: transparent;
-  }
-}
-
-.btn--nav {
-  padding: $half-spacing-unit + 5 $base-spacing-unit;
-
-  font-size: 1.2em;
-}
-
-.btn--gray {
-  cursor: default;
-
-  color: $base-font-color;
-  background-color: map-get($colors, light-tertiary);
-  &:hover {
-    color: $base-font-color;
-    background-color: map-get($colors, light-tertiary);
-  }
-}
 
 .btn--light.disabled {
   cursor: inherit;

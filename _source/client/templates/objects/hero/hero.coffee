@@ -17,14 +17,17 @@ class Hero extends Apollos.Component
       {
         name: "screen prints"
         url: "/screen-printing"
+        service: "screen-printing"
       }
       {
         name: "letterpress"
         url: "/letterpress"
+        service: "letterpress"
       }
       {
         name: "posters & signs"
         url: "/custom-printing"
+        service: "custom-printing"
       }
     ]
     list = []
