@@ -139,7 +139,7 @@ class quote extends Apollos.Component
     # if top range
     if highPrice
       # highPrice = totalBasePrice * highPriceMultiplier
-      totalPrice = "#{Math.round(Number(totalBasePrice))} - #{Math.round(Number(highPrice))}"
+      totalPrice = "#{Math.round(Number(totalBasePrice))} - $#{Math.round(Number(highPrice))}"
 
 
 
