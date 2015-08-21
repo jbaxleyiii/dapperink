@@ -35,7 +35,7 @@
 
   <div class="modal--dark modal--active floating">
     <div class="floating__item one-whole">
-      <div class="handheld-ratio--none lap-and-up-ratio--fat-rectangle" style="max-width: 700px; margin: 0 auto;">
+      <div class="handheld-ratio--none lap-and-up-ratio--square" style="max-width: 700px; margin: 0 auto;">
 
 
         <section class="handheld-soft-double-top ratio__item text-left lap-and-up-soft-ends-double lap-and-up-hard-bottom background--dark">
@@ -69,6 +69,10 @@
 
               {{> Apollos.Forms.Input
                 name="Email"
+              }}
+
+              {{> Apollos.Forms.TextArea
+                name="Description"
               }}
 
               {{#if query.product.label}}

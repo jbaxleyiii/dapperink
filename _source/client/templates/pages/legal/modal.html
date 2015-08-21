@@ -1,0 +1,29 @@
+<template name="termsModal">
+
+  <div class="modal--dark modal--active floating">
+    <div class="floating__item one-whole" style="background-color: white;">
+      <section class="push-double-top">
+        <div style="position: absolute; top: 0; right: 0; z-index: 100" class="soft close">
+          <div  style="cursor: pointer; width: 32px; height: 32px;">
+            {{> closeIcon}}
+          </div>
+
+        </div>
+
+        <div class="text-left constrain-copy soft-top">
+          {{> Template.dynamic template=templateName}}
+        </div>
+
+        <div class="soft-ends close">
+          <div class="btn">
+            Close
+          </div>
+        </div>
+
+
+      </section>
+
+    </div>
+  </div>
+
+</template>

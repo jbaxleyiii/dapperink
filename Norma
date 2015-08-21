@@ -41,7 +41,9 @@ tasks:
       "meteorhacks:fast-render"
       "meteorhacks:subs-manager"
       "meteorhacks:kadira"
-      "hybrid:device"
+      "hybrid:device",
+      "datariot:ganalytics",
+      "lookback:emails"
     ]
     "platforms": [
       "server"

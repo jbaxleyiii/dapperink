@@ -8,6 +8,6 @@ Meteor.publish "services", ->
 
 Meteor.publish "products", (service) ->
 
-  products = Apollos.products.find({service: service})
+  products = Apollos.products.find({service: service}, {sort: order: 1})
 
   return products

@@ -16,7 +16,6 @@ class modifier extends Apollos.Component
   update: (event) ->
     val = event.target.value
 
-
     @.parent().update val, @.modifier()
 
   placeholderText: ->

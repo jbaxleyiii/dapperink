@@ -22,6 +22,14 @@ modifier = Apollos.generateSchema("modifier",
     modifier:
       type: String
       optional: true
+    range:
+      type: Boolean
+      optional: true
+      defaultValue: false
+    highValue:
+      type: Number
+      optional: true
+      decimal: true
   }, true
 )
 
@@ -112,6 +120,9 @@ modifiers = Apollos.generateSchema("modifiers"
 products = Apollos.generateSchema
   name:
     type: String
+    optional: false
+  order:
+    type: Number
     optional: false
   label:
     type: String

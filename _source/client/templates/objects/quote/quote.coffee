@@ -3,22 +3,34 @@
 modifyPrice = (modifier, price, modifiers) ->
 
   price = Number(price)
-
+  modifyValue = modifier.value
 
   if modifier.modifier and modifiers[modifier.modifier]
-    if modifiers[modifier.modifier].value
-      modifier.value = modifiers[modifier.modifier].value
+    if modifiers[modifier.modifier].value and not modifier.value
+      modifyValue = modifiers[modifier.modifier].value
+
+    else if modifiers[modifier.modifier].value and modifier.value
+      # modifier.value = modifiers[modifier.modifier].value
+      multiplier = modifiers[modifier.modifier].value
+
 
   if modifier.action is "add"
-    price += modifier.value
+    price += modifyValue
 
   if modifier.action is "multiply"
-    price = modifier.value * price
+    if modifier.range and modifier.highValue
+      price = "#{Math.round(modifyValue * price * 100) / 100} - $#{Math.round(modifier.highValue * price * 100) / 100}"
+    else
+      price = modifyValue * price
+
 
   if modifier.action is "divide"
-    price = price / modifier.value
+    price = price / modifyValue
 
-  return Math.round(price)
+  if modifier.action is "add-multiply"
+    price = price + (multiplier * modifier.value)
+
+  return price
 
 
 class quote extends Apollos.Component
@@ -69,14 +81,12 @@ class quote extends Apollos.Component
     serviceModifier = self.data().quote.modifier
 
     self.autorun ->
-      totalPrice = 0
       product = self.productName.get()
 
       if not product
-        self.price.set totalPrice
         return
 
-      self.setPrice(totalPrice, product)
+      self.setPrice(0, product)
 
 
   setPrice: (totalPrice, product) ->
@@ -117,17 +127,17 @@ class quote extends Apollos.Component
 
         if value.modifier?.length
           for _modifier in value.modifier
-            totalPrice = modifyPrice _modifier, totalPrice
+            totalPrice = modifyPrice _modifier, totalPrice, modifiedBase
 
         # low range
         if value.low?.modifier
           for lowModifier in value.low.modifier
-            totalPrice = modifyPrice lowModifier, totalPrice
+            totalPrice = modifyPrice lowModifier, totalPrice, modifiedBase
           multiplier = value.low.value
 
         # high range
         if value.high?.modifier and value.low?
-          highPrice = modifyPrice value.high.modifier[0], totalPrice
+          highPrice = modifyPrice value.high.modifier[0], totalPrice, modifiedBase
           highPriceMultiplier = value.high.value
 
 
@@ -142,13 +152,15 @@ class quote extends Apollos.Component
       totalPrice = "#{Math.round(Number(totalBasePrice))} - $#{Math.round(Number(highPrice))}"
 
 
-
     # final overiding calculation
     if product.modifiers.length is Object.keys(modifiedBase).length
       if product.modifier
         for _modifier in product.modifier
           totalPrice = modifyPrice _modifier, totalPrice, modifiedBase
 
+
+    if typeof totalPrice isnt "string"
+      totalPrice = Math.round(totalPrice)
     # render
     self.price.set totalPrice
 
@@ -157,7 +169,16 @@ class quote extends Apollos.Component
     event.preventDefault()
     self = @
 
+    oldProduct = self.productName.get()
+
+
     productName = event.target.value
+
+    if productName is oldProduct
+      return
+
+
+
 
     # self.$("[data-product]").removeClass("active")
     # self.$(event.currentTarget).addClass("active")
@@ -168,7 +189,12 @@ class quote extends Apollos.Component
       if _product.val isnt productName
         continue
 
+
       self.productName.set _product.val
+      self.price.set 0
+      self.selectedModifiers.set {}
+      self.modifiedBase.set {}
+  
       break
 
 
@@ -185,6 +211,7 @@ class quote extends Apollos.Component
     return
 
   adjustPrice: (value, modifier) ->
+
 
     self = @
     serviceModifier = self.data().quote.modifier
@@ -203,6 +230,7 @@ class quote extends Apollos.Component
     storedModifiers[modifier.name].value = value
 
     self.selectedModifiers.set storedModifiers
+
 
     # ###
     #
@@ -247,7 +275,7 @@ class quote extends Apollos.Component
 
         self.modifiedBase.set(modifiedPrice)
 
-      self.setPrice(0, self.productName.get())
+      # self.setPrice(0, self.productName.get())
       return
 
 
@@ -273,7 +301,7 @@ class quote extends Apollos.Component
 
 
       self.modifiedBase.set(modifiedPrice)
-      self.setPrice(0, self.productName.get())
+      # self.setPrice(0, self.productName.get())
       return
 
   createInquiry: (event) ->

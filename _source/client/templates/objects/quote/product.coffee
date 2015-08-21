@@ -23,6 +23,7 @@ class productModifier extends Apollos.Component
     self.autorun ->
       productName = self.productName.get()
 
+
       if productName
         product = Apollos.products.findOne({name: productName})
       else
@@ -69,5 +70,6 @@ class productModifier extends Apollos.Component
       if next
         mod.active = true
         break
+
 
     self.modifiers.set existingModList

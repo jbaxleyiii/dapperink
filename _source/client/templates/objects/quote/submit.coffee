@@ -37,6 +37,7 @@ class submitCard extends Apollos.Component
 
     email = self.find("input[name=Email]").value.toLowerCase()
     name = self.find("input[name=Name]").value.toLowerCase()
+    description = self.find("textarea[name=Description]").value.toLowerCase()
 
     if not name
       children["Name"].setStatus true
@@ -51,6 +52,7 @@ class submitCard extends Apollos.Component
 
     quote.email = email
     quote.name = name
+    quote.description = description
 
     Apollos.inquiries.insert(quote)
 
