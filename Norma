@@ -37,13 +37,14 @@ tasks:
     "settings": "dapperink/settings/sites/dapperink/settings.json"
     "packages": [
       "meteor-platform"
+      "email"
+      "force-ssl"
       "newspring:apollos-core"
       "meteorhacks:fast-render"
       "meteorhacks:subs-manager"
       "meteorhacks:kadira"
       "hybrid:device",
-      "datariot:ganalytics",
-      "lookback:emails"
+      "datariot:ganalytics"
     ]
     "platforms": [
       "server"

@@ -35,10 +35,71 @@
 
   <div class="modal--dark modal--active floating">
     <div class="floating__item one-whole">
-      <div class="handheld-ratio--none lap-and-up-ratio--square" style="max-width: 700px; margin: 0 auto;">
+      <div class="handheld-ratio--none {{#if submitted.get}}lap-and-up-ratio--landscape{{else}}lap-and-up-ratio--square{{/if}}" style="max-width: 700px; margin: 0 auto;">
 
 
-        <section class="handheld-soft-double-top ratio__item text-left lap-and-up-soft-ends-double lap-and-up-hard-bottom background--dark">
+        <section class="handheld-soft-double-top ratio__item text-left lap-and-up-soft-ends-double lap-and-up-hard-bottom background--dark {{#if submitted.get}}floating{{/if}}">
+
+          {{#if submitted.get}}
+            <div class="floating__item one-whole">
+              <div class="handheld-soft-double-top text-center one-whole">
+                <p class="text-white handheld-push-double-bottom hard flush">
+                  Thank you for contacting us.
+                  We will follow up very soon.
+                </p>
+              </div>
+            </div>
+
+          {{else}}
+            <div class="grid flush">
+              <div class="grid__item handheld-hard-left handheld-soft-double-top lap-and-up-two-thirds lap-and-up-soft-left lap-and-up-soft-ends" style="vertical-align:bottom;">
+                <p class="text-white push-double-bottom">
+                  Send us your contact info, and we’ll quickly get back to you with instructions on sending us your project idea.
+                </p>
+
+
+                {{> Apollos.Forms.Input
+                  name="Name"
+                  class="push-top"
+                }}
+
+                {{> Apollos.Forms.Input
+                  name="Email"
+                }}
+
+                {{> Apollos.Forms.TextArea
+                  name="Description"
+                }}
+
+                {{#if query.product.label}}
+                <div class="grid summary handheld-soft-half-bottom">
+                  <div class="grid__item one-quarter text-right">
+                    <h6 class="text-white">Product:</h6>
+                  </div>
+                  <div class="grid__item soft-half-left two-thirds text-left">
+                    <h5 class="text-primary uppercase flush">{{query.product.label}}</h5>
+                  </div>
+                </div>
+                {{/if}}
+                {{#each query.options}}
+                <div class="grid summary handheld-soft-half-bottom">
+                  <div class="grid__item one-quarter text-right">
+                    <h6 class="text-white capitalize">{{name}}:</h6>
+                  </div>
+                  <div class="grid__item soft-half-left two-thirds text-left">
+                    <h5 class="text-primary uppercase flush">{{value}}</h5>
+                  </div>
+                </div>
+                {{/each}}
+
+              </div>
+              <div class="grid__item soft lap-and-up-one-third soft-half-bottom" style="{{#unless MediaQuery 'handheld'}}position: absolute; bottom: 0; right: 0;{{/unless}}">
+                <button type="submit" class="btn push-top one-whole" name="button" style="width: 100%;">Send</button>
+
+              </div>
+
+            </div>
+          {{/if}}
           <div style="position: absolute; top: 0; right: 0; z-index: 100" class="soft close">
             <div  style="cursor: pointer; width: 32px; height: 32px;">
               {{> closeIcon}}
@@ -46,64 +107,6 @@
 
           </div>
 
-          {{#if submitted.get}}
-          <div class="handheld-soft-double-top lap-and-up-two-thirds one-whole">
-            <p class="text-white push-double-bottom">
-              Thank you for contacting us.
-              We will follow up very soon.
-            </p>
-          </div>
-
-          {{else}}
-          <div class="grid flush">
-            <div class="grid__item handheld-hard-left handheld-soft-double-top lap-and-up-two-thirds lap-and-up-soft-left lap-and-up-soft-ends" style="vertical-align:bottom;">
-              <p class="text-white push-double-bottom">
-                Send us your contact info, and we’ll quickly get back to you with instructions on sending us your project idea.
-              </p>
-
-
-              {{> Apollos.Forms.Input
-                name="Name"
-                class="push-top"
-              }}
-
-              {{> Apollos.Forms.Input
-                name="Email"
-              }}
-
-              {{> Apollos.Forms.TextArea
-                name="Description"
-              }}
-
-              {{#if query.product.label}}
-              <div class="grid summary handheld-soft-half-bottom">
-                <div class="grid__item one-quarter text-right">
-                  <h6 class="text-white">Product:</h6>
-                </div>
-                <div class="grid__item soft-half-left two-thirds text-left">
-                  <h5 class="text-primary uppercase flush">{{query.product.label}}</h5>
-                </div>
-              </div>
-              {{/if}}
-              {{#each query.options}}
-              <div class="grid summary handheld-soft-half-bottom">
-                <div class="grid__item one-quarter text-right">
-                  <h6 class="text-white capitalize">{{name}}:</h6>
-                </div>
-                <div class="grid__item soft-half-left two-thirds text-left">
-                  <h5 class="text-primary uppercase flush">{{value}}</h5>
-                </div>
-              </div>
-              {{/each}}
-
-            </div>
-            <div class="grid__item soft lap-and-up-one-third soft-half-bottom" style="{{#unless MediaQuery 'handheld'}}position: absolute; bottom: 0; right: 0;{{/unless}}">
-              <button type="submit" class="btn push-top one-whole" name="button" style="width: 100%;">Send</button>
-
-            </div>
-
-          </div>
-          {{/if}}
 
 
 
