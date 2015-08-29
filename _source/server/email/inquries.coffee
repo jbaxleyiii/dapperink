@@ -43,40 +43,66 @@ sendEmail = (document) ->
   prettyDate = day + " " + hr + ":" + min + ampm + " " + _date + " " + month + " " + year
   # prettyDate = "#{monthNames[monthIndex]}, #{day}, #{year}"
 
-  emailText = "
-  <h1>Inquiry for a #{document.product.label}</h1>
+  if document.product
+    emailText = "
+      <h1>Inquiry for a #{document.product.label}</h1>
 
-  <div>
+      <div>
 
-    <p>
-      <em>
-        The inquiry was sumbitted on #{prettyDate}
-      </em>
-    </p>
+        <p>
+          <em>
+            The inquiry was sumbitted on #{prettyDate}
+          </em>
+        </p>
 
-    <p>
-      <h3>Quote Information</h3>
-      <br>
-      <br>
+        <p>
+          <h3>Quote Information</h3>
+          <br>
+          <br>
 
-      Price: #{document.price}
+          Price: #{document.price}
 
-    </p>
+        </p>
 
-    #{options}
+        #{options}
 
-    <p>
-      Description from client:
-      <br>
-      <br>
-      #{document.description}
-    </p>
+        <p>
+          Description from client:
+          <br>
+          <br>
+          #{document.description}
+        </p>
 
-    <h4>From #{document.name} at #{document.email}</h4>
+        <h4>From #{document.name} at #{document.email}</h4>
 
 
-  </div>
-  "
+      </div>
+    "
+  else
+    emailText= "
+      <h1>Message from #{document.name}</h1>
+
+      <div>
+
+        <p>
+          <em>
+            The inquiry was sumbitted on #{prettyDate}
+          </em>
+        </p>
+
+        <p>
+          Message from client:
+          <br>
+          <br>
+          #{document.description}
+        </p>
+
+        <h4>From #{document.name} at #{document.email}</h4>
+
+
+      </div>
+
+    "
 
   Email.send({
     from: "admin@dapperink.com"
@@ -92,6 +118,8 @@ Apollos.inquiries.find({}).observe({
 
   added: (doc) ->
     if started
+      console.log "recieved inquery from #{doc.email}"
+
       sendEmail doc
 
 })
