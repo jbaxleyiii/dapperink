@@ -1,17 +1,16 @@
 
 <template name="productModifier">
 
-  <section class="soft-double-bottom soft-sides text-center constrain-wide">
-    <div class="grid text-center">
-      {{#each modifiers}}
-        <div class="grid__item one-whole text-center lap-and-up-one-third">
 
-          {{> modifier count=count modifier=this}}
+  {{#each modifiers.get}}
 
-        </div>
-      {{/each}}
+    <div class="soft-ends">
+      {{> modifier count=count modifier=this active=active}}
     </div>
-  </section>
+
+
+  {{/each}}
+
 
 
 </template>

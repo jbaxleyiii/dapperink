@@ -5,39 +5,30 @@ $is-newspring: false;
 //   "secondary": #bbe2c5,
 //   "tertiary": #d9eadd
 // );
+// $colors: extend($colors, (
+//   "primary": #88a388,
+//   "secondary": #657c69,
+//   "tertiary": #3c563c
+// ));
+
+$base-font-color: #303030;
 $colors: extend($colors, (
-  "primary": #88a388,
-  "secondary": #657c69,
-  "tertiary": #3c563c
+  "primary": #ffc051,
+  "secondary": #00b4f1,
+  "tertiary": #ed0677,
+  "light-tertiary": #efefef
 ));
 
-
-// $colors: extend($colors, (
-//   "primary": #e27242,
-//   "secondary": #2f3440,
-//   "tertiary": #3f5666
-// ));
 $fonts: extend($fonts, (
   roboto: (
     h1: (
       font-family: "Roboto Condensed",
-      // font-size: 3em,
-      // line-height: .9,
-      // letter-spacing: 3px,
-      // font-weight: 800,
-      // text-transform: uppercase,
-      // margin-bottom: $base-spacing-unit
-      font-size: 4.5em,
+      font-size: 2.5em,
       line-height: .9,
-      letter-spacing: 0,
-      font-weight: 700,
+      letter-spacing: 3px,
+      font-weight: 800,
       text-transform: uppercase,
-      margin-bottom: $base-spacing-unit,
-      media-query: (
-        handheld: (
-          font-size: 2.5em
-        )
-      )
+      margin-bottom: $base-spacing-unit
     ),
     h2: (
       font-family: "Roboto Condensed",
@@ -71,17 +62,21 @@ $fonts: extend($fonts, (
     ),
     h5 small: (
       color: darken(map-get($colors, light-tertiary), 10),
-      media-query: (
-        handheld: (
-          font-size: 14px
-        )
-      )
+      font-size: .75em
+
     ),
     h6: (
       font-family: "Roboto Condensed",
       font-size: 1em,
       line-height: 1,
       margin-bottom: $half-spacing-unit
+    ),
+    input: (
+      font-family: "Roboto Condensed",
+      font-size: 1em,
+      line-height: 1,
+      margin-bottom: $half-spacing-unit
+
     )
   ),
   raleway: (
@@ -142,15 +137,15 @@ $fonts: extend($fonts, (
   ),
   "serif": (
     h6: (
-      font-family: "georgia",
-      font-size: .75em,
+      font-family: "Neuton",
+      font-size: .9em,
       line-height: 1.15,
       margin-bottom: $half-spacing-unit
     ),
     p: (
-      font-size: .875em,
+      font-size: 1em,
       line-height: 1.25,
-      font-family: "georgia",
+      font-family: "Neuton",
       margin-bottom: $base-spacing-unit
     ),
     small: (
@@ -168,6 +163,7 @@ $typography: extend($typography, (
   h4: $headings,
   h5: $headings,
   h5 small: $headings,
+  input: $headings,
   h6: "serif",
   p: "serif",
   small: "serif"
@@ -180,21 +176,22 @@ $ratios: extend($ratios, (
   ratio--thin: (
     width: 3,
     height: 1
+  ),
+  ratio--fat-rectangle: (
+    width: 640,
+    height: 415
   )
 ));
-$brands: "facebook", "twitter", "instagram", "dribbble";
+$brands: "facebook", "twitter", "instagram";
 $constraints: (
   "copy": (
     min-width: 240px,
-    max-width: 768px
+    max-width: 800px
   ),
   "small-copy": (
-    max-width: 550px
+    max-width: 400px
   ),
-  "wide": (
-    max-width: 1024px
-  ),
-  "btn": (
-    min-width: 150px
+  "submit": (
+    max-width: 400px
   )
 );

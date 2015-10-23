@@ -2,33 +2,29 @@
 <template name="modifier">
 
 
-
     {{#with modifier}}
-      <h6 class="text-left push-bottom">
-        {{count}}. {{#if label}}{{label}}{{else}}{{name}}{{/if}}
-      </h6>
 
-        {{#if $eq type "select"}}
+      {{#if $eq type "select"}}
+
+
+        {{#if active}}
           {{> select
             name=name
             items=modifiers
             includeBlank=true
-            placeholder=false
+            placeholder=placeholderText
             hideLabel=true
             prefill=false
+            class='flush hard'
           }}
+        {{else}}
+        <div class="select-disabled text-center">
+          <span class="btn btn--gray">{{placeholderText}}</span>
+        </div>
         {{/if}}
 
-      <div class="soft-ends">
-        {{#if $eq type "input"}}
-          {{>Apollos.Forms.Input
-            name=input.name
-            label=input.label
-            placeholder=input.label
-            type="number"
-          }}
-        {{/if}}
-      </div>
+
+      {{/if}}
 
     {{/with}}
 

@@ -2,126 +2,107 @@
   <section class="hard flush">
 
 
-  {{#Apollos.Forms.Form name='quote' class="hard text-center"}}
-  <section class="soft-double-ends soft-sides text-center constrain-copy">
-    <h6 class="text-left push-bottom">
-      1. {{component.data.quote.action}}
-    </h6>
+    {{#Apollos.Forms.Form name='quote' class="hard text-center"}}
+    <section class="hard flush grid">
+      <div class="grid__item lap-and-up-one-half hard flush" style="vertical-align: middle;">
 
-    {{#if products}}
-    <div id="products">
-
-
-      <div class="grid">
-      {{#each products}}
-
-        <div class="grid__item text-center one-whole lap-and-up-two-fifths">
-          <a href="#" class="btn--filled btn--small one-whole" data-product={{name}}>
-            {{#if label}}{{label}}{{else}}{{name}}{{/if}}
-          </a>
-        </div>
-
-
-      {{/each}}
-      </div>
-    </div>
-    {{/if}}
-
-
-  </section>
-
-  <div id="modifier">
-    {{#if productName.get}}
-      {{> productModifier name=productName.get}}
-    {{/if}}
-  </div>
+        <section id="#quote" class="lap-and-up-soft-double-sides text-center hard-bottom handheld-push-top constrain-small-copy">
+          <h4>
+            Quick Quote
+          </h4>
+          <p>
+            A simple, easy way to get an estimate on your next project.
+          </p>
+        </section>
+        <section class="lap-and-up-soft-double-sides text-center">
 
 
 
-  <section class="hard-ends lap-and-up-push-double-bottom soft-sides text-center constrain-small-copy hard-bottom">
+          {{#if products}}
+          <div id="products" class="soft-bottom">
 
-    <h5 class="push-double-bottom">
-      <small>*Price discounts available for multiple products in the same order, please contact us for more information.</small>
-    </h5>
-  </section>
+            {{> select
+              name=name
+              items=products
+              placeholder=placeholderText
+              includeBlank=true
+              hideLabel=true
+              prefill=false
+              class='soft-bottom flush'
+              id="products"
+            }}
 
-
-  <section class="hard">
-    <div class="grid flush">
-
-      <div class="grid__item hard one-whole lap-and-up-one-half background--primary">
-        <div class="handheld-ratio--none lap-ratio--square lap-wide-and-up-ratio--landscape ">
-          <div class="ratio__item text-center soft-double floating">
-            <div class="floating__item">
-              {{#if price.get}}
-                <h4 class="text-white">Estimated Price per Item:</h4>
-                <h2 class="text-white flush">${{price.get}}</h2>
-
-              {{else}}
-
-                {{#if message.get}}
-
-                  <h4 class="flush text-white">
-                    {{message.get}}
-                  </h4>
-                {{else}}
-                  <h4 class="text-white"> Estimated Price per Item:</h4>
-                  <h2 class="text-white flush">$0</h2>
-                {{/if}}
-
-              {{/if}}
-            </div>
           </div>
-        </div>
+          {{/if}}
+
+
+          <div id="modifier">
+            {{> productModifier name=productName.get}}
+          </div>
+
+        </section>
+
+
       </div>
 
-      <div class="grid__item hard one-whole lap-and-up-one-half background--secondary">
-        <div class="handheld-ratio--none lap-ratio--square lap-wide-and-up-ratio--landscape ">
-          <div class="ratio__item text-center soft-double floating">
-            <div class="floating__item one-whole">
-              {{#if submitted.get}}
-              <h4 class="text-white uppercase flush">
-                Thank you for your submission! We will be in touch!
-              </h4>
-              {{else}}
-                <p class="text-white">
-                  Let's talk designs and get your dream printed.
-                </p>
+      <div class="grid__item lap-and-up-one-half hard flush" style="vertical-align: middle;">
+        <section class="hard">
+          <div class="grid flush">
 
-                <div class="grid one-whole handheld-hard text-center lap-wide-and-up-one-half" style="margin: 0 auto;">
+            <div class="grid__item hard one-whole background--primary">
+              <div class="handheld-ratio--none lap-and-up-ratio--fat-rectangle ">
+                <div class="ratio__item text-center soft soft-double-top handheld-push-top lap-and-up-soft-double floating">
+                  <div class="floating__item">
+                    {{#if price.get}}
+                      <h4 class="text-white">Estimated Price per Item:</h4>
+                      <h2 class="text-white flush">${{price.get}}</h2>
 
-                  <div class="grid__item hard one-whole push-bottom push-half-top">
+                    {{else}}
 
-                    {{>Apollos.Forms.Input
-                      name="email"
-                      label="Your email"
-                      placeholder="Your email"
-                      class="input--white flush hard"
-                      validate="isEmail"
-                      errorText="Please enter a valid email"
-                      id="quote-email"
-                    }}
+                      {{#if message.get}}
 
+                        <h4 class="flush text-white">
+                          {{message.get}}
+                        </h4>
+                      {{else}}
+                        <h4 class="text-white"> Estimated Price per Item:</h4>
+                        <h2 class="text-white flush">$0</h2>
+                      {{/if}}
+
+                    {{/if}}
                   </div>
+                </div>
 
-                  <div class="grid__item one-whole hard one-whole text-left">
-                    <button type="submit" class="btn--light btn--small one-whole">
-                      Start a Conversation
-                    </button>
-                  </div>
+                <div class="one-whole" style="margin: 0 auto; {{#unless MediaQuery 'handheld'}}position:absolute; bottom: 0;{{/unless}}">
+
+                  <h5 class="soft constrain-small-copy" >
+                    {{!--
+                    <small class="text-white">*Price discounts available for multiple products in the same order, please contact us for more information.</small>
+                    --}}
+                  </h5>
 
                 </div>
-              {{/if}}
 
 
+              </div>
             </div>
+
+
+
+            {{> submit submitted=true ready=ready.get}}
+
+
+
           </div>
-        </div>
+        </section>
       </div>
 
-    </div>
+
+
+
+
+      </section>
+    {{/Apollos.Forms.Form}}
   </section>
-  {{/Apollos.Forms.Form}}
-    </section>
 
 </template>

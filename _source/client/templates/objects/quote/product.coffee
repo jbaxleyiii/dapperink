@@ -6,6 +6,7 @@ class productModifier extends Apollos.Component
   vars: -> [
 
     productName: false
+    modifiers: []
 
   ]
 
@@ -19,28 +20,56 @@ class productModifier extends Apollos.Component
     self.autorun ->
       self.productName.set self.data().name
 
+    self.autorun ->
+      productName = self.productName.get()
+
+
+      if productName
+        product = Apollos.products.findOne({name: productName})
+      else
+        product = Apollos.products.find().fetch()[0]
+
+      if not product
+        return
+
+      modifiers = product.modifiers
+      modifiers or= []
+
+      index = 1
+      for modifier in modifiers
+        if index is 1 and productName
+          modifier.active = true
+        else
+          modifier.acitve = false
+        modifier.count = index + 1
+        index++
+
+      self.modifiers.set modifiers
+
+
+
   update: (val, modifier) ->
-
-    @.parent().adjustPrice val, modifier
-
-
-
-  modifiers: ->
-
     self = @
+    self.parent().adjustPrice val, modifier
 
-    productName = self.productName.get()
-    product = Apollos.products.findOne({name: productName})
+    existingModList = self.modifiers.get()
 
-    if not product
-      return
+    # this is really gross
+    next = false
+    for mod, index in existingModList
 
-    modifiers = product.modifiers
-    modifiers or= []
-    
-    index = 1
-    for modifier in modifiers
-      modifier.count = index + 1
-      index++
+      if mod.name is modifier.name
 
-    return modifiers
+        if index is (existingModList.length - 1)
+          self.parent().ready.set true
+
+        next = true
+        continue
+
+
+      if next
+        mod.active = true
+        break
+
+
+    self.modifiers.set existingModList

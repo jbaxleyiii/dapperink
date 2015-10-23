@@ -123,6 +123,7 @@ Apollos.products.upsert {name: "ss tee"},
     label: "Short Sleeve Tee"
     service: "screen-printing"
     basePrice: 3
+    order: 1
     modifiers: [
       {
         name: "quality"
@@ -153,7 +154,7 @@ Apollos.products.upsert {name: "ss tee"},
         ]
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         range: true
@@ -168,6 +169,7 @@ Apollos.products.upsert {name: "ls tee"},
     label: "Long Sleeve Tee"
     service: "screen-printing"
     basePrice: 5
+    order: 2
     modifiers: [
       {
         name: "quality"
@@ -198,7 +200,7 @@ Apollos.products.upsert {name: "ls tee"},
         ]
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         range: true
@@ -213,6 +215,7 @@ Apollos.products.upsert {name: "pullover"},
     label: "Pullover Hood"
     service: "screen-printing"
     basePrice: 12
+    order: 3
     modifiers: [
       {
         name: "quality"
@@ -238,7 +241,7 @@ Apollos.products.upsert {name: "pullover"},
         ]
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         range: true
@@ -253,6 +256,7 @@ Apollos.products.upsert {name: "headwear"},
     label: "Headwear"
     service: "screen-printing"
     basePrice: 6
+    order: 4
     modifiers: [
       {
         name: "quality"
@@ -278,7 +282,7 @@ Apollos.products.upsert {name: "headwear"},
         ]
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         range: true
@@ -291,6 +295,7 @@ Apollos.products.upsert {name: "other"},
   $set:
     name: "other"
     label: "Other"
+    order: 5
     service: "screen-printing"
     message: "Call for pricing"
 
@@ -306,19 +311,58 @@ Apollos.products.upsert {name: "archival artists canvas"},
     name: "archival artists canvas"
     label: "Archival Artists Canvas"
     service: "custom-printing"
-    basePrice: 10
+    basePrice: 0
+    order: 1
     modifiers: [
       {
         name: "size"
-        label: "Choose Size"
-        type: "input"
-        input:
-          label: "Square feet"
-          name: "square feet"
+        label: "Select Size"
+        type: "select"
         required: true
-        modifier: [
-          action: "multiply"
-          value: 4
+        options: [
+          {
+            name: "13x19 Poster"
+            label: "13x19 Poster"
+            low:
+              value: 16
+              modifier: [
+                {
+                  action: "add"
+                  value: 16
+                }
+              ]
+            high:
+              modifier: [
+                {
+                  action: "add"
+                  value: 2
+                }
+              ]
+          }
+          {
+            name: "24x36 Poster"
+            label: "24x36 Poster"
+            low:
+              value: 55
+              modifier: [
+                {
+                  action: "add"
+                  value: 55
+                }
+              ]
+            high:
+              modifier: [
+                {
+                  action: "add"
+                  value: 10
+                }
+              ]
+          }
+          {
+            name: "Multiple Prints"
+            label: "Multiple Prints"
+            message: "Call for pricing"
+          }
         ]
       }
     ]
@@ -328,19 +372,58 @@ Apollos.products.upsert {name: "archival fine art paper"},
     name: "archival fine art paper"
     label: "Archival Fine Art Paper"
     service: "custom-printing"
-    basePrice: 12
+    basePrice: 0
+    order: 2
     modifiers: [
       {
         name: "size"
-        label: "Choose Size"
-        type: "input"
-        input:
-          label: "Square feet"
-          name: "square feet"
+        label: "Select Size"
+        type: "select"
         required: true
-        modifier: [
-          action: "multiply"
-          value: 4
+        options: [
+          {
+            name: "13x19 Poster"
+            label: "13x19 Poster"
+            low:
+              value: 16
+              modifier: [
+                {
+                  action: "add"
+                  value: 16
+                }
+              ]
+            high:
+              modifier: [
+                {
+                  action: "add"
+                  value: 2
+                }
+              ]
+          }
+          {
+            name: "24x36 Poster"
+            label: "24x36 Poster"
+            low:
+              value: 55
+              modifier: [
+                {
+                  action: "add"
+                  value: 55
+                }
+              ]
+            high:
+              modifier: [
+                {
+                  action: "add"
+                  value: 10
+                }
+              ]
+          }
+          {
+            name: "Multiple Prints"
+            label: "Multiple Prints"
+            message: "Call for pricing"
+          }
         ]
       }
     ]
@@ -350,19 +433,58 @@ Apollos.products.upsert {name: "vinyl banner"},
     name: "vinyl banner"
     label: "Vinyl Banner"
     service: "custom-printing"
-    basePrice: 7
+    basePrice: 0
+    order: 3
     modifiers: [
       {
         name: "size"
-        label: "Choose Size"
-        type: "input"
-        input:
-          label: "Square feet"
-          name: "square feet"
+        label: "Select Size"
+        type: "select"
         required: true
-        modifier: [
-          action: "multiply"
-          value: 4
+        options: [
+          {
+            name: "2'x3' Banner"
+            label: "2'x3' Banner"
+            low:
+              value: 45
+              modifier: [
+                {
+                  action: "add"
+                  value: 45
+                }
+              ]
+            high:
+              modifier: [
+                {
+                  action: "add"
+                  value: 5
+                }
+              ]
+          }
+          {
+            name: "3'x6' Banner"
+            label: "3'x6' Banner"
+            low:
+              value: 135
+              modifier: [
+                {
+                  action: "add"
+                  value: 135
+                }
+              ]
+            high:
+              modifier: [
+                {
+                  action: "add"
+                  value: 15
+                }
+              ]
+          }
+          {
+            name: "Longer Lengths"
+            label: "Longer Lengths"
+            message: "Call for pricing"
+          }
         ]
       }
     ]
@@ -372,19 +494,58 @@ Apollos.products.upsert {name: "basic paper"},
     name: "basic paper"
     label: "Basic Paper"
     service: "custom-printing"
-    basePrice: 5
+    basePrice: 0
+    order: 4
     modifiers: [
       {
         name: "size"
-        label: "Choose Size"
-        type: "input"
-        input:
-          label: "Square feet"
-          name: "square feet"
+        label: "Select Size"
+        type: "select"
         required: true
-        modifier: [
-          action: "multiply"
-          value: 4
+        options: [
+          {
+            name: "2'x3' Banner"
+            label: "2'x3' Banner"
+            low:
+              value: 35
+              modifier: [
+                {
+                  action: "add"
+                  value: 35
+                }
+              ]
+            high:
+              modifier: [
+                {
+                  action: "add"
+                  value: 10
+                }
+              ]
+          }
+          {
+            name: "3'x6' Banner"
+            label: "3'x6' Banner"
+            low:
+              value: 115
+              modifier: [
+                {
+                  action: "add"
+                  value: 115
+                }
+              ]
+            high:
+              modifier: [
+                {
+                  action: "add"
+                  value: 20
+                }
+              ]
+          }
+          {
+            name: "Longer Lengths"
+            label: "Longer Lengths"
+            message: "Call for pricing"
+          }
         ]
       }
     ]
@@ -392,25 +553,18 @@ Apollos.products.upsert {name: "basic paper"},
 Apollos.products.upsert {name: "mounted signage"},
   $set:
     name: "mounted signage"
+    order: 5
     label: "Mounted Signage"
     service: "custom-printing"
-    basePrice: 12
-    modifiers: [
-      {
-        name: "size"
-        label: "Choose Size"
-        type: "input"
-        input:
-          label: "Square feet"
-          name: "square feet"
-        required: true
-        modifier: [
-          action: "multiply"
-          value: 4
-        ]
-      }
-    ]
+    message: "Call for more information"
 
+Apollos.products.upsert {name: "cut vinyl"},
+  $set:
+    name: "cut vinyl"
+    order: 6
+    label: "Cut Vinyl"
+    service: "custom-printing"
+    message: "Call for more information"
 
 ###
 
@@ -477,14 +631,12 @@ letterpressQuantities = [
     name: "250"
     label: "250"
     value: 250
-    low:
-      value: 0
-      modifier: [
-        {
-          action: "multiply"
-          value: 250
-        }
-      ]
+    modifier: [
+      {
+        action: "multiply"
+        value: 250
+      }
+    ]
   }
   {
     name: "300"
@@ -521,12 +673,13 @@ letterpressColors = [
     label: "One color"
     modifier: [
       {
-        action: "multiply"
-        value: 1.1
+        action: "add-multiply"
+        modifier: "quantity"
+        value: 0.1
       }
       {
         action: "add"
-        value: 30
+        value: 35
       }
     ]
   }
@@ -535,8 +688,9 @@ letterpressColors = [
     label: "Two colors"
     modifier: [
       {
-        action: "multiply"
-        value: 1.2
+        action: "add-multiply"
+        modifier: "quantity"
+        value: 0.2
       }
       {
         action: "add"
@@ -549,8 +703,9 @@ letterpressColors = [
     label: "Three colors"
     modifier: [
       {
-        action: "multiply"
-        value: 1.3
+        action: "add-multiply"
+        modifier: "quantity"
+        value: 0.3
       }
       {
         action: "add"
@@ -563,8 +718,9 @@ letterpressColors = [
     label: "Four colors"
     modifier: [
       {
-        action: "multiply"
-        value: 1.4
+        action: "add-multiply"
+        modifier: "quantity"
+        value: 0.4
       }
       {
         action: "add"
@@ -577,9 +733,10 @@ letterpressColors = [
 Apollos.products.upsert {name: "business card"},
   $set:
     name: "business card"
-    label: "Business Card"
+    label: "Business Cards"
     service: "letterpress"
     basePrice: 0.01
+    order: 1
     modifiers: [
       {
         name: "type"
@@ -589,7 +746,7 @@ Apollos.products.upsert {name: "business card"},
         options: letterpressOptions
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         required: true
@@ -606,11 +763,17 @@ Apollos.products.upsert {name: "business card"},
     modifier: [
       {
         action: "divide"
-        modifier: "volume"
+        modifier: "quantity"
+      }
+      {
+        action: "divide"
+        value: 4
       }
       {
         action: "multiply"
-        value: 3
+        range: true
+        value: 2.8
+        highValue: 4
       }
     ]
 
@@ -621,6 +784,7 @@ Apollos.products.upsert {name: "small card"},
     label: "Small Card"
     service: "letterpress"
     basePrice: 0.01
+    order: 2
     modifiers: [
       {
         name: "type"
@@ -630,7 +794,7 @@ Apollos.products.upsert {name: "small card"},
         options: letterpressOptions
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         required: true
@@ -647,11 +811,13 @@ Apollos.products.upsert {name: "small card"},
     modifier: [
       {
         action: "divide"
-        modifier: "volume"
+        modifier: "quantity"
       }
       {
         action: "multiply"
-        value: 3
+        range: true
+        value: 2
+        highValue: 3
       }
     ]
 
@@ -661,6 +827,7 @@ Apollos.products.upsert {name: "letterhead"},
     label: "Letterhead"
     service: "letterpress"
     basePrice: 0.25
+    order: 3
     modifiers: [
       {
         name: "type"
@@ -670,7 +837,7 @@ Apollos.products.upsert {name: "letterhead"},
         options: letterpressOptions
       }
       {
-        name: "volume"
+        name: "quantity"
         label: "Choose Quantity"
         type: "select"
         required: true
@@ -687,17 +854,20 @@ Apollos.products.upsert {name: "letterhead"},
     modifier: [
       {
         action: "divide"
-        modifier: "volume"
+        modifier: "quantity"
       }
       {
         action: "multiply"
-        value: 3
+        range: true
+        value: 2
+        highValue: 3
       }
     ]
 
 Apollos.products.upsert {name: "invitation set"},
   $set:
     name: "invitation set"
+    order: 4
     label: "Invitation Set"
     service: "letterpress"
     message: "Call for more information"

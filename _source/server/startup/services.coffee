@@ -13,7 +13,7 @@ Apollos.services.upsert {name: "screen-printing"},
       name: "apparel"
       label: "Apparel"
       action: "Choose Apparel Type"
-      modifier: "volume"
+      modifier: "quantity"
 
 
 Apollos.services.upsert {name: "letterpress"},
@@ -29,7 +29,7 @@ Apollos.services.upsert {name: "letterpress"},
       name: "letterpress"
       label: "Letter Press"
       action: "Choose Print Type"
-      modifier: "volume"
+      modifier: "quantity"
 
 
 Apollos.services.upsert {name: "custom-printing"},

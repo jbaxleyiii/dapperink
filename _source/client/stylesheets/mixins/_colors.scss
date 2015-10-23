@@ -1,0 +1,97 @@
+
+@mixin makeColors($color) {
+  .select2-results__option {
+    &:hover {
+      background-color: $color;
+    }
+  }
+  p > a {
+    color: $color;
+  }
+  small > a {
+    color: $color;
+  }
+  .logo-color {
+    fill: $color;
+  }
+
+  .text-primary {
+    color: $color;
+  }
+
+  .input--focused {
+    label {
+      color: $color;
+    }
+    input,
+    textarea {
+      border-color: $color;
+    }
+  }
+
+  .background--primary {
+    background-color: $color;
+  }
+
+  .btn,
+  .btn--filled,
+  .btn--light,
+  .btn--gray {
+    &:hover {
+      background-color: $color;
+    }
+  }
+
+  .disabled:hover {
+    background-color: #fff;
+  }
+
+
+  .select2-container {
+    &:hover {
+      border-color: $color;
+      background-color: $color;
+    }
+
+
+    &.select2-container--open {
+      .select2-selection__rendered {
+        color: $color;
+      }
+    }
+  }
+
+
+  .select2-container.select2-container--below,
+  .select2-container.select2-container--above {
+    border-color: $color;
+    background-color: $color;
+  }
+}
+
+.logo-color {
+  fill: $brand-color;
+}
+
+@include media-query(lap-and-up) {
+  .link-letterpress {
+    h4:hover {
+      color: map-get($colors, "secondary");
+    }
+  }
+
+  .link-custom-printing {
+    h4:hover {
+      color: map-get($colors, "tertiary");
+    }
+  }
+}
+
+html.letterpress {
+  @include makeColors( map-get($colors, "secondary") );
+}
+
+
+html.custom-printing {
+  @include makeColors( map-get($colors, "tertiary") );
+}

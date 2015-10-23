@@ -1,24 +1,64 @@
 <template name="Footer">
 
-  <section class="background--tertiary soft lap-and-up-soft-double-ends text-center">
-    <div class="constrain-small-copy">
-      <div class="grid">
-        {{#each company.social}}
-        <div class="grid__item one-quarter text-center">
-          <a href="{{link}}" target="_blank" class="icon--{{name}} icon--white">
-          </a>
+  <section class="handheld-hard overlay--solid-dark-secondary text-center lap-and-up-soft-double-ends" style="background-image:url(//s3.amazonaws.com/images.dapperink/dapper/site/images/{{scImage}}.jpg)">
+    <div class="overlay__item soft lap-and-up-soft-double-ends" >
+      <div class="constrain-small-copy lap-and-up-soft-ends">
+        {{#if MediaQuery 'handheld'}}
+
+        <div class="grid">
+          <div class="grid__item one-quarter text-center">
+            <a href="https://www.google.com/maps/place/Dapper+Ink+Custom+Outfitters/@34.8624215,-82.3858222,17z/data=!3m1!4b1!4m2!3m1!1s0x88582e212255b5a9:0x57f80ae99099876" target="_blank" class="display-inline-block icon icon--white" style="padding: 18px; margin-top: -2px;">
+               {{> mapIcon}}
+            </a>
+          </div>
+          {{#each company.social}}
+          <div class="grid__item one-quarter text-center">
+            <a href="{{link}}" target="_blank" class="icon--{{name}} icon--white">
+            </a>
+          </div>
+          {{/each}}
         </div>
-        {{/each}}
+
+         {{else}}
+         <a target="_blank" href="//www.google.com/maps/place/Dapper+Ink+Custom+Outfitters/@34.8624215,-82.3858222,17z/data=!3m1!4b1!4m2!3m1!1s0x88582e212255b5a9:0x57f80ae99099876">
+           <div  style="vertical-align: middle;" class="display-inline-block icon icon--white soft-half">
+             {{> mapIcon}}
+           </div>
+
+           <h5  style="vertical-align: middle;" class="soft-half-top flush display-inline-block text-white">
+             <em>
+               Printing in beautiful Greenville, SC
+             </em>
+           </h5>
+         </a>
+         {{/if}}
       </div>
     </div>
+
   </section>
 
-  <section class="background--secondary soft text-center">
-    <p class="flush text-white">
-      <small>
-      Copyright {{year}} Dapper Ink Custom Printer
-    </small>
-    </p>
+  <section class="background--dark text-center ">
+    <div class="lap-and-up-float-left push-half-top" style="vertical-align: middle;">
+      <p class="flush text-white soft-half-ends">
+        <small>
+          Copyright {{year}} Dapper Ink Custom Printer - <span data-terms="terms" class="p text-white" style="cursor:pointer">Terms of Use</span> - <span data-terms="privacy" class="p text-white" style="cursor:pointer">Privacy Policy</span>
+        </small>
+      </p>
+    </div>
+
+    {{#unless MediaQuery 'handheld'}}
+      <div class="float-right " style="vertical-align: bottom;">
+
+        {{#each company.social}}
+          <div class="display-inline-block text-center" style="vertical-align: middle;">
+            <a href="{{link}}" target="_blank" class="icon--{{name}} icon--white">
+            </a>
+          </div>
+        {{/each}}
+
+      </div>
+    {{/unless}}
+
 
   </section>
 

@@ -3,22 +3,34 @@
 modifyPrice = (modifier, price, modifiers) ->
 
   price = Number(price)
-
+  modifyValue = modifier.value
 
   if modifier.modifier and modifiers[modifier.modifier]
-    if modifiers[modifier.modifier].value
-      modifier.value = modifiers[modifier.modifier].value
+    if modifiers[modifier.modifier].value and not modifier.value
+      modifyValue = modifiers[modifier.modifier].value
+
+    else if modifiers[modifier.modifier].value and modifier.value
+      # modifier.value = modifiers[modifier.modifier].value
+      multiplier = modifiers[modifier.modifier].value
+
 
   if modifier.action is "add"
-    price += modifier.value
+    price += modifyValue
 
   if modifier.action is "multiply"
-    price = modifier.value * price
+    if modifier.range and modifier.highValue
+      price = "#{Math.round(modifyValue * price * 100) / 100} - $#{Math.round(modifier.highValue * price * 100) / 100}"
+    else
+      price = modifyValue * price
+
 
   if modifier.action is "divide"
-    price = price / modifier.value
+    price = price / modifyValue
 
-  return price.toFixed(2)
+  if modifier.action is "add-multiply"
+    price = price + (multiplier * modifier.value)
+
+  return price
 
 
 class quote extends Apollos.Component
@@ -30,8 +42,13 @@ class quote extends Apollos.Component
     price: 0
     message: ""
     submitted: false
+    ready: false
     selectedModifiers: {}
+
   ]
+
+  placeholderText: ->
+    return "1. #{@.data().quote.action}"
 
   subscriptions: -> [
     "products":
@@ -43,11 +60,18 @@ class quote extends Apollos.Component
   products: ->
     products = Apollos.products.find().fetch()
     if products.length
+      products = products.map( (opt) ->
+        return {
+          val: opt.name
+          name: opt.label or opt.name
+        }
+      )
       return products
+
     return []
 
   events: -> [
-    "click [data-product]": @.setProduct
+    "change #products": @.setProduct
     "submit form": @.createInquiry
   ]
 
@@ -57,14 +81,13 @@ class quote extends Apollos.Component
     serviceModifier = self.data().quote.modifier
 
     self.autorun ->
-      totalPrice = 0
       product = self.productName.get()
 
       if not product
-        self.price.set totalPrice
         return
 
-      self.setPrice(totalPrice, product)
+      self.setPrice(0, product)
+
 
   setPrice: (totalPrice, product) ->
 
@@ -75,6 +98,7 @@ class quote extends Apollos.Component
     # early return because no base price and message
     if product.message and not product.basePrice
       self.price.set false
+      self.ready.set true
       self.message.set product.message
       return
 
@@ -93,6 +117,7 @@ class quote extends Apollos.Component
         if value.message
           self.price.set false
           self.message.set value.message
+          self.ready.set true
           return
 
         # modifier number
@@ -102,30 +127,29 @@ class quote extends Apollos.Component
 
         if value.modifier?.length
           for _modifier in value.modifier
-            totalPrice = modifyPrice _modifier, totalPrice
+            totalPrice = modifyPrice _modifier, totalPrice, modifiedBase
 
         # low range
         if value.low?.modifier
           for lowModifier in value.low.modifier
-            totalPrice = modifyPrice lowModifier, totalPrice
+            totalPrice = modifyPrice lowModifier, totalPrice, modifiedBase
           multiplier = value.low.value
 
         # high range
         if value.high?.modifier and value.low?
-          highPrice = modifyPrice value.high.modifier[0], totalPrice
+          highPrice = modifyPrice value.high.modifier[0], totalPrice, modifiedBase
           highPriceMultiplier = value.high.value
 
 
     # multiply by modifiers
     if multiplier
       totalBasePrice = totalPrice
-      totalPrice = (totalPrice * multiplier).toFixed(2)
+      totalPrice = Math.round(totalPrice * multiplier)
 
     # if top range
     if highPrice
       # highPrice = totalBasePrice * highPriceMultiplier
-      totalPrice = "#{Number(totalBasePrice).toFixed(2)} - #{Number(highPrice).toFixed(2)}"
-
+      totalPrice = "#{Math.round(Number(totalBasePrice))} - $#{Math.round(Number(highPrice))}"
 
 
     # final overiding calculation
@@ -134,6 +158,9 @@ class quote extends Apollos.Component
         for _modifier in product.modifier
           totalPrice = modifyPrice _modifier, totalPrice, modifiedBase
 
+
+    if typeof totalPrice isnt "string"
+      totalPrice = Math.round(totalPrice)
     # render
     self.price.set totalPrice
 
@@ -142,34 +169,49 @@ class quote extends Apollos.Component
     event.preventDefault()
     self = @
 
-    productName = event.currentTarget.dataset.product
+    oldProduct = self.productName.get()
 
-    self.$("[data-product]").removeClass("active")
-    self.$(event.currentTarget).addClass("active")
+
+    productName = event.target.value
+
+    if productName is oldProduct
+      return
+
+
+
+
+    # self.$("[data-product]").removeClass("active")
+    # self.$(event.currentTarget).addClass("active")
 
     allProducts = self.products()
 
     for _product in allProducts
-      if _product.name isnt productName
+      if _product.val isnt productName
         continue
 
-      self.productName.set _product.name
+
+      self.productName.set _product.val
+      self.price.set 0
+      self.selectedModifiers.set {}
+      self.modifiedBase.set {}
+  
       break
 
 
-    options =
-      speed: 1000
-      easing: 'easeOutCubic'
-      offset: 250
-
-
-    smoothScroll.animateScroll(
-      null, '#modifier', options
-    );
+    # options =
+    #   speed: 1000
+    #   easing: 'easeOutCubic'
+    #   offset: 250
+    #
+    #
+    # smoothScroll.animateScroll(
+    #   null, '#modifier', options
+    # );
 
     return
 
   adjustPrice: (value, modifier) ->
+
 
     self = @
     serviceModifier = self.data().quote.modifier
@@ -188,6 +230,7 @@ class quote extends Apollos.Component
     storedModifiers[modifier.name].value = value
 
     self.selectedModifiers.set storedModifiers
+
 
     # ###
     #
@@ -217,7 +260,6 @@ class quote extends Apollos.Component
         })
 
       for option in options
-
         if option.name isnt value
           continue
 
@@ -233,7 +275,7 @@ class quote extends Apollos.Component
 
         self.modifiedBase.set(modifiedPrice)
 
-      self.setPrice(0, self.productName.get())
+      # self.setPrice(0, self.productName.get())
       return
 
 
@@ -259,38 +301,17 @@ class quote extends Apollos.Component
 
 
       self.modifiedBase.set(modifiedPrice)
-      self.setPrice(0, self.productName.get())
+      # self.setPrice(0, self.productName.get())
       return
 
   createInquiry: (event) ->
 
-
     self = @
     event.preventDefault()
 
-    children = {}
-    for child in self.children()
-      data = child.data()
-      if not data.name
-        continue
-
-      children[data.name] = child
-
-    email = self.find("input[name=email]").value.toLowerCase()
-
-    if not Apollos.validate.isEmail email
-      children["email"].setStatus true
-      return
-
-    # Tracker.nonreactive ->
-    #   quote = self.data().quote
 
     productName = self.productName.get()
     if not productName
-      children["email"].setStatus "Please choose a product", true
-      setTimeout ->
-        children["email"].setStatus false
-      , 1500
       return
 
     storedOptions = self.selectedModifiers.get()
@@ -314,16 +335,6 @@ class quote extends Apollos.Component
         for choosenOptions in options
           names.push choosenOptions.name
 
-        if names.indexOf(modifier.name) is -1
-          children["email"].setStatus(
-            "Please #{modifier.label.toLowerCase()}"
-            true
-          )
-          setTimeout ->
-            children["email"].setStatus false
-          , 1500
-          break
-
       return
 
     price = self.price.get()
@@ -333,8 +344,10 @@ class quote extends Apollos.Component
     service = route.params?.service
     service or= window.location.pathname
 
-    Apollos.inquiries.insert({
-      email: email
+    modal = Apollos.Component.getComponent("submitCard")
+    modal = modal.renderComponent()
+
+    data =
       type: service
       customer: Device
       responded: false
@@ -344,23 +357,41 @@ class quote extends Apollos.Component
         label: product.label
       options: options
       price: price
-    })
 
-    self.submitted.set true
+    modal = Blaze.renderWithData(
+      modal
+      { data: data, isQuote: true}
+      document.body
+    )
 
-    setTimeout ->
-      self.submitted.set false
-      self.productName.set false
-      options =
-        speed: 1000
-        easing: 'easeOutCubic'
-        offset: 250
-
-      smoothScroll.animateScroll(
-        null, '#products', options
-      );
-
-    , 5000
+    # Apollos.inquiries.insert({
+    #   # email: email
+    #   type: service
+    #   customer: Device
+    #   responded: false
+    #   viewed: false
+    #   product:
+    #     name: product.name
+    #     label: product.label
+    #   options: options
+    #   price: price
+    # })
+    #
+    # self.submitted.set true
+    #
+    # setTimeout ->
+    #   self.submitted.set false
+    #   self.productName.set false
+    #   options =
+    #     speed: 1000
+    #     easing: 'easeOutCubic'
+    #     offset: 250
+    #
+    #   smoothScroll.animateScroll(
+    #     null, '#products', options
+    #   );
+    #
+    # , 5000
 
   insertDOMElement: (parent, node, before) ->
     if not node.id

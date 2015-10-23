@@ -1,10 +1,6 @@
 &.select2-selection--single {
-  // border-radius: $border-radius;
   outline: 0;
 
-  // &:focus {
-  //   border: 1px solid $focus-border-color;
-  // }
   &:hover {
     .select2-selection__arrow > b {
       border-color: map-get($colors, light-primary) transparent transparent transparent;
@@ -26,29 +22,30 @@
   // }
 
   .select2-selection__arrow {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    // bottom: 0;
+    //
+    // width: 20px;
+    //
+    display: none;
+    // border: none;
 
-    width: 20px;
-
-    border: none;
-
-    b {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-
-      width: 0;
-      height: 0;
-      margin-top: -5px;
-      margin-left: -22.5px;
-
-      border-width: 10px 10px 0 10px;
-      border-style: solid;
-      border-color: map-get($colors, dark-tertiary) transparent transparent transparent;
-    }
+    // b {
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 50%;
+    //
+    //   width: 0;
+    //   height: 0;
+    //   margin-top: -5px;
+    //   margin-left: -22.5px;
+    //
+    //   border-width: 10px 10px 0 10px;
+    //   border-style: solid;
+    //   border-color: map-get($colors, light-tertiary) transparent transparent transparent;
+    // }
   }
 }
 
@@ -63,18 +60,19 @@
   // margin-top: -62px;
   border-left: none;
   background-color: map-get($colors, light-tertiary);
-  box-shadow: 0 3px 5px 3px darken(map-get($colors, light-tertiary), 10);
+  box-shadow: 0 1px 2px 1px lighten(map-get($colors, dark-tertiary), 10);
 
-  .select2-selection--single {
-    .select2-selection__arrow {
-      border: none;
-      background: transparent;
-      b {
-        border-width: 0 10px 10px 10px;
-        border-color: transparent transparent map-get($colors, dark-tertiary) transparent;
-      }
-    }
-  }
+  // .select2-selection--single {
+  //   .select2-selection__arrow {
+  //     border: none;
+  //     background: transparent;
+  //
+  //     b {
+  //       border-width: 0 10px 10px 10px;
+  //       border-color: transparent transparent map-get($colors, dark-tertiary) transparent;
+  //     }
+  //   }
+  // }
   &:hover {
     color: $base-font-color;
     border-top-color: map-get($colors, light-tertiary);
@@ -83,6 +81,9 @@
 
   .select2-selection__rendered {
     color: $brand-color;
+    .select2-selection__placeholder {
+      color: $base-font-color;
+    }
   }
 
   &.select2-container--above {

@@ -12,17 +12,18 @@
 </template>
 
 <template name="service">
+  {{!--
   {{> Hero active=serviceName}}
+  --}}
+  {{!--
+  {{> submitCard}}
+   --}}
+
+
+
+  {{> HeroAlt active=serviceName}}
 
   {{#with service}}
-    <section id="#quote" class="soft-double-top soft-sides text-center constrain-small-copy hard-bottom">
-      <h4 class="push-top lap-and-up-push-double-top">
-        Quick Estimate
-      </h4>
-      <p>
-        A simple and easy way to get a quick estimate of your next project.
-      </p>
-    </section>
     {{> quote}}
   {{/with}}
 

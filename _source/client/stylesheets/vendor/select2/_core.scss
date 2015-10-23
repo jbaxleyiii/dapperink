@@ -1,27 +1,41 @@
 .select2-container {
   @extend %btn;
   @include radius(3px);
+  @include media-query(lap-and-up) {
+    &:hover {
+      border-color: $brand-color;
+    }
+  }
+  @include media-query(handheld) {
+    &:hover {
+      color: $base-font-color!important;
+      border-color: map-get($colors, light-tertiary)!important;
+      background-color: map-get($colors, light-tertiary)!important;
+    }
+  }
   @import "single-core";
 
   overflow: visible;
+  // used to ovewrite js width
 
+  width: 280px !important;
   margin: 0;
   padding: 0;
 
   vertical-align: middle;
+  text-transform: uppercase;
 
-  color: map-get($colors, light-primary);
+  color: $base-font-color;
   border-color: map-get($colors, light-tertiary);
   background-color: map-get($colors, light-tertiary);
 
-  font-size: $button-height * .375;
+  font-size: 20px;
   font-weight: 700;
-
-  &:hover {
-    border-color: $brand-color;
-  }
 }
 
+.select-disabled {
+  opacity: .35 !important;
+}
 
 
 @import "dropdown-core";
@@ -63,5 +77,4 @@
   border: 0;
 }
 
-@import "defaults";
 @import "single";

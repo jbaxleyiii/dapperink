@@ -1,0 +1,112 @@
+//
+// .text-massive {
+//   @include media-query(palm) {
+//     font-size: 3.125em;
+//   }
+//   @include media-query(palm-wide) {
+//     font-size: 4em;
+//   }
+//   @include media-query(anchored) {
+//     font-size: 8em;
+//   }
+//
+//   font-family: "Roboto";
+//   font-size: 6em;
+//   font-weight: 900;
+//   line-height: .9;
+//
+//   @media screen and (min-width: 350px) and (max-width: 480px) {
+//     font-size: 3.5em !important;
+//   }
+// }
+
+p > small > a {
+  font-family: "Roboto Condensed";
+  font-weight: 700;
+}
+
+.text-nav {
+  @include media-query(palm-wide) {
+    font-size: 1em;
+  }
+  @include media-query(lap-and-up) {
+    letter-spacing: 1px;
+
+    font-size: 1.25em;
+  }
+  @include media-query(lap-and-up) {
+    &:hover {
+      color: $brand-color;
+    }
+  }
+
+  letter-spacing: .25px;
+
+  font-size: .8em;
+
+  @media screen and (min-width: 350px) and (max-width: 480px) {
+    font-size: .95em !important;
+  }
+}
+
+
+.summary {
+  h6 {
+    font-size: .9em;
+  }
+
+  h5 {
+    font-weight: 400;
+  }
+}
+
+.modal--dark {
+  @extend %_modal;
+
+  background-color: rgba(#000, .9);
+}
+
+//
+// @name .overlay--solid-dark
+// @class .overlay--solid-dark
+// @description The .overlay--solid-dark class creates a solid-dark overlay
+//
+// @block .overlay
+// @element .overlay__item
+// @modifier .overlay--solid-dark
+//
+// @complex-object true
+//
+// @state :after - fill the overlay with the color
+//
+// @markup
+// <div class="overlay--solid-dark">
+//   <h1> I'm shaded</h1>
+// </div>
+//
+.overlay--solid-dark-secondary {
+  @extend %_overlay;
+  &:after {
+    background: rgba($dark-color, .55);
+  }
+}
+
+
+.overlay--brand-dark {
+  @extend %_overlay;
+  &:before {
+    @include absolute(top 0 bottom 0 left 0 right 0);
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    content: "";
+
+    background: rgba($dark-color, .4);
+  }
+  &:after {
+    background: rgba($brand-color, .65);
+  }
+}

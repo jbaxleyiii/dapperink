@@ -43,3 +43,6 @@ dapperink
 settings.json
 dapperink.pem
 mup.json
+bundle.crt
+dapper.csr
+private.key
