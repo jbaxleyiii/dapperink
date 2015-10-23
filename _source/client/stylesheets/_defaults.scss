@@ -18,6 +18,7 @@ $colors: extend($colors, (
   "tertiary": #ed0677,
   "light-tertiary": #efefef
 ));
+
 $fonts: extend($fonts, (
   roboto: (
     h1: (
@@ -62,6 +63,7 @@ $fonts: extend($fonts, (
     h5 small: (
       color: darken(map-get($colors, light-tertiary), 10),
       font-size: .75em
+
     ),
     h6: (
       font-family: "Roboto Condensed",
@@ -74,6 +76,7 @@ $fonts: extend($fonts, (
       font-size: 1em,
       line-height: 1,
       margin-bottom: $half-spacing-unit
+
     )
   ),
   raleway: (
